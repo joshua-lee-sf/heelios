@@ -10,7 +10,38 @@
 #  updated_at      :datetime         not null
 #
 class User < ApplicationRecord
-  validates :email, presence: true, uniqueness: true
+  has_secure_password
+  validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }, length: {in: 3..255}
   validates :session_token, presence: true, uniqueness: true
   validates :password_digest, presence: true, uniqueness: true
+  validates :password, length: {in: 3..255}, allow_nil: true
+  before_validation :ensure_session_token
+
+  def self.find_by_credentials(email, password)
+    @user = User.find_by(email: email)
+    if @user&.authenticate(password)
+      return @user
+    else
+      return nil
+    end
+  end
+
+  def reset_session_token!
+    self.session_token = generate_unique_session_token
+    self.save!
+    return self.session_token
+  end
+
+  private
+  def generate_unique_session_token
+    token = SecureRandom::urlsafe_base64
+    while User.exists?(session_token: token)
+      token = SecureRandom::urlsafe_base64
+    end
+    token
+  end
+
+  def ensure_session_token
+    self.session_token ||= generate_unique_session_token
+  end
 end
