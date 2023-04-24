@@ -1,0 +1,17 @@
+.loginoptions-container{
+  display: flex;
+}
+
+.loginoptions-container li{
+  margin: 0px 10px 0px 10px;
+  text-decoration: none;
+}
+
+a{
+  text-decoration: none;
+  color: rgb(21, 21, 21);
+}
+
+a:hover{
+  opacity: 0.4;
+}

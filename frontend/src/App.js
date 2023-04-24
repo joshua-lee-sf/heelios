@@ -1,11 +1,14 @@
+import { Switch, Route } from "react-router-dom";
+import NavBar from "./components/navbar";
+
 function App() {
   return (
     <>
-      <h1>Hello from App</h1>
+      <NavBar />
       <Switch>
-        <Route exact path="/" component={splashpage} />
-        <Route path="/accounts/login" component={AccountLogInForm} />
-        <Route exact path="/accounts/signup" component={AccountSignUpForm} />
+        {/* <Route exact path="/" component={} /> */}
+        {/* <Route exact path="/account/login" component={} /> */}
+        {/* <Route exact path="/account/signup" component={} /> */}
       </Switch>
     </>
 

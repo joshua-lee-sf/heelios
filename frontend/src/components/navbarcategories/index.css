@@ -1,0 +1,15 @@
+.navbar-categories{
+  display: flex;
+  color: rgb(21, 21, 21);
+}
+
+.navbar-categories li{
+  margin-left: 20px;
+  margin-right: 20px;
+  padding-bottom: 20px;
+}
+
+.navbar-categories li:hover{
+  cursor: pointer;
+  border-bottom: 2px solid black;
+}
