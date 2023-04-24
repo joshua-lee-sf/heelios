@@ -1,16 +1,26 @@
 import NavBarCategories from "../navbarcategories"
-import LoginOptions from "../loginoptions/loginoptions"
+import LoginOptions from "../loginoptions"
 import {AiOutlineSearch} from 'react-icons/ai';
-import './index.css'
+import { Link } from 'react-router-dom'
+import {useSelector } from 'react-redux'
+import { useEffect } from "react";
+import './navbar.css'
 
 const NavBar = () => {
+  const sessionUser = useSelector(state => state.session.user);
+  
+  // useEffect(()=>{
+  //   let userEmail = sessionUser.email;
+  // },[sessionUser])
+
+
   return(
     <>
       <ul className="navbar">
-        <img className="navbar-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Logo_NIKE.svg/2880px-Logo_NIKE.svg.png" alt="logo"/>
+        <Link to='/'><img className="navbar-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Logo_NIKE.svg/2880px-Logo_NIKE.svg.png" alt="logo"/></Link>
         <NavBarCategories />
         <div className="nav-right">
-          <LoginOptions />
+          {sessionUser ? <Link to='/account'>Hi, { sessionUser.email }</Link> : <LoginOptions />}
         <label className="search-function">
           <div className="search-icon">
             <AiOutlineSearch />

@@ -4,14 +4,14 @@
 
 .loginoptions-container li{
   margin: 0px 10px 0px 10px;
-  text-decoration: none;
+  /* text-decoration: none; */
 }
 
-a{
+.loginoptions a{
   text-decoration: none;
   color: rgb(21, 21, 21);
 }
 
-a:hover{
+.loginoptions:hover{
   opacity: 0.4;
 }

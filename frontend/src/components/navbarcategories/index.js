@@ -1,4 +1,4 @@
-import './index.css'
+import './navbarcategories.css'
 
 const NavBarCategories = () => {
   return(
