@@ -12,7 +12,9 @@ const NavBar = () => {
         <div className="nav-right">
           <LoginOptions />
         <label className="search-function">
-          <AiOutlineSearch />
+          <div className="search-icon">
+            <AiOutlineSearch />
+          </div>
           <input type="search" placeholder="Search"></input>
         </label>
         </div>

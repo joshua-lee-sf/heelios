@@ -1,0 +1,55 @@
+import './index.css'
+import { useState,  } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import * as sessionActions from '../../store/session'
+import { Redirect } from 'react-router-dom'
+
+const SignInForm = () => {
+  const dispatch = useDispatch();
+  const sessionUser = useSelector(state => state.session.user);
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [errors, setErrors] = useState([])
+
+  if (sessionUser) return <Redirect to="/" />;
+
+  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    return dispatch(sessionActions.userLogin({email, password}))
+      .catch(async (res) => {
+        let data;
+        try{
+          data = await res.clone().json();
+        } catch{
+          data = await res.text();
+        }
+        if (data?.errors) setErrors(data.errors);
+        else if (data) setErrors(data);
+        else setErrors([res.statusText]);
+      });
+  }
+
+  const handleDemoUserClick = (e) => {
+    alert ("Hello recruiter, welcome to my website, now give me money!")
+  }
+
+
+
+  return(
+    <div className="login-form">
+      <div className="form-items">
+        <img className="navbar-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Logo_NIKE.svg/2880px-Logo_NIKE.svg.png" alt="logo"/>
+        <h1>Enter your email to sign in.</h1>
+        <form onSubmit={(handleSubmit)}>
+          <input type="text" value={email} placeholder="email" onChange={(e) => setEmail(e.target.value)}></input>
+          <input type="password" value={password} placeholder="password" onChange={(e) => setPassword(e.target.value)}></input>
+          <button>Sign In</button>
+        </form>
+        <button onClick={(handleDemoUserClick)}>Demo User</button>
+      </div>
+    </div>
+  )
+}
+
+export default SignInForm

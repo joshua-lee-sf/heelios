@@ -1,5 +1,6 @@
 /* TODO Add site wide styles */
 
-body{
+body, html{
   background-color: rgb(255, 246, 246);
+  font-family: 'Helvetica Neue', sans-serif;
 }

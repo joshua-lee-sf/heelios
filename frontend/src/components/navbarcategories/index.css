@@ -7,9 +7,10 @@
   margin-left: 20px;
   margin-right: 20px;
   padding-bottom: 20px;
+  font-weight: 500;
 }
 
 .navbar-categories li:hover{
   cursor: pointer;
-  border-bottom: 2px solid black;
+  border-bottom: 3px solid rgb(21, 21, 21);
 }
