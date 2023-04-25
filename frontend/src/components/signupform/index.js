@@ -36,8 +36,6 @@ const SignUpForm = () => {
     return setErrors(['Confirm Password field must be the same as the Password Field'])
   }
 
-  console.log(errors);
-
   return(
     <div className="signup-form">
       <div className="signup-form-items">
