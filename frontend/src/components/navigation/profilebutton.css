@@ -1,0 +1,22 @@
+.profile-button{
+  cursor: pointer;
+}
+
+.profile-dropdown{
+  position: absolute;
+  top: 30px;
+  border: 1px solid rgb(21,21,21);
+  padding: 20px;
+  width: 200px;
+}
+
+.profile-dropdown li{
+  margin: 10px 0px;
+  cursor: pointer;
+}
+
+.menu-container{
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+}

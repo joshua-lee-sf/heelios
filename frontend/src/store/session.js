@@ -47,11 +47,12 @@ export const signUpUser = (user) => async (dispatch, getState) =>{
   return res;
 }
 
-export const logoutUser = (user) => async (dispatch, getState) => {
+export const logoutUser = () => async (dispatch, getState) => {
   const res = await csrfFetch('/api/session',{
     method: 'DELETE'
   })
-  dispatch(deleteUserSession)
+  storeCurrentUser(null)
+  dispatch(deleteUserSession(null))
 }
 
 // helper methods
