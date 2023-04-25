@@ -22,6 +22,7 @@
   border-radius: 20px;
   display: flex;
   align-items: center;
+  padding: 2px;
 }
 
 .search-icon:hover{
@@ -36,13 +37,18 @@
 }
 
 .nav-right *{
-  margin-left: 10px;
+  margin-right: 5px;
 }
 
 .search-function *{
-  margin-left: 5px;
-  margin-right: 10px;
+  /* margin-left: 5px; */
+  margin-right: 5px;
   height: 30px;
+  padding: 2px 3px;
+}
+
+.search-icon{
+  margin-right: 6px;
 }
 
 input[type='search']{
