@@ -5,8 +5,9 @@ const NavBarCategories = () => {
     <>
       <ul className="navbar-categories">
         <li>New & Featured</li>
-        <li>Men's</li>
-        <li>Women's</li>
+        <li>Men</li>
+        <li>Women</li>
+        <li>Kids</li>
       </ul>
     </>
   )
