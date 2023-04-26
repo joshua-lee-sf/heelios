@@ -6,6 +6,7 @@ import App from './App';
 import configureStore from './store';
 import csrfFetch from './store/csrf';
 import * as sessionActions from './store/session';
+import * as productActions from './store/products'
 import './reset.css';
 import './index.css';
 
@@ -15,6 +16,7 @@ if (process.env.NODE_ENV !== 'production') {
   window.store = store;
   window.csrfFetch = csrfFetch;
   window.sessionActions = sessionActions;
+  window.productActons = productActions;
 }
 
 function Root() {

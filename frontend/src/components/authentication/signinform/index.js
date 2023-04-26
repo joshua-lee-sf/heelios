@@ -1,7 +1,7 @@
 import './signinform.css'
 import { useState,  } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import * as sessionActions from '../../store/session'
+import * as sessionActions from '../../../store/session'
 import { Redirect, Link } from 'react-router-dom'
 
 const SignInForm = () => {
@@ -33,8 +33,6 @@ const SignInForm = () => {
     e.preventDefault();
     return dispatch(sessionActions.userLogin({email: 'demo@user.io', password: 'password'}))
   }
-
-
 
   return(
     <div className="signin-form">

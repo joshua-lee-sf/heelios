@@ -2,22 +2,23 @@
 #
 # Table name: products
 #
-#  id                  :bigint           not null, primary key
-#  product_name        :string           not null
-#  product_sku         :string           not null
-#  product_type        :string           not null
-#  product_color       :string           not null
-#  product_description :text             not null
-#  product_category    :string           not null
-#  product_price       :float            not null
-#  created_at          :datetime         not null
-#  updated_at          :datetime         not null
+#  id          :bigint           not null, primary key
+#  name        :string           not null
+#  sku         :string           not null
+#  p_type      :string           not null
+#  color       :string           not null
+#  description :text             not null
+#  category    :string           not null
+#  price       :float            not null
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  title       :string
 #
 PRODUCT_CATEGORY = ['men', 'women', 'kids']
 class Product < ApplicationRecord
-  validates :product_name, :product_type, :product_color, :product_description, :product_price, presence: true
-  validates :product_sku, presence: true, uniqueness: true
-  validates :product_category, presence: true, inclusion: {in: PRODUCT_CATEGORY}
+  validates :name, :p_type, :color, :description, :price, presence: true
+  validates :sku, presence: true, uniqueness: true
+  validates :category, presence: true, inclusion: {in: PRODUCT_CATEGORY}
 
   has_many_attached :photos
 end
