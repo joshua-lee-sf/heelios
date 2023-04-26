@@ -1,11 +1,12 @@
-import { useDispatch, useSelector } from 'react-redux'
-import { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { useState, useEffect } from 'react';
 import { getProducts, fetchProducts } from '../../../store/products';
-import {Redirect} from 'react-router-dom'
+import { useHistory } from 'react-router-dom';
 import './productindex.css'
 
 
 const ProductIndex = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const products = useSelector(getProducts)
 
@@ -16,8 +17,8 @@ const ProductIndex = () => {
 
   const [salePercentage, setSalePercentage] = useState(0);
 
-  const handleClick = () => {
-    alert("going to shoe")
+  const handleClick = (id) => {
+    history.push(`/products/${id}`)
   }
   
   return(
@@ -25,9 +26,9 @@ const ProductIndex = () => {
     <h1>All Products</h1>
     <div className="products-container">
       {products.map(product => {
-          return (
-            <div key={product.id} className='product-container' onClick={(handleClick)}>
-              <img src={product.photos} />
+        return (
+            <div key={product.id} className='product-container' onClick={() => handleClick(product.id)}>
+              <img src={product.imageUrl[0]} />
               <h5 className="product-name">{product.name}</h5>
               {product.title ? <p>{product.title}</p> : null}
               <p>{product.pType}</p>

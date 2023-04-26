@@ -1,4 +1,5 @@
 class Api::ProductsController < ApplicationController
+  include ActiveStorage::SetCurrent
 
   def index
     @products = Product.all
