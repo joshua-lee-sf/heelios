@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useState, useEffect } from 'react'
 import { getProducts, fetchProducts } from '../../../store/products';
+import {Redirect} from 'react-router-dom'
 import './productindex.css'
 
 
@@ -11,6 +12,13 @@ const ProductIndex = () => {
   useEffect(() => {
     dispatch(fetchProducts())
   }, [dispatch])
+
+
+  const [salePercentage, setSalePercentage] = useState(0);
+
+  const handleClick = () => {
+    alert("going to shoe")
+  }
   
   return(
     <>
@@ -18,13 +26,15 @@ const ProductIndex = () => {
     <div className="products-container">
       {products.map(product => {
           return (
-            <div key={product.id} className='product-container'>
-              <img src={product.photos.url} />
+            <div key={product.id} className='product-container' onClick={(handleClick)}>
+              <img src={product.photos} />
               <h5 className="product-name">{product.name}</h5>
-              <p>{product.title}</p>
+              {product.title ? <p>{product.title}</p> : null}
               <p>{product.pType}</p>
-              {/* <p>{product.category}</p> */}
-              <p>${product.price}</p>
+              <div className="price-container">
+                <p className={product.salePrice ? "onsaleproduct" : "notonsale"}>${product.price}</p>
+                { product.salePrice ?  <p className="onsale">${product.salePrice}</p> : null}
+              </div>
             </div>
           )
         })}

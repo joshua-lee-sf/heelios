@@ -231,7 +231,8 @@ require 'open-uri'
     color: 'Metallic Silver/Midnight Navy/Summit White/Chlorine Blue',
     description: 'Push your style full speed ahead with the Nike Air Max 97 OG. Its iconic design takes inspiration from water droplets and Japanese bullet trains. Full-length Nike Air cushioning lets you ride in first class comfort.',
     category: 'men',
-    price: 185.00
+    price: 185.00,
+    sale_price: 129.97
   })
 
   p19 = Product.create({
@@ -291,7 +292,8 @@ require 'open-uri'
     color: 'Black/Multi-Color/Cobalt Bliss/White',
     description: "More than perhaps any other silhouette, the Air More Uptempo encapsulates '90s basketball flavor at its finest. Big and bold, the unapologetic design represents a hybrid of style and innovation that made major waves when it debuted—and still turns heads today. This crafted take keeps it simple and easy to style in classic black and white, while pops of blue add a breath of fresh air. Speaking of air, the graffiti-style AIR graphic (an off-court fave) extends down the midsole for extra punch. Visible Nike Air cushioning finishes it off, giving you the edge in comfort.",
     category: 'men',
-    price: 165.00
+    price: 165.00,
+    sale_price: 140.97
   })
 
   p25 = Product.create({
@@ -416,12 +418,13 @@ require 'open-uri'
 
   p36 = Product.create({
     name: "Nike Air Presto",
-    sku: 'DZ4406-001-01',
+    sku: 'DZ4406-001',
     p_type: "Women's Shoes",
     color: 'Black/Racer Blue/Bright Crimson/Hyper Pink',
     description: "With a sleek design meant to feel more comfortable than your favorite tee, the Nike Air Presto is made to feel good and look fast. Its stretchy sleeve creates a cozy, sock-like fit while soft foam and a Zoom Air unit in the heel help cushion your every step. Put them on and you'll never want to take them off.",
     category: 'women',
-    price: 135.00
+    price: 135.00,
+    sale_price: 82.97
   })
 
   p37 = Product.create({
@@ -442,7 +445,8 @@ require 'open-uri'
     color: 'Adobe/Sail',
     description: "Feel confident all day long in this light-support Alate bra. A sewn-in 1-piece pad offers enhanced coverage and shaping while sweat-wicking technology keeps you cool and comfortable. The Infinalon fabric of the body and straps feels like you’re being hugged by a silky cloud and stretches easily, giving you the ultimate freedom of movement. A rounded V-neck tops the bra off with a clean finish, so you might just forget you're wearing it.",
     category: 'women',
-    price: 55.00
+    price: 55.00,
+    sale_price: 42.97
   })
 
   p39 = Product.create({
@@ -499,8 +503,8 @@ require 'open-uri'
   })
 
   p44 = Product.create({
-    name: "Nike Sportswear",
-    title: "Collection Woven Jacket",
+    name: "Nike Sportswear Collection",
+    title: "Woven Jacket",
     sku: 'DV8307-200',
     p_type: "Women's Apparel",
     color: 'Hemp/Black/Sanddrift/Hemp',
@@ -510,8 +514,8 @@ require 'open-uri'
   })
 
   p45 = Product.create({
-    name: "Nike Sportswear",
-    title: "Collection Woven Jacket",
+    name: "Nike Sportswear Collection",
+    title: "Woven Jacket",
     sku: 'DV8307-410',
     p_type: "Women's Apparel",
     color: 'Midnight Navy/Diffused Blue/Ashen Slate/Midnight Navy',
@@ -521,8 +525,8 @@ require 'open-uri'
   })
 
   p46 = Product.create({
-    name: "Nike Sportswear",
-    title: "Essential Midi Dress",
+    name: "Nike Sportswear Essential",
+    title: "Midi Dress",
     sku: 'DV7878-272',
     p_type: "Women's Apparel",
     color: 'Diffused Taupe/White',
@@ -532,8 +536,8 @@ require 'open-uri'
   })
 
   p47 = Product.create({
-    name: "Nike Sportswear",
-    title: "Essential Midi Dress",
+    name: "Nike Sportswear Essential",
+    title: "Midi Dress",
     sku: 'DV7878-010',
     p_type: "Women's Apparel",
     color: 'Black/White',
@@ -591,7 +595,8 @@ require 'open-uri'
     color: 'Cherrywood Red/Cement Grey/White',
     description: "This iteration of the AJ1 reimagines Mike's first signature model with a fresh mix of colors. Premium materials, soft cushioning and a padded ankle collar offer total support and celebrate the shoe that started it all.",
     category: 'kids',
-    price: 110.00
+    price: 110.00,
+    sale_price: 83.97
   })
 
 
@@ -652,7 +657,8 @@ require 'open-uri'
     color: 'Light Iron Ore/Summit White/Black/University Red',
     description: "How do you make an icon even better? Unleash its wild side! A medley of animal prints lends new energy and power to the Nike Air Max 90. The shaped toe box gives your toes more wiggle room while Max Air units tuned just for you help keep playtime comfy. Waffle outsoles, stitched overlays and classic molded plastic accents bring a '90s fave to a new generation.",
     category: 'kids',
-    price: 110.00
+    price: 110.00,
+    sale_price: 76.97
   })
 
   p58 = Product.create({
@@ -756,7 +762,8 @@ require 'open-uri'
     color: 'Canyon Purple/Canyon Rust/Light Bone/Light Bone',
     description: "Make the most of chilly days with the Nike Sportswear Tech Fleece Hoodie. This full-zip is all about our innovative premium fleece that’s soft, lightweight and warm. Added bonus: There’s a zippered pocket on your left sleeve.",
     category: 'kids',
-    price: 100.00
+    price: 100.00,
+    sale_price: 85.97
   })
 
   p68 = Product.create({
@@ -767,7 +774,8 @@ require 'open-uri'
     color: 'White/Metallic Silver',
     description: "What's it mean to be an all-star? To us, it's being your best and shining bright—from the classroom to your favorite sport or activity. Inspired by the star within everyone, the Nike Icon Fleece hoodie celebrates what you're great at. Big graphics bring extra star power to your oversized soft fleece hoodie.",
     category: 'kids',
-    price: 65.00
+    price: 65.00,
+    sale_price: 55.97
   })
 
   p69 = Product.create({
@@ -778,7 +786,8 @@ require 'open-uri'
     color: 'Black/Metallic Silver',
     description: "What's it mean to be an all-star? To us, it's being your best and shining bright—from the classroom to your favorite sport or activity. Inspired by the star within everyone, the Nike Icon Fleece hoodie celebrates what you're great at. Big graphics bring extra star power to your oversized soft fleece hoodie.",
     category: 'kids',
-    price: 65.00
+    price: 65.00,
+    sale_price: 55.97
   })
 
   puts "Done!"

@@ -9,4 +9,22 @@
   width: 20%;
   margin: 5px;
   padding: 10px;
+  cursor: pointer;
+  /* max-width: 200px; */
+}
+
+.onsaleproduct{
+  text-decoration: line-through;
+}
+
+.onsale{
+  color: green;
+}
+
+.price-container{
+  display: flex;
+}
+
+.price-container > p{
+  margin-right: 5px;
 }
