@@ -1,6 +1,6 @@
 json.products do
   @products.each do |product|
-    json.set! product.id do
+    json.set! product.sku do
       json.partial! 'api/products/product', product: product
     end
   end

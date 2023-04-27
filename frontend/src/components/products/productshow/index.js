@@ -1,20 +1,19 @@
-import {getProduct, fetchProduct} from '../../../store/products'
+import {getProduct, fetchProductsBySku, getProductBySku} from '../../../store/products'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
-import {useParams} from 'react-router-dom'
+import {useParams, Link} from 'react-router-dom'
 import {AiOutlineHeart} from 'react-icons/ai'
 import './productshow.css'
 
 const ProductShow = () => {
   const dispatch = useDispatch();
   const {id} = useParams();
-  let product = useSelector(getProduct(id));
-
-  
+  const product = useSelector(getProduct(id));
+  const products = useSelector(getProductBySku(id))
 
   useEffect(() => {
     if(id){
-      dispatch(fetchProduct(id))
+      dispatch(fetchProductsBySku(id))
     }
   },[dispatch, id])
   
@@ -34,23 +33,36 @@ const ProductShow = () => {
         <p className="product-title info" >{product?.title}</p>
         <p className="product-type info">{product?.pType}</p>
         <p className="product-price info">${product?.price}.00</p>
-        <img src={product?.imageUrl[0]} className="product-color-selector"/>
+        <div className="color-selector">
+          {products.map((product) => {
+            return(
+              <Link to={`/products/${product.sku}`}>
+                  <img src={product?.imageUrl[0]}/>
+                  <input type="radio" value={product.sku} id={product.sku} name="color"/>
+                  <label className="color-selector-item" htmlFor={product.sku}></label>
+              </Link>
+            )
+          })}
+          </div>
+
         <div className="size-selector">
           {product?.size.map((size, idx) => {
             return (
-                <>
-                  <input type="radio" name="size" id={size} value={size}></input>
-                  <label for={size}>{size}</label>
-                </>
+              <>
+                <input key={size} type="radio" name="size" id={size} value={size}></input>
+                <label key={(idx+1)*100} htmlFor={size}>{size}</label>
+              </>
             )
           })}
         </div>
-        <button className="add-to-bag-button">Add to Bag</button>
-        <button className="favorite-button">Favorite <AiOutlineHeart className="heart-icon"/></button>
+        <div className="product-buttons">
+          <button className="add-to-bag-button">Add to Bag</button>
+          <button className="favorite-button">Favorite <AiOutlineHeart className="heart-icon"/></button>
+        </div>
         <p className="product-description info">{product?.description}</p>
         <ul className="product-info-container">
           <li className="product-color info"><strong>Shown:</strong> {product?.color}</li>
-          <li className="product-sku info"><strong>Style:</strong> {product?.sku}</li>
+          <li className="product-sku info"><strong>Style:</strong> {product?.sku.toUpperCase()}</li>
         </ul>
       </div>
     </div>

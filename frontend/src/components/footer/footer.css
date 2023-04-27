@@ -1,0 +1,23 @@
+.footer-container{
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(48, 48, 48);
+  color: rgb(147, 147, 147);
+  height: 200px;
+  align-items: center;
+}
+
+.footer-right{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-right li{
+  margin: 10px;
+  /* color: white; */
+  cursor: pointer;
+  background-color: white;
+  padding: 5px;
+  border-radius: 35px;
+}
