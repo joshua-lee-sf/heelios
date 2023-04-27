@@ -1,52 +1,69 @@
 .product-show-container{
   display: flex;
   justify-content: center;
+  margin-bottom: 20px;
+}
+
+.product-show-container p{
+  font-weight: 350;
+}
+
+.product-show-container > *{
+  margin:0px 10px;
 }
 
 .product-show-left{
   display: grid;
-  /* flex-wrap: wrap; */
   grid-template-columns: auto auto;
   width: 40%;
-  column-gap: 15px;
-  row-gap: 15px;;
+  gap: 5px 2.5px;
 }
 
 .product-show-left img{
   width: 100%;
-  /* height:auto; */
-  /* margin: 5px 5px; */
-  /* padding: 10px; */
-}
-
-.product-show-right *{
-  margin-left: 20px;
-  margin-top: 20px;
+  height:auto;
+  margin: 5px 5px;
 }
   
 .product-show-right{
-  width: 30%;
-  margin-left: 10px;
+  width: 40%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
 }
 
-.product-color-selector{
-  height: 68px;
-  width: 68px;
+
+.color-selector{
+  display: flex;
+}
+
+.color-selector > *{
+  margin: 0px 5px;
+  border-radius: 4px;
+  height: 60%;
+}
+
+.color-selector label{
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.color-selector img{
   max-width: 120px;
-  border: 1px solid rgb(21,21,21);
+  border: 1px solid rgb(208, 208, 208);
   border-radius: 4px;
   cursor: pointer;
+  height: 98%;
 }
 
 .size-selector{
   display: flex;
   flex-wrap: wrap;
+  flex-direction: row;
 }
 
-.size-selector input{
+.size-selector input, .color-selector input{
   position: absolute;
 	clip: rect(0,0,0,0);
 	height: 1px;
@@ -65,19 +82,24 @@
   border: 1px solid rgb(208, 208, 208);
   border-radius: 6px;
   cursor: pointer;
-  width: 35%;
+  width: 20%;
+  margin: 5px;
 }
 
+.product-buttons > * {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 
 .add-to-bag-button{
-  width: 100%;
+  width: 80%;
   height: 60px;
   background-color: rgb(21,21,21);
   color: rgb(246,246,246);
-  cursor: pointer;
   border-radius: 30px;
   font-size: 17px;
   font-weight: 500;
+  cursor: pointer;
 }
 
 .add-to-bag-button:hover{
@@ -85,7 +107,7 @@
 }
 
 .favorite-button{
-  width: 100%;
+  width: 80%;
   height: 60px;
   background-color: rgb(246,246,246);
   color: rgb(21,21,21);
@@ -97,23 +119,30 @@
   font-weight: 500;
 }
 
-.size-selector li:hover, .favorite-button:hover, .product-color-selector:hover, .size-selector label:hover{
+.size-selector li:hover, .favorite-button:hover, .product-color-selector input:hover, .size-selector label:hover{
   border: 1px solid rgb(21,21,21);
 }
 
-input[type='radio']:checked+label{
+input[type='radio']:checked+label, a:active{
   border: 1px solid rgb(21,21,21);
 }
 
-.product-info{
+.product-info-container{
   margin-top: 20px;
 }
 
-.product-info li{
-  list-style: circle;
+.product-info-container li{
+  list-style: square;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 25px;
 }
 
 .heart-icon{
   margin: 0px auto;
   margin-left: 10px;
+}
+
+.info{
+  margin: 10px 0px;
 }

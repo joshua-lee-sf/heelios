@@ -25,8 +25,8 @@ const ProductIndex = () => {
     <div className="products-container">
       {products.map(product => {
         return (
-            <div key={product.id} className='product-container' onClick={() => handleClick(product.id)}>
-              <img src={product.imageUrl[0]} />
+            <div key={product.id} className='product-container' onClick={() => handleClick(product.sku)}>
+              <img src={product?.imageUrl[0]} />
               <h5 className="product-name">{product.name}</h5>
               {product.title ? <p>{product.title}</p> : null}
               <p>{product.pType}</p>

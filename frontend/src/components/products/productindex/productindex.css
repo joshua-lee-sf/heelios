@@ -5,15 +5,12 @@
 }
 
 .product-container{
-  /* border: 1px solid black; */
   width: 15%;
   margin: 10px 5px;
-  /* padding: 10px; */
   cursor: pointer;
   display: flex;
   justify-content: center;
   flex-direction: column;
-  /* max-width: 200px; */
 }
 
 .product-container img{

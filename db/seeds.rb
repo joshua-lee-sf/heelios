@@ -53,6 +53,7 @@ require 'open-uri'
   products.each do |product|
     productHash = product.deep_transform_keys { |key| key.to_s.underscore.to_sym }
     puts "Creating product: #{product[:name]} (#{product[:sku]})"
+    productHash[:sku] = productHash[:sku].downcase
     product = Product.new(productHash.slice(:name, :title, :description, :color, :p_type, :sku, :category, :size))
     product.price = productHash[:price][1..-1].to_f
     product.save!
