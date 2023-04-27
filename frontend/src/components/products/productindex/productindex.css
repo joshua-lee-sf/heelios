@@ -1,0 +1,37 @@
+.products-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.product-container{
+  /* border: 1px solid black; */
+  width: 15%;
+  margin: 10px 5px;
+  /* padding: 10px; */
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  /* max-width: 200px; */
+}
+
+.product-container img{
+  max-width: 100%;
+}
+
+.onsaleproduct{
+  text-decoration: line-through;
+}
+
+.onsale{
+  color: green;
+}
+
+.price-container{
+  display: flex;
+}
+
+.price-container > p{
+  margin-right: 5px;
+}

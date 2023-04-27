@@ -8,6 +8,8 @@
   border: 1px solid rgb(21,21,21);
   padding: 20px;
   width: 200px;
+  z-index: 105;
+  background-color:rgb(251, 251, 251);
 }
 
 .profile-dropdown li{

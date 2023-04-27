@@ -14,3 +14,8 @@
   cursor: pointer;
   border-bottom: 3px solid rgb(21, 21, 21);
 }
+
+.navbar-categories-options a{
+  text-decoration: none;
+  color: rgb(21, 21, 21);
+}
