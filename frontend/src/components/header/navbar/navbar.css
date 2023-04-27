@@ -37,7 +37,7 @@
 }
 
 .nav-right *{
-  margin-right: 5px;
+  margin: 0px 5px;
 }
 
 .search-function *{
@@ -60,5 +60,14 @@ input[type='search']{
 input[type='search']:hover{
   opacity: 1;
 }
+
+.cart-favorite-icons{
+  font-size: 20px;
+}
+
+.cart-favorite-icons *{
+  cursor: pointer;
+  margin: 0px 15px;
+} 
 
 

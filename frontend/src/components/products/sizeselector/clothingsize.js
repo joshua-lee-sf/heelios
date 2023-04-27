@@ -1,6 +1,0 @@
-const ClothingSizes = () => {
-  return(
-    <>
-    </>
-  )
-}
