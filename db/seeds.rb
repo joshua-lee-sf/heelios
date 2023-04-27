@@ -56,7 +56,7 @@ require 'open-uri'
     product = Product.new(productHash.slice(:name, :title, :description, :color, :p_type, :sku, :category))
     product.price = productHash[:price][1..-1].to_f
     product.save!
-    productHash[:product_images].each_with_index do |image_url, i|
+    productHash[:images].each_with_index do |image_url, i|
       puts "Attaching image: #{product.sku}_#{i}.png"
       product.photos.attach(
         io: URI.open(image_url), 
