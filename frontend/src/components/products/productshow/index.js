@@ -36,7 +36,7 @@ const ProductShow = () => {
         <div className="color-selector">
           {products.map((product) => {
             return(
-              <Link to={`/products/${product.sku}`}>
+              <Link to={`/products/${product.sku}`} className="color-selector-link">
                   <img src={product?.imageUrl[0]}/>
                   <input type="radio" value={product.sku} id={product.sku} name="color"/>
                   <label className="color-selector-item" htmlFor={product.sku}></label>
