@@ -1,0 +1,90 @@
+.product-show-container{
+  display: flex;
+  justify-content: center;
+}
+
+.product-show-left{
+  display: flex;
+  flex-wrap: wrap;
+  width: 30%;
+}
+
+.product-show-left img{
+  width: 50%;
+}
+
+.product-show-right *{
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+.product-show-right{
+  width: 30%;
+  margin-left: 10px;
+}
+
+.product-color-selector{
+  height: 68px;
+  width: 68px;
+  max-width: 120px;
+  border: 1px solid rgb(21,21,21);
+  border-radius: 4px;
+}
+
+.size-selector{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+.size-selector li{
+  /* margin: 10px; */
+  border: 1px solid rgb(208, 208, 208);
+  padding: 15px 30px;
+  width: 30%;
+  border-radius: 8px;
+  text-align: center;
+  vertical-align: center;
+  cursor: pointer;
+}
+
+.add-to-bag-button{
+  width: 100%;
+  height: 60px;
+  background-color: rgb(21,21,21);
+  color: rgb(246,246,246);
+  cursor: pointer;
+  border-radius: 30px;
+}
+
+.add-to-bag-button:hover{
+  opacity: 0.4;
+}
+
+.favorite-button{
+  width: 100%;
+  height: 60px;
+  background-color: rgb(246,246,246);
+  color: rgb(21,21,21);
+  border: 1px solid rgb(208, 208, 208);
+  cursor: pointer;
+  border-radius: 30px;
+  vertical-align: center;
+}
+
+.size-selector li:hover, .favorite-button:hover{
+  border: 1px solid rgb(21,21,21);
+}
+
+.product-info{
+  margin-top: 20px;
+}
+
+.product-info li{
+  list-style: circle;
+}
+
+.heart-icon{
+  margin: 0px auto;
+  margin-left: 10px;
+}

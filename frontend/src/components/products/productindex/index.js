@@ -15,8 +15,6 @@ const ProductIndex = () => {
   }, [dispatch])
 
 
-  const [salePercentage, setSalePercentage] = useState(0);
-
   const handleClick = (id) => {
     history.push(`/products/${id}`)
   }
@@ -34,7 +32,7 @@ const ProductIndex = () => {
               <p>{product.pType}</p>
               <div className="price-container">
                 <p className={product.salePrice ? "onsaleproduct" : "notonsale"}>${product.price}</p>
-                { product.salePrice ?  <p className="onsale">${product.salePrice}</p> : null}
+                { product.salePrice ? <p className="onsale">${product.salePrice}</p> : null}
               </div>
             </div>
           )

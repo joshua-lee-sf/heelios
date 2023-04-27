@@ -10,9 +10,9 @@ const receiveProducts = (products) => ({
   payload: products
 })
 
-const receiveProduct = (productId) => ({
+const receiveProduct = (product) => ({
   type: RECEIVE_PRODUCT,
-  payload: productId
+  payload: product
 })
 
 // state selectors
@@ -33,20 +33,20 @@ export const fetchProducts = () => async(dispatch, getState) => {
 
 export const fetchProduct = (productId) => async(dispatch, getState) => {
   let res = await fetch(`/api/products/${productId}`)
-  let {product} = await res.json()
+  let product = await res.json()
   dispatch(receiveProduct(product))
 }
 
 const productReducer = (state = {}, action) => {
-  const nextState = {...state}
+  const nextState = {...state};
   switch(action.type){
     case RECEIVE_PRODUCTS:
-      return {...nextState, ...action.payload}
+      return {...nextState, ...action.payload};
     case RECEIVE_PRODUCT:
-      return {...nextState, [action.payload]: nextState[action.payload]}
+      return {...nextState, [action.payload.id]: action.payload};
     default:
       return state
   }
 }
 
-export default productReducer
+export default productReducer;
