@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import {useSelector } from 'react-redux'
 import { useEffect } from "react";
 import Navigation from '../../authentication/navigation'
+import CartFavorite from "./cartfavorite";
 import './navbar.css'
 
 const NavBar = () => {
@@ -17,6 +18,9 @@ const NavBar = () => {
         <Link to='/'><img className="navbar-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Logo_NIKE.svg/2880px-Logo_NIKE.svg.png" alt="logo"/></Link>
         <NavBarCategories />
         <div className="nav-right">
+        <div className="cart-favorite-icons">
+          {sessionUser ? <CartFavorite /> : null}
+        </div>
           {sessionUser ? <Navigation />: <LoginOptions />}
         <label className="search-function">
           <div className="search-icon">

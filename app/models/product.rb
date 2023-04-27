@@ -16,7 +16,7 @@
 #
 PRODUCT_CATEGORY = ['men', 'women', 'kids']
 class Product < ApplicationRecord
-  validates :name, :p_type, :color, :description, :price, presence: true
+  validates :name, :p_type, :color, :description, :price, :size, presence: true
   validates :sku, presence: true, uniqueness: true
   validates :category, presence: true, inclusion: {in: PRODUCT_CATEGORY}
 

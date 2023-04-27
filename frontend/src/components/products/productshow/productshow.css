@@ -4,15 +4,19 @@
 }
 
 .product-show-left{
-  display: flex;
-  flex-wrap: wrap;
-  width: 30%;
+  display: grid;
+  /* flex-wrap: wrap; */
+  grid-template-columns: auto auto;
+  width: 40%;
+  column-gap: 15px;
+  row-gap: 15px;;
 }
 
 .product-show-left img{
-  width: 47%;
-  height:auto;
-  margin: 5px;
+  width: 100%;
+  /* height:auto; */
+  /* margin: 5px 5px; */
+  /* padding: 10px; */
 }
 
 .product-show-right *{
@@ -42,16 +46,28 @@
   flex-wrap: wrap;
 }
 
-
-.size-selector li{
-  border: 1px solid rgb(208, 208, 208);
-  padding: 15px 30px;
-  width: 30%;
-  border-radius: 8px;
-  text-align: center;
-  vertical-align: center;
-  cursor: pointer;
+.size-selector input{
+  position: absolute;
+	clip: rect(0,0,0,0);
+	height: 1px;
+	width: 1px;
 }
+
+.info{
+  font-weight: 400;
+}
+
+.size-selector label{
+  background-color: rgb(246,246,246);
+  font-size: 14px;
+  text-align: center;
+  padding: 15px 15px;
+  border: 1px solid rgb(208, 208, 208);
+  border-radius: 6px;
+  cursor: pointer;
+  width: 35%;
+}
+
 
 .add-to-bag-button{
   width: 100%;
@@ -60,6 +76,8 @@
   color: rgb(246,246,246);
   cursor: pointer;
   border-radius: 30px;
+  font-size: 17px;
+  font-weight: 500;
 }
 
 .add-to-bag-button:hover{
@@ -75,9 +93,15 @@
   cursor: pointer;
   border-radius: 30px;
   vertical-align: center;
+  font-size: 17px;
+  font-weight: 500;
 }
 
-.size-selector li:hover, .favorite-button:hover, .product-color-selector:hover{
+.size-selector li:hover, .favorite-button:hover, .product-color-selector:hover, .size-selector label:hover{
+  border: 1px solid rgb(21,21,21);
+}
+
+input[type='radio']:checked+label{
   border: 1px solid rgb(21,21,21);
 }
 
