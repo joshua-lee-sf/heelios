@@ -5,6 +5,7 @@ import SignUpForm from "./components/authentication/signupform"
 import Account from "./components/account"
 import ProductIndex from "./components/products/productindex";
 import ProductShow from './components/products/productshow';
+import CartItemIndex from "./components/cart/cartitemindex";
 import Footer from "./components/footer";
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Route exact path="/account" component={Account} />
         <Route exact path="/products" component={ProductIndex} />
         <Route exact path="/products/:id" component={ProductShow}/>
+        <Route exact path="/cart" component={CartItemIndex} />
       </Switch>
       <Footer />
     </>

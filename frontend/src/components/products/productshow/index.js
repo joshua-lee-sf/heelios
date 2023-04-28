@@ -44,7 +44,7 @@ const ProductShow = () => {
             )
           })}
           </div>
-
+          <h5>Sizes</h5>
         <div className="size-selector">
           {product?.size.map((size, idx) => {
             return (

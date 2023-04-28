@@ -26,13 +26,4 @@ class Product < ApplicationRecord
   has_many :cart_items
 end
 
-# p = Product.create({
-#   product_name: "",
-#   product_sku: '',
-#   product_type: "Kid's Apparel",
-#   product_color: '',
-#   product_description: "",
-#   product_category: 'kids',
-#   product_price: 
-# })
 
