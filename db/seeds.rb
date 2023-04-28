@@ -40,28 +40,63 @@ require 'open-uri'
 #   puts "Done!"
 # end
 
-  puts 'Destroying tables...'
-  Product.destroy_all
+#   puts 'Destroying tables...'
+#   Product.destroy_all
+
+#   puts "Resetting primary keys..."
+#   ActiveRecord::Base.connection.reset_pk_sequence!('products')
+
+#   puts 'Seeding Products...'
+
+#   products = JSON.load_file "./nikecrawl/shoes.json", symbolize_names: true
+
+#   products.each do |product|
+#     productHash = product.deep_transform_keys { |key| key.to_s.underscore.to_sym }
+#     puts "Creating product: #{product[:name]} (#{product[:sku]})"
+#     productHash[:sku] = productHash[:sku].downcase
+#     product = Product.new(productHash.slice(:name, :title, :description, :color, :p_type, :sku, :category, :size))
+#     product.price = productHash[:price][1..-1].to_f
+#     product.save!
+#     productHash[:images].each_with_index do |image_url, i|
+#       puts "Attaching image: #{product.sku}_#{i}.png"
+#       product.photos.attach(
+#         io: URI.open(image_url), 
+#         filename: "#{product.sku}_#{i}.png"
+#       )
+#     end
+#   end
+
+products = Product.all
+users = User.all
+numbers = (1..2).to_a
+
+ApplicationRecord.transaction do
+  puts "Destroying tables..."
+  # Unnecessary if using `rails db:seed:replant`
+  CartItem.destroy_all
 
   puts "Resetting primary keys..."
-  ActiveRecord::Base.connection.reset_pk_sequence!('products')
+  ActiveRecord::Base.connection.reset_pk_sequence!('cart_items')
 
-  puts 'Seeding Products...'
+  puts "Creating new carts"
 
-  products = JSON.load_file "./nikecrawl/shoes.json", symbolize_names: true
-
-  products.each do |product|
-    productHash = product.deep_transform_keys { |key| key.to_s.underscore.to_sym }
-    puts "Creating product: #{product[:name]} (#{product[:sku]})"
-    productHash[:sku] = productHash[:sku].downcase
-    product = Product.new(productHash.slice(:name, :title, :description, :color, :p_type, :sku, :category, :size))
-    product.price = productHash[:price][1..-1].to_f
-    product.save!
-    productHash[:images].each_with_index do |image_url, i|
-      puts "Attaching image: #{product.sku}_#{i}.png"
-      product.photos.attach(
-        io: URI.open(image_url), 
-        filename: "#{product.sku}_#{i}.png"
-      )
-    end
+  3.times do 
+    rand_product = products.sample
+    rand_num = numbers.sample
+    CartItem.create(product_id: rand_product.id, quantity: rand_num, user_id: 1)
   end
+
+
+  # random carts
+  10.times do |i|
+    rand_product = products.sample
+    rand_user = users.sample
+    rand_num = numbers.sample
+    CartItem.create(product_id: rand_product.id, quantity: rand_num, user_id: rand_user.id)
+  end
+
+  puts "Done!"
+
+end
+
+

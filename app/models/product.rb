@@ -13,6 +13,8 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  title       :string
+#  sale_price  :float
+#  size        :string           not null
 #
 PRODUCT_CATEGORY = ['men', 'women', 'kids']
 class Product < ApplicationRecord
@@ -21,6 +23,7 @@ class Product < ApplicationRecord
   validates :category, presence: true, inclusion: {in: PRODUCT_CATEGORY}
 
   has_many_attached :photos
+  has_many :cart_items
 end
 
 # p = Product.create({
