@@ -1,3 +1,24 @@
+.cart-container{
+  display: flex;
+  justify-content: center;
+}
+
+.cart-item-container{
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-item-left{
+  margin:0px 10px;
+  width: 40%;
+}
+
+.cart-item-right{
+  margin-left: 90px;
+  justify-self:flex-end;
+}
+
+
 .cart-item img{
   height: 120px;
   width: 120px;
@@ -5,9 +26,13 @@
 
 .cart-item{
   display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+  min-width: 600px;
 }
 
-.cart-container{
+.changeables{
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
 }

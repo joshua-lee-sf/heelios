@@ -13,13 +13,13 @@ function App() {
     <>
       <NavBar />
       <Switch>
-        <Route exact path="/"/>
         <Route exact path="/account/signin" component={SignInForm} />
         <Route exact path="/account/signup" component={SignUpForm} />
         <Route exact path="/account" component={Account} />
         <Route exact path="/products" component={ProductIndex} />
         <Route exact path="/products/:id" component={ProductShow}/>
         <Route exact path="/cart" component={CartItemIndex} />
+        <Route exact path="/"/>
       </Switch>
       <Footer />
     </>

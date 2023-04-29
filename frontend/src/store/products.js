@@ -5,12 +5,12 @@ const RECEIVE_PRODUCT = 'products/RECEIVE_PRODUCT'
 
 //action creators
 
-const receiveProducts = (products) => ({
+export const receiveProducts = (products) => ({
   type: RECEIVE_PRODUCTS,
   payload: products
 })
 
-const receiveProduct = (product) => ({
+export const receiveProduct = (product) => ({
   type: RECEIVE_PRODUCT,
   payload: product
 })

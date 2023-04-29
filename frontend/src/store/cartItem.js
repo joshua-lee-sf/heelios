@@ -1,5 +1,5 @@
-
-
+import { receiveProduct, receiveProducts } from './products'
+import csrfFetch from './csrf'
 // action constants
 
 const RECEIVE_CART_ITEMS = "cart_items/RECEIVE_CART_ITEMS"
@@ -17,7 +17,7 @@ const receiveCartItem = cartItem => ({
   payload: cartItem
 })
 
-const removeCartItem = () => cartItemId => ({
+const removeCartItem = (cartItemId) => ({
   type: REMOVE_CART_ITEM,
   payload: cartItemId
 })
@@ -35,8 +35,9 @@ export const getCartItem = cartItemId => state => {
 
 export const fetchCartItems = () => async (dispatch, getState) => {
   const res = await fetch('/api/cart_items');
-  const {cartItems} = await res.json();
+  const {cartItems, products} = await res.json();
   dispatch(receiveCartItems(cartItems))
+  dispatch(receiveProducts(products))
 }
 
 export const fetchCartItem = (cartItemId) => async(dispatch, getState) => {
@@ -48,7 +49,9 @@ export const fetchCartItem = (cartItemId) => async(dispatch, getState) => {
 export const createCartItem = (cartItem) => async(dispatch, getState) => {
   const res = await fetch('/api/cart_items',{
     method: "POST",
-    headers: {"Content-Type":'application/json'},
+    headers: {"Content-Type": "application/json",
+              "X-CSRF-TOKEN": sessionStorage.getItem('X-CSRF-Token')
+              },
     body: JSON.stringify(cartItem)
   })
   const data = await res.json()
@@ -56,9 +59,11 @@ export const createCartItem = (cartItem) => async(dispatch, getState) => {
 }
 
 export const updateCartItem = cartItem => async(dispatch, getState) => {
-  const res = await fetch(`/api/cart_items`,{
+  const res = await fetch(`/api/cart_items/${cartItem.id}`,{
     method: "PATCH",
-    headers: {"Content-Type": "application/json"},
+    headers: {"Content-Type": "application/json",
+              "X-CSRF-TOKEN": sessionStorage.getItem('X-CSRF-Token')
+              },
     body: JSON.stringify(cartItem)
   })
   const data = await res.json()
@@ -66,8 +71,11 @@ export const updateCartItem = cartItem => async(dispatch, getState) => {
 }
 
 export const deleteCartItem = cartItemId => async (dispatch, getState) => {
-  const res = await fetch(`/api/cart_items`,{
-    method: "DELETE"
+  const res = await fetch(`/api/cart_items/${cartItemId}`,{
+    method: "DELETE",
+    headers:{"Content-Type": "application/json",
+    "X-CSRF-TOKEN": sessionStorage.getItem('X-CSRF-Token')
+    }
   })
   dispatch(removeCartItem(cartItemId))
 }

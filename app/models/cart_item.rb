@@ -1,6 +1,6 @@
 
 class CartItem < ApplicationRecord
-  validates :product_id, :user_id, :quantity, presence: true
+  validates :product_id, :user_id, :quantity, :size, presence: true
   validates :product_id, uniqueness: true
 
   before_validation :set_default_quantity

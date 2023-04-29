@@ -1,21 +1,36 @@
 import {getProduct, fetchProductsBySku, getProductBySku} from '../../../store/products'
 import { useDispatch, useSelector } from 'react-redux'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import {useParams, Link} from 'react-router-dom'
 import {AiOutlineHeart} from 'react-icons/ai'
+import * as CartItemFunctions from '../../../store/cartItem'
 import './productshow.css'
 
 const ProductShow = () => {
   const dispatch = useDispatch();
   const {id} = useParams();
+  const [selectedSize, setSelectedSize] = useState('');
   const product = useSelector(getProduct(id));
   const products = useSelector(getProductBySku(id))
+  const sessionUser = useSelector(state => state.session.user);
 
   useEffect(() => {
     if(id){
       dispatch(fetchProductsBySku(id))
     }
   },[dispatch, id])
+
+  const handleAddToCartClick = (e) => {
+    e.preventDefault();
+    const newCartItem = {
+      productId: product.id,
+      userId: sessionUser.id,
+      quantity: 1,
+      size: selectedSize
+    }
+    console.log(newCartItem);
+    dispatch(CartItemFunctions.createCartItem(newCartItem))
+  }
   
   return (
     <div className="product-show-container">
@@ -50,13 +65,13 @@ const ProductShow = () => {
             return (
               <>
                 <input key={size} type="radio" name="size" id={size} value={size}></input>
-                <label key={(idx+1)*100} htmlFor={size}>{size}</label>
+                <label key={(idx+1)*100} htmlFor={size} onClick={(e)=> setSelectedSize(size)}>{size}</label>
               </>
             )
           })}
         </div>
         <div className="product-buttons">
-          <button className="add-to-bag-button">Add to Bag</button>
+          <button className="add-to-bag-button"  onClick={(handleAddToCartClick)}>Add to Bag</button>
           <button className="favorite-button">Favorite <AiOutlineHeart className="heart-icon"/></button>
         </div>
         <p className="product-description info">{product?.description}</p>
