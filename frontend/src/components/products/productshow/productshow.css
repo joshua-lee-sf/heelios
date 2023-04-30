@@ -123,7 +123,7 @@
   border: 1px solid rgb(21,21,21);
 }
 
-input[type='radio']:checked+label, a:active{
+input[type='radio']:checked+label, .color-selector-link:active{
   border: 1px solid rgb(21,21,21);
 }
 

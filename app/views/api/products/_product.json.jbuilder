@@ -6,4 +6,5 @@ photos_url = []
 product.photos.each do |photo|
   photos_url << photo.url
 end
+
 json.image_url photos_url
