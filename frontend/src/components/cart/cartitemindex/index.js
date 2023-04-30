@@ -67,7 +67,7 @@ const CartItemIndex = () => {
                   </div>
                   <div key={`${cartItem.productId}+06`} className="cart-item-left">
                     <div className="cart-item-left-info">
-                    <p key={`${cartItem.productId}+01`}>{cartItem.product?.name}</p>
+                    <h5 key={`${cartItem.productId}+01`}>{cartItem.product?.name}</h5>
                     <p key={`${cartItem.productId}+02`}>{cartItem.product?.title}</p>
                     <p key={`${cartItem.productId}+03`}>{cartItem.product?.color}</p>
                     <div className="changeables">
@@ -90,8 +90,8 @@ const CartItemIndex = () => {
                       </label>
                     </div>
                     <div className="cart-buttons">
-                      <GrFavorite />
-                      <BsTrash3 onClick={(e) => handleTrashClick(e, cartItem)} />
+                      <GrFavorite id="cart-item-favorite-button" />
+                      <BsTrash3 onClick={(e) => handleTrashClick(e, cartItem)} id="cart-item-delete-button"/>
                     </div>
                     </div>
                 {/* </div> */}
@@ -106,6 +106,7 @@ const CartItemIndex = () => {
         <div className="payment-right">
           <h1>Summary</h1>
           <p>Total Cost: ${totalCartCost(cartItems).toFixed(2)}</p>
+          <button className="checkout-button">Checkout</button>
         </div>
       </div>
 
