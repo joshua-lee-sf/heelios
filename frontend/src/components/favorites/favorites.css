@@ -47,6 +47,7 @@
   margin-right: 30px;
   border: 1px solid rgb(208, 208, 208);
   border-radius: 10px;
+  background-color: rgb(251,251,251);
 }
 
 #favorite-select-size-button:hover{

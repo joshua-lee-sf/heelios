@@ -90,20 +90,20 @@ numbers = (1..10).to_a
 
 # end
 
-ApplicationRecord.transaction do
-  puts "Destroying tables..."
-  Favorite.destroy_all
+# ApplicationRecord.transaction do
+#   puts "Destroying tables..."
+#   Favorite.destroy_all
 
-  puts "Resetting Primary keys..."
-  ActiveRecord::Base.connection.reset_pk_sequence!('favorites')
+#   puts "Resetting Primary keys..."
+#   ActiveRecord::Base.connection.reset_pk_sequence!('favorites')
 
-  puts "Creating Favorites..."
-  20.times do
-    rand_product = products.sample
-    Favorite.create(product_id: rand_product.id, favoriter_id: 1)
-  end
+#   puts "Creating Favorites..."
+#   20.times do
+#     rand_product = products.sample
+#     Favorite.create(product_id: rand_product.id, favoriter_id: 1)
+#   end
 
-  puts "Done"
-end
+#   puts "Done"
+# end
 
 
