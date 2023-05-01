@@ -61,7 +61,7 @@ export const createFavorite = (favorite) => async (dispatch, getState) => {
 }
 
 export const deleteFavorite = (favoriteId) => async(dispatch, getState) => {
-  const res = await fetch(`/api/favorites/${favoriteId}`, {
+  await fetch(`/api/favorites/${favoriteId}`, {
     method: "DELETE",
     headers:{
       "Content-Type": "application/json",

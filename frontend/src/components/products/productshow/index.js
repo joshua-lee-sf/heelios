@@ -48,7 +48,7 @@ const ProductShow = () => {
         {product?.imageUrl.map((photo,idx) =>{
           return(
             <>
-              <img key={idx} src={photo}/>
+              <img key={idx} src={photo} alt={`${product?.name}`}/>
             </>
           )
         })}
@@ -62,7 +62,7 @@ const ProductShow = () => {
           {products.map((product) => {
             return(
               <Link to={`/products/${product.sku}`} className="color-selector-link">
-                  <img src={product?.imageUrl[0]}/>
+                  <img src={product?.imageUrl[0]} alt={`${product?.name}`}/>
                   <input type="radio" value={product.sku} id={product.sku} name="color"/>
                   <label className="color-selector-item" htmlFor={product.sku}></label>
               </Link>
