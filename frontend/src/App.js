@@ -5,8 +5,10 @@ import SignUpForm from "./components/authentication/signupform"
 import Account from "./components/account"
 import ProductIndex from "./components/products/productindex";
 import ProductShow from './components/products/productshow';
-import CartItemIndex from "./components/cart/cartitemindex";
+import CartItemIndex from "./components/cart";
+import Favorites from "./components/favorites"
 import Footer from "./components/footer";
+
 
 function App() {
   return (
@@ -19,6 +21,7 @@ function App() {
         <Route exact path="/products" component={ProductIndex} />
         <Route exact path="/products/:id" component={ProductShow}/>
         <Route exact path="/cart" component={CartItemIndex} />
+        <Route exact path="/favorites" component={Favorites} />
         <Route exact path="/"/>
       </Switch>
       <Footer />

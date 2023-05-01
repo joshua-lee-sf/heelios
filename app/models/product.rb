@@ -25,12 +25,14 @@ class Product < ApplicationRecord
   has_many_attached :photos
   
   has_many :cart_items,
-    foreign_key: :user_id,
-    class_name: :User
+    foreign_key: :product_id,
+    class_name: :Product,
+    dependent: :destroy
 
   has_many :favorites,
     foreign_key: :product_id,
-    class_name: :Favorite
+    class_name: :Favorite,
+    dependent: :destroy
 end
 
 

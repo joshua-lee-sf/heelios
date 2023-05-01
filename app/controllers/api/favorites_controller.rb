@@ -1,5 +1,6 @@
 class Api::FavoritesController < ApplicationController
-  
+  include ActiveStorage::SetCurrent
+
   def index
     @user = current_user
 
@@ -12,7 +13,8 @@ class Api::FavoritesController < ApplicationController
   def create
     @favorite = Favorite.new(favorite_params)
 
-    if @favorite&.save
+    if @favorite
+      @favorite.save
       render :show
     else
       render json: @favorite.errors.full_messages, status: :unprocessable_entity

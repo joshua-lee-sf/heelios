@@ -1,15 +1,14 @@
-import { useState, useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import * as CartItemFunctions from '../../../store/cartItem.js'
-import * as sessionActions from '../../../store/session'
+import * as CartItemFunctions from '../../store/cartItem.js'
 import './cartitemindex.css'
-import { updateCartItem } from "../../../store/cartItem.js"
 import { GrFavorite } from 'react-icons/gr'
 import { BsTrash3 } from 'react-icons/bs'
 
 const CartItemIndex = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector(CartItemFunctions.getCartItems)
+  const [errors, setErrors] = useState([])
 
   useEffect(() => {
     dispatch(CartItemFunctions.fetchCartItems());
@@ -47,7 +46,6 @@ const CartItemIndex = () => {
   function totalCartCost(cartItems){
     let totalCost = 0;
     cartItems.forEach((cartItem) => {
-      // console.log(cartItem.product?.price)
       totalCost += (cartItem.product?.price * cartItem.quantity)
     })
     return totalCost
