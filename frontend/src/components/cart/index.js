@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import * as CartItemFunctions from '../../store/cartItem.js'
-import './cartitemindex.css'
 import { GrFavorite } from 'react-icons/gr'
 import { BsTrash3 } from 'react-icons/bs'
+import * as FavoriteFunctions from '../../store/favorite'
+import './cartitemindex.css'
 
 const CartItemIndex = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector(CartItemFunctions.getCartItems)
   const [errors, setErrors] = useState([])
+  const sessionUser = useSelector(state => state.session.user);
 
   useEffect(() => {
     dispatch(CartItemFunctions.fetchCartItems());
@@ -51,6 +53,14 @@ const CartItemIndex = () => {
     return totalCost
   }
 
+  const handleFavoriteClick = (e,cartItem) => {
+    e.preventDefault();
+    const newFavorite = {
+      favoriterId: sessionUser.id,
+      productId: cartItem.product.id
+    }
+    dispatch(FavoriteFunctions.createFavorite(newFavorite))
+  }
 
   return(
     <>
@@ -88,7 +98,7 @@ const CartItemIndex = () => {
                       </label>
                     </div>
                     <div className="cart-buttons">
-                      <GrFavorite id="cart-item-favorite-button" />
+                      <GrFavorite id="cart-item-favorite-button" onClick={(e) => handleFavoriteClick(e, cartItem)}/>
                       <BsTrash3 onClick={(e) => handleTrashClick(e, cartItem)} id="cart-item-delete-button"/>
                     </div>
                     </div>

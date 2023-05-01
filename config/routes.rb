@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :products, only: [:index, :show]
     resources :cart_items, only: [:index, :create, :update, :destroy]
     resources :favorites, only: [:index, :create, :destroy]
+    resources :reviews, only: [:index, :create, :update, :destroy]
   end
   
   get '*path', to: "static_pages#frontend_index", constraints: -> (req) {!req.xhr? && req.format.html?}
