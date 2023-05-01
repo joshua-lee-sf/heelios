@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import {useParams, Link} from 'react-router-dom'
 import {AiOutlineHeart} from 'react-icons/ai'
 import * as CartItemFunctions from '../../../store/cartItem'
+import * as FavoriteFunctions from '../../../store/favorite'
 import './productshow.css'
 
 const ProductShow = () => {
@@ -12,6 +13,7 @@ const ProductShow = () => {
   const [selectedSize, setSelectedSize] = useState('');
   const product = useSelector(getProduct(id));
   const products = useSelector(getProductBySku(id))
+  const [errors, setErrors] = useState([]);
   const sessionUser = useSelector(state => state.session.user);
 
   useEffect(() => {
@@ -28,8 +30,16 @@ const ProductShow = () => {
       quantity: 1,
       size: selectedSize
     }
-    console.log(newCartItem);
     dispatch(CartItemFunctions.createCartItem(newCartItem))
+  }
+
+  const handleFavoriteClick = (e) => {
+    e.preventDefault();
+    const newFavorite = {
+      favoriterId: sessionUser.id,
+      productId: product.id
+    }
+    dispatch(FavoriteFunctions.createFavorite(newFavorite))
   }
   
   return (
@@ -72,7 +82,7 @@ const ProductShow = () => {
         </div>
         <div className="product-buttons">
           <button className="add-to-bag-button"  onClick={(handleAddToCartClick)}>Add to Bag</button>
-          <button className="favorite-button">Favorite <AiOutlineHeart className="heart-icon"/></button>
+          <button className="favorite-button" onClick={handleFavoriteClick}>Favorite <AiOutlineHeart className="heart-icon"/></button>
         </div>
         <p className="product-description info">{product?.description}</p>
         <ul className="product-info-container">

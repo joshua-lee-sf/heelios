@@ -23,7 +23,16 @@ class Product < ApplicationRecord
   validates :category, presence: true, inclusion: {in: PRODUCT_CATEGORY}
 
   has_many_attached :photos
-  has_many :cart_items
+  
+  has_many :cart_items,
+    foreign_key: :product_id,
+    class_name: :Product,
+    dependent: :destroy
+
+  has_many :favorites,
+    foreign_key: :product_id,
+    class_name: :Favorite,
+    dependent: :destroy
 end
 
 

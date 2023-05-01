@@ -17,7 +17,15 @@ class User < ApplicationRecord
   validates :password, length: {in: 3..255}, allow_nil: true
   before_validation :ensure_session_token
 
-  has_many :carted_items
+  has_many :carted_items,
+    foreign_key: :user_id,
+    class_name: :CartItem,
+    dependent: :destroy
+
+  has_many :favorites,
+    foreign_key: :favoriter_id,
+    class_name: :Favorite,
+    dependent: :destroy
 
   def self.find_by_credentials(email, password)
 

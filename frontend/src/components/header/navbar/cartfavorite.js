@@ -5,14 +5,18 @@ import { useHistory } from 'react-router-dom'
 const CartFavorite = () => {
   const history = useHistory();
 
-  const handleClick = () => {
+  const handleShoppingCartClick = () => {
     history.push('/cart')
+  }
+
+  const handleFavoriteClick = () => {
+    history.push('/favorites')
   }
 
   return(
     <>
-      <AiOutlineShoppingCart onClick={(handleClick)}/>
-      <GrFavorite />
+      <AiOutlineShoppingCart onClick={(handleShoppingCartClick)}/>
+      <GrFavorite onClick={handleFavoriteClick} />
     </>
   )
 }

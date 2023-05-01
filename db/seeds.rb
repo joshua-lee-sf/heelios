@@ -67,38 +67,43 @@ require 'open-uri'
   # end
 
 products = Product.all
-users = User.all
 numbers = (1..10).to_a
 
-ApplicationRecord.transaction do
-  puts "Destroying tables..."
-  # Unnecessary if using `rails db:seed:replant`
-  CartItem.destroy_all
+# ApplicationRecord.transaction do
+#   puts "Destroying tables..."
+#   # Unnecessary if using `rails db:seed:replant`
+#   CartItem.destroy_all
 
-  puts "Resetting primary keys..."
-  ActiveRecord::Base.connection.reset_pk_sequence!('cart_items')
+#   puts "Resetting primary keys..."
+#   ActiveRecord::Base.connection.reset_pk_sequence!('cart_items')
 
-  puts "Creating new carts"
+#   puts "Creating new carts"
 
-  20.times do 
-    rand_product = products.sample
-    rand_num = numbers.sample
-    size = JSON.parse(rand_product.size).sample 
-    CartItem.create(product_id: rand_product.id, quantity: rand_num, user_id: 1, size: size)
-  end
+#   20.times do 
+#     rand_product = products.sample
+#     rand_num = numbers.sample
+#     size = JSON.parse(rand_product.size).sample 
+#     CartItem.create(product_id: rand_product.id, quantity: rand_num, user_id: 1, size: size)
+#   end
 
+#   puts "Done!"
 
-  # random carts
-  # 10.times do |i|
-  #   rand_product = products.sample
-  #   rand_user = users.sample
-  #   rand_num = numbers.sample
-  #   size = JSON.parse(rand_product.size).sample 
-  #   CartItem.create(product_id: rand_product.id, quantity: rand_num, user_id: rand_user.id, size: size)
-  # end
+# end
 
-  puts "Done!"
+# ApplicationRecord.transaction do
+#   puts "Destroying tables..."
+#   Favorite.destroy_all
 
-end
+#   puts "Resetting Primary keys..."
+#   ActiveRecord::Base.connection.reset_pk_sequence!('favorites')
+
+#   puts "Creating Favorites..."
+#   20.times do
+#     rand_product = products.sample
+#     Favorite.create(product_id: rand_product.id, favoriter_id: 1)
+#   end
+
+#   puts "Done"
+# end
 
 

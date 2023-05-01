@@ -8,10 +8,9 @@ Rails.application.routes.draw do
     resources :users, only: :create
     resource :session, only: [:show, :create, :destroy]
     resources :products, only: [:index, :show]
-    resources :cart_items, only: [:index, :create, :update, :destroy ]
+    resources :cart_items, only: [:index, :create, :update, :destroy]
+    resources :favorites, only: [:index, :create, :destroy]
   end
-
-  post 'api/test', to: 'application#test'
   
   get '*path', to: "static_pages#frontend_index", constraints: -> (req) {!req.xhr? && req.format.html?}
 end

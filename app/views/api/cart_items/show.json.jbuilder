@@ -1,1 +1,1 @@
-json.partial! 'api/cart_items/cart_item', cart_item: @cart_item
+json.partial! 'api/favorites/favorite', cart_item: @cart_item
