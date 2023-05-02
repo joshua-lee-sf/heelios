@@ -1,4 +1,5 @@
 import { receiveProducts } from './products'
+import csrfFetch from './csrf'
 
 //action constants
 
@@ -38,7 +39,7 @@ export const fetchFavorites = () => async (dispatch, getState) => {
   const res = await fetch('/api/favorites')
   const {favorites, products} = await res.json()
   dispatch(receiveFavorites(favorites))
-  dispatch(receiveProducts(products))
+  dispatch(receiveProducts(products)) 
 }
 
 export const fetchFavorite = (favoriteId) => async (dispatch, getState) => {

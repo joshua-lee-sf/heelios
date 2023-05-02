@@ -1,3 +1,5 @@
+import csrfFetch from './csrf'
+
 // action constants
 
 const RECEIVE_PRODUCTS = 'products/RECEIVE_PRODUCTS'

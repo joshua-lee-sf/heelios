@@ -106,4 +106,43 @@ numbers = (1..10).to_a
 #   puts "Done"
 # end
 
+ApplicationRecord.transaction do
+  puts "Destroying tables..."
+  Review.destroy_all
+
+  puts "Resetting Primary keys..."
+  ActiveRecord::Base.connection.reset_pk_sequence!('reviews')
+
+  puts "Creating Reviews..."
+  5.times do
+    rand_product = products.sample
+    rand_title = Faker::Lorem.sentence
+    rand_rating = [1,2,3,4,5].sample
+    rand_review = Faker::Lorem.paragraph
+    Review.create(
+      product_id: rand_product.id, 
+      reviewer_id: 1,
+      title: rand_title,
+      rating: rand_rating,
+      review: rand_review
+    )
+  end
+
+  20.times do
+    rand_product = products.sample
+    rand_title = Faker::Lorem.sentence
+    rand_rating = [1,2,3,4,5].sample
+    rand_review = Faker::Lorem.paragraph
+    Review.create(
+      product_id: rand_product.id, 
+      reviewer_id: numbers.sample,
+      title: rand_title,
+      rating: rand_rating,
+      review: rand_review
+    )
+  end
+
+  puts "Done"
+end
+
 

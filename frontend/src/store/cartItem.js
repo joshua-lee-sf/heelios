@@ -47,11 +47,8 @@ export const fetchCartItem = (cartItemId) => async(dispatch, getState) => {
 }
 
 export const createCartItem = (cartItem) => async(dispatch, getState) => {
-  const res = await fetch('/api/cart_items',{
+  const res = await csrfFetch('/api/cart_items',{
     method: "POST",
-    headers: {"Content-Type": "application/json",
-              "X-CSRF-TOKEN": sessionStorage.getItem('X-CSRF-Token')
-              },
     body: JSON.stringify(cartItem)
   })
   const data = await res.json()
@@ -59,11 +56,11 @@ export const createCartItem = (cartItem) => async(dispatch, getState) => {
 }
 
 export const updateCartItem = cartItem => async(dispatch, getState) => {
-  const res = await fetch(`/api/cart_items/${cartItem.id}`,{
+  const res = await csrfFetch(`/api/cart_items/${cartItem.id}`,{
     method: "PATCH",
-    headers: {"Content-Type": "application/json",
-              "X-CSRF-TOKEN": sessionStorage.getItem('X-CSRF-Token')
-              },
+    // headers: {"Content-Type": "application/json",
+    //           "X-CSRF-TOKEN": sessionStorage.getItem('X-CSRF-Token')
+    //           },
     body: JSON.stringify(cartItem)
   })
   const data = await res.json()
@@ -71,12 +68,9 @@ export const updateCartItem = cartItem => async(dispatch, getState) => {
 }
 
 export const deleteCartItem = cartItemId => async (dispatch, getState) => {
-  const res = await fetch(`/api/cart_items/${cartItemId}`,{
+  const res = await csrfFetch(`/api/cart_items/${cartItemId}`,{
     method: "DELETE",
-    headers:{"Content-Type": "application/json",
-    "X-CSRF-TOKEN": sessionStorage.getItem('X-CSRF-Token')
-    }
-  })
+    })
   dispatch(removeCartItem(cartItemId))
 }
 

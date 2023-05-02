@@ -13,7 +13,9 @@
 #  #<ActiveRecord::ConnectionAdapters::PostgreSQL::TableDefinition :text
 #
 class Review < ApplicationRecord
-  validates :reveiwer_id, :product_id, :title, :rating, :rating, null: false
+  validates :reviewer_id, :product_id, :title, :rating, :rating, presence: true
+  validates :reviewer_id, uniqueness: {scope: :product_id, message: "You've already reviewed this item"}
+  validates :rating, numericality: { in: 1..5 }
 
   belongs_to :reviewer,
     foreign_key: :reviewer_id,

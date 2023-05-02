@@ -87,7 +87,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_01_044028) do
     t.datetime "updated_at", null: false
     t.text "review"
     t.text "#<ActiveRecord::ConnectionAdapters::PostgreSQL::TableDefinition"
-    t.index ["product_id"], name: "index_reviews_on_product_id"
+    t.index ["reviewer_id", "product_id"], name: "index_reviews_on_reviewer_id_and_product_id", unique: true
     t.index ["reviewer_id"], name: "index_reviews_on_reviewer_id"
   end
 

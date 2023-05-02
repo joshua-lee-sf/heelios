@@ -8,3 +8,4 @@ product.photos.each do |photo|
 end
 
 json.image_url photos_url
+
