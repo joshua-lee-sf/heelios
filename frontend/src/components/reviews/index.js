@@ -38,7 +38,7 @@ const Reviews = ({product}) => {
         <strong>Average Rating: </strong> 
         {Array.from(Array(averageRating).keys()).map(numStar => {
           return (
-              <AiFillStar key={`${numStar}-01`}/>
+              <AiFillStar key={`${numStar}`}/>
           )
         })}
         </p>
@@ -53,7 +53,7 @@ const Reviews = ({product}) => {
           if(review.productId === product.id){
             return (
               <>
-              <div className="review-container">
+              <div className="review-container" key={review?.id}>
                 <h5>{review?.title}</h5>
                   {[...Array(review?.rating)].map(num => {
                     return <AiFillStar key={num}/>

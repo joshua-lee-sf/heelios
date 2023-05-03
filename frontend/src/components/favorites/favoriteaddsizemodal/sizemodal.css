@@ -1,0 +1,87 @@
+.size-modal-background{
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  background-color: rgba(21,21,21,0.5);
+  z-index: 2;
+}
+
+.add-to-bag-button{
+  width: 80%;
+  height: 60px;
+  background-color: rgb(21,21,21);
+  color: rgb(246,246,246);
+  border-radius: 30px;
+  font-size: 17px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.size-modal-foreground{
+  position: absolute;
+  width: 45vw;
+  height: 60vh;
+  background-color: rgb(251,251,251);
+  z-index: 3;
+  top: calc(50% - 300px );
+  left: calc(50% - 440px );
+  padding: 25px;
+  display: flex;
+  flex-direction: row;
+}
+
+.product-image-size-modal-container{
+  width: 45%;
+}
+
+.product-image-size-modal-container img{
+  height: 95%;
+  width: auto;
+}
+
+.product-info-size-modal-header-top-line-container{
+  display: flex;
+  justify-content: space-between;
+}
+
+.product-info-size-modal-header-container{
+  margin-bottom: 15px;
+}
+
+
+.product-info-size-modal-container{
+  width: 45%;
+  margin-left: 5px;
+}
+
+.product-size-modal-size-selector{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.product-size-modal-size-selector label{
+  background-color: rgb(246,246,246);
+  font-size: 14px;
+  text-align: center;
+  padding: 12px 12px;
+  border: 1px solid rgb(208, 208, 208);
+  border-radius: 6px;
+  cursor: pointer;
+  margin: 7px;
+  width: 23%
+}
+
+.product-size-modal-size-selector label:hover{
+  border: 1px solid rgb(21,21,21);
+}
+
+.product-size-modal-size-selector input{
+  position: absolute;
+	clip: rect(0,0,0,0);
+	height: 1px;
+	width: 1px;
+}

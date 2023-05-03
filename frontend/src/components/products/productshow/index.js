@@ -32,8 +32,21 @@ const ProductShow = () => {
       quantity: 1,
       size: selectedSize
     }
-    dispatch(CartItemFunctions.createCartItem(newCartItem))
+    return dispatch(CartItemFunctions.createCartItem(newCartItem))
+      .catch(async (res) => {
+        let data;
+        try{
+          data = await res.clone().json;
+        } catch{
+          data = await res.text()
+        }
+        if (data?.errors) setErrors(data.errors);
+        else if (data) setErrors(data)
+        else setErrors([res.statusText])
+      });
   }
+
+  console.log(errors)
 
   const handleFavoriteClick = (e) => {
     e.preventDefault();
@@ -88,8 +101,8 @@ const ProductShow = () => {
         </div>
         <p className="product-description info">{product?.description}</p>
         <ul className="product-info-container">
-          <li className="product-color info"><strong>Shown:</strong> {product?.color}</li>
-          <li className="product-sku info"><strong>Style:</strong> {product?.sku.toUpperCase()}</li>
+          <li key="product-info-li-1" className="product-color info"><strong>Shown:</strong> {product?.color}</li>
+          <li key="product-info-li-2" className="product-sku info"><strong>Style:</strong> {product?.sku.toUpperCase()}</li>
         </ul>
         <div className="review-container">
           <Reviews product={product}/>

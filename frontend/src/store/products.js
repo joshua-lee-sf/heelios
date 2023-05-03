@@ -30,6 +30,7 @@ export const getProductBySku = productId => state => {
   return getProducts(state).filter((product) => product.sku.includes(productId.split("-")[0])) 
 }
 
+
 //data base operations
 export const fetchProducts = () => async(dispatch, getState) => {
   let res = await fetch('/api/products')
@@ -45,6 +46,12 @@ export const fetchProduct = (productId) => async(dispatch, getState) => {
 
 export const fetchProductsBySku = (productId) => async(dispatch, getState) => {
   let res = await fetch(`/api/products?sku=${productId}`)
+  let products = await res.json()
+  dispatch(receiveProducts(products))
+}
+
+export const fetchProductsByCategory = (category) => async(dispatch, getState) => {
+  let res = await fetch(`/api/products?category=${category}`)
   let products = await res.json()
   dispatch(receiveProducts(products))
 }

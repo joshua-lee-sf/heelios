@@ -1,12 +1,15 @@
 import { getFavorites, fetchFavorites, deleteFavorite } from "../../store/favorite"
 import { useDispatch, useSelector } from "react-redux"
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { BsTrash3 } from 'react-icons/bs'
+import SizeModal from "./favoriteaddsizemodal/sizemodal";
 import './favorites.css' 
+import { createPortal } from "react-dom";
 
 const Favorites = () => {
   const dispatch = useDispatch();
   const favorites = useSelector(getFavorites);
+  const [showSizeModal, setShowSizeModal] = useState(false);
 
   useEffect(() => {
     dispatch(fetchFavorites())
@@ -37,7 +40,10 @@ const Favorites = () => {
                 </div>
             </div>
             <div className="favorite-options">
-              <button id="favorite-select-size-button">Select Size</button>
+              <button id="favorite-select-size-button" onClick={() => setShowSizeModal(favorite?.product.id)} >Select Size</button>
+                {showSizeModal === favorite.product.id && (
+                  <SizeModal product={favorite?.product} closeModal={(e)=> setShowSizeModal(false)} />
+                )}
               <BsTrash3 id="favorite-delete-button" onClick={(e) => handleFavoriteDeleteButton(e, favorite)}/>
             </div>
           </div>

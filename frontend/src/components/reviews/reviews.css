@@ -27,7 +27,7 @@
 .review-modal-background{
   height: 100%;
   width: 100%;
-  position: absolute;
+  position: fixed;
   top: 0px;
   left: 0px;
   background-color: rgba(21,21,21,0.5);

@@ -22,6 +22,7 @@ function App() {
         <Route exact path="/products/:id" component={ProductShow}/>
         <Route exact path="/cart" component={CartItemIndex} />
         <Route exact path="/favorites" component={Favorites} />
+        <Route exact path="/products/category/:category" component={ProductIndex} />
         <Route exact path="/"/>
       </Switch>
       <Footer />

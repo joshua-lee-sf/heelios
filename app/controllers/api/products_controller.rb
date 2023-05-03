@@ -5,6 +5,8 @@ class Api::ProductsController < ApplicationController
     if params[:sku]
       @products = Product.where("sku LIKE ?", params[:sku].split("-")[0].concat("%")).includes(:reviews)
       render :mini_index
+    elsif params[:category]
+      @products = Product.where("category = ?", params[:category])
     else
       @products = Product.all
       render :index

@@ -29,7 +29,7 @@
   align-items: center;
 }
 
-.favorite-options > *{
+#favorite-select-size-button, #favorite-delete-button{
   cursor: pointer;
 }
 
