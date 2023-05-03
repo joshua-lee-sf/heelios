@@ -2,14 +2,20 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from 'react';
 import * as ReviewFunctions from '../../store/reviews'
 import { AiFillStar } from 'react-icons/ai'
-import NewReviewModal from "./newreviewmodal";
+import ReviewModal from "./formmodals/reviewmodal";
+import { BsTrash3 } from 'react-icons/bs'
+import {AiOutlineEdit} from 'react-icons/ai'
 import './reviews.css'
 
 
 const Reviews = ({product}) => {
   const dispatch = useDispatch()
-  const [showWriteReviewModal, setShowWriteReviewModal] = useState(false)
+  const [showNewReviewModal, setShowNewReviewModal] = useState(false)
+  const [showEditReviewModal, setShowEditReviewModal] = useState(false)
   const reviews = useSelector(ReviewFunctions.getReviews(product))
+  const sessionUser = useSelector(state => state.session.user)
+
+
 
   const averageRatings = (reviews) => {
     const total = reviews?.reduce((acc, review) => acc + review.rating, 0)
@@ -18,6 +24,11 @@ const Reviews = ({product}) => {
   }
 
   const averageRating = averageRatings(reviews)
+
+  const handleReviewTrashClick = (e, review) => {
+    e.preventDefault();
+    dispatch(ReviewFunctions.deleteReview(review.id))
+  }
 
   return(
     <div className="reviews-container">
@@ -33,9 +44,9 @@ const Reviews = ({product}) => {
         </p>
       </div>
       <div>
-        <p onClick={() => setShowWriteReviewModal(prev => !prev)} id="new-review-button" >Write a Review</p>
-        {showWriteReviewModal && (
-          <NewReviewModal product={product} closeModal={(e) => setShowWriteReviewModal(false)}/>
+        <p onClick={() => setShowNewReviewModal(prev => !prev)} id="new-review-button" >Write a Review</p>
+        {showNewReviewModal && (
+          <ReviewModal product={product} reviewToEdit closeModal={(e) => setShowNewReviewModal(false)}/>
         )}
       </div>
         {reviews.map((review)=>{
@@ -43,12 +54,16 @@ const Reviews = ({product}) => {
             return (
               <>
               <div className="review-container">
-                <h5>{review.title}</h5>
-                  {[...Array(review.rating)].map(num => {
+                <h5>{review?.title}</h5>
+                  {[...Array(review?.rating)].map(num => {
                     return <AiFillStar key={num}/>
                   })}
-                <p>{review.reviewDetails}</p>
-                <p>{review.reviewerId}</p>
+                <p>{review?.reviewDetails}</p>
+                {sessionUser?.id === review?.reviewerId ? <BsTrash3 onClick={(e) => handleReviewTrashClick(e, review)} className="review-delete"/> : null}
+                {sessionUser?.id === review?.reviewerId ? <AiOutlineEdit onClick={() => setShowEditReviewModal(prev => !prev)} className="review-edit"/> : null}
+                {showEditReviewModal && (
+                  <ReviewModal product={product} reviewToEdit={review} closeModal={(e) => setShowEditReviewModal(false)}/>
+                )}
               </div>
               </>
             )

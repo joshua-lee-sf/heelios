@@ -1,19 +1,19 @@
 
-import NewReviewForm from './formdata/newreviewform'
-import './reviews.css'
+import ReviewForm from '../formdata/reviewform'
+import '../reviews.css'
 
-const NewReviewModal = ({closeModal, product}) => {
+const ReviewModal = ({closeModal, product, reviewToEdit}) => {
 
 
   return(
     <div className="review-modal-background" onClick={(closeModal)}>
       <div className="review-modal-foreground" onClick={(e) => e.stopPropagation()}>
         <div className="review-form-container">
-          <NewReviewForm product={product}/>
+          <ReviewForm product={product} reviewToEdit={reviewToEdit}/>
         </div>
       </div>
     </div>
   )
 }
 
-export default NewReviewModal
+export default ReviewModal

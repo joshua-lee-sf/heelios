@@ -1,30 +1,53 @@
 import {useState, useEffect} from 'react'
 import { useDispatch } from 'react-redux'
-import { createReview } from '../../../store/reviews'
+import { createReview, getReview, updateReview } from '../../../store/reviews'
 import ProductRating from './productrating'
 import { useSelector } from 'react-redux'
+import { useParams } from 'react-router-dom'
 import './reviewform.css'
 
-const NewReviewForm = ({product}) => {
+const ReviewForm = ({product, reviewToEdit }) => {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user)
   const [rating, setRating] = useState(product?.review?.rating);
   const [title, setTitle] = useState('');
-  const [review, setReview] = useState('');
+  const [reviewDetails, setReviewDetails] = useState('');
+  
 
-  console.log(review)
+  const reviewToEditKeys = Object.keys(reviewToEdit).length !== 0
+
+  useEffect(()=>{
+    if(reviewToEditKeys){
+      setRating(reviewToEdit?.rating)
+      setTitle(reviewToEdit?.title)
+      setReviewDetails(reviewToEdit?.reviewDetails)
+    }
+  }, [reviewToEdit])
 
   
   const handleFormSubmit = (e) => {
     e.preventDefault()
-    const newReview = {
-      title: title,
-      rating: rating,
-      reviewDetails: review,
-      reviewerId: sessionUser?.id,
-      productId: product?.id
+    if(!reviewToEditKeys){
+      const newReview = {
+        title: title,
+        rating: rating,
+        reviewDetails: reviewDetails,
+        reviewerId: sessionUser?.id,
+        productId: product?.id
+      }
+      dispatch(createReview(newReview))
+    } else {
+      const newReview = {
+        id: reviewToEdit.id,
+        title: title,
+        rating: rating,
+        reviewDetails: reviewDetails,
+        reviewerId: sessionUser?.id,
+        productId: product?.id
+      }
+      dispatch(updateReview(newReview))
     }
-    dispatch(createReview(newReview))
+
   }
 
   const onChange = (number) => {
@@ -34,7 +57,7 @@ const NewReviewForm = ({product}) => {
   return(
     <div className="review-form-container">
       <div className="review-form-header-container">
-        <h1>Write a Review</h1>
+        <h1>{reviewToEditKeys ? "Edit Review" : "Write a Review"}</h1>
         <p>Please share your experience</p>
       </div>
       <div className="review-form-content">
@@ -47,13 +70,13 @@ const NewReviewForm = ({product}) => {
             <ProductRating disabled={false} onChange={onChange} rating={rating} />
           </div>
           <label className="review-detail-container">Review :<span className="review-required-input">*</span>
-            <textarea value={review} cols="40" rows="10" onChange={(e) => setReview(e.target.value)} placeholder='Review'/>
+            <textarea value={reviewDetails} cols="40" rows="10" onChange={(e) => setReviewDetails(e.target.value)} placeholder='Review'/>
           </label>
-          <button className="submit-review-button">Submit Review</button>
+          <button className="submit-review-button">{reviewToEditKeys ? "Save Review" : "Submit Review"}</button>
         </form>
       </div>
     </div>
   )
 }
 
-export default NewReviewForm
+export default ReviewForm

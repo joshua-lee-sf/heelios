@@ -49,12 +49,8 @@ export const fetchFavorite = (favoriteId) => async (dispatch, getState) => {
 }
 
 export const createFavorite = (favorite) => async (dispatch, getState) => {
-  const res = await fetch(`/api/favorites`,{
+  const res = await csrfFetch(`/api/favorites`,{
     method: "POST",
-    headers: {
-      'Content-Type': 'application/json',
-      'X-CSRF-Token': sessionStorage.getItem('X-CSRF-Token'),
-    },
     body: JSON.stringify({favorite})
   })
   const data = await res.json()

@@ -3,7 +3,6 @@ class Api::ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
-    p review_params
     if @review.save!
       render :show
     else
@@ -25,8 +24,9 @@ class Api::ReviewsController < ApplicationController
 
   def destroy
     @review = Review.find_by(id: params[:id])
+    user = current_user
 
-    if @review && @reviewer.reviewer_id == user.id
+    if @review && @review.reviewer_id == user.id
       if @review.destroy
         render :show
       else

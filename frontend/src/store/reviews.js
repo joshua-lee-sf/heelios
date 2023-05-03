@@ -50,29 +50,29 @@ export const fetchReviewBySku = (productId) => async (dispatch, getState) => {
   dispatch(receiveReviews(reviews))
 }
 
-export const createReview = (review) => async (dispatch, getState) => {
-  const res = await csrfFetch('/api/reviews',{
+export const createReview = (newReview) => async (dispatch, getState) => {
+  const res = await csrfFetch('/api/reviews', {
     method: "POST",
-    body: JSON.stringify(review)
+    body: JSON.stringify({review: newReview})
   })
-  const data = await res.json()
-  dispatch(receiveReview(data))
+  const {review} = await res.json()
+  dispatch(receiveReview(review))
 }
 
-export const updateReview = (review) => async (dispatch, getState) => {
-  const res = await csrfFetch(`/api/reviews/${review.id}`,{
+export const updateReview = (newReview) => async (dispatch, getState) => {
+  const res = await csrfFetch(`/api/reviews/${newReview.id}`,{
     method: "PATCH",
-    body: JSON.stringify(review)
+    body: JSON.stringify({review: newReview})
   })
-  const data = await res.json()
-  dispatch(receiveReview(data))
+  const {review} = await res.json()
+  dispatch(receiveReview(review))
 }
 
 export const deleteReview = (reviewId) => async (dispatch, getState) => {
   await csrfFetch(`/api/reviews/${reviewId}`, {
     method: "DELETE"
   })
-  dispatch(deleteReview(reviewId))
+  dispatch(removeReview(reviewId))
 }
 
 //review reducer
