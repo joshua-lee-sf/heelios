@@ -124,7 +124,7 @@ ApplicationRecord.transaction do
       reviewer_id: 1,
       title: rand_title,
       rating: rand_rating,
-      review: rand_review
+      review_details: rand_review
     )
   end
 
@@ -138,7 +138,7 @@ ApplicationRecord.transaction do
       reviewer_id: numbers.sample,
       title: rand_title,
       rating: rand_rating,
-      review: rand_review
+      review_details: rand_review
     )
   end
 

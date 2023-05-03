@@ -47,7 +47,8 @@ const Reviews = ({product}) => {
                   {[...Array(review.rating)].map(num => {
                     return <AiFillStar key={num}/>
                   })}
-                <p>{review.review}</p>
+                <p>{review.reviewDetails}</p>
+                <p>{review.reviewerId}</p>
               </div>
               </>
             )

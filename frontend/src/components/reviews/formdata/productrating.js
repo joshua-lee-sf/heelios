@@ -16,7 +16,7 @@ const ProductRating = ({ rating, disabled, onChange }) => {
         onMouseLeave={()=> {if(!disabled) setActiveRating(rating)}}
         onClick={()=>{ if(!disabled) onChange(1)}}
       >
-        <i class="fa-solid fa-star"></i>
+        <i className="fa-solid fa-star"></i>
       </div>
       <div
         className={activeRating >= 2 ? "filled" : 'empty'}
@@ -24,7 +24,7 @@ const ProductRating = ({ rating, disabled, onChange }) => {
         onMouseLeave={()=> {if(!disabled) setActiveRating(rating)}}
         onClick={()=>{ if(!disabled) onChange(2)}}
       >
-        <i class="fa-solid fa-star"></i>
+        <i className="fa-solid fa-star"></i>
       </div>
       <div
         className={activeRating >= 3 ? "filled" : 'empty'}
@@ -32,7 +32,7 @@ const ProductRating = ({ rating, disabled, onChange }) => {
         onMouseLeave={()=> {if(!disabled) setActiveRating(rating)}}
         onClick={()=>{ if(!disabled) onChange(3)}}
       >
-        <i class="fa-solid fa-star"></i>
+        <i className="fa-solid fa-star"></i>
       </div>
       <div
         className={activeRating >= 4 ? "filled" : 'empty'}
@@ -40,7 +40,7 @@ const ProductRating = ({ rating, disabled, onChange }) => {
         onMouseLeave={()=> {if(!disabled) setActiveRating(rating)}}
         onClick={()=>{ if(!disabled) onChange(4)}}
       >
-        <i class="fa-solid fa-star"></i>
+        <i className="fa-solid fa-star"></i>
       </div>
       <div
         className={activeRating >= 5 ? "filled" : 'empty'}
@@ -48,7 +48,7 @@ const ProductRating = ({ rating, disabled, onChange }) => {
         onMouseLeave={()=> {if(!disabled) setActiveRating(rating)}}
         onClick={()=>{ if(!disabled) onChange(5)}}
       >
-        <i class="fa-solid fa-star"></i>
+        <i className="fa-solid fa-star"></i>
       </div>
     </div>
   );

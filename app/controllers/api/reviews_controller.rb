@@ -3,8 +3,8 @@ class Api::ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
-
-    if @review.save
+    p review_params
+    if @review.save!
       render :show
     else
       render json: @review.errors.full_message, status: :unprocessable_entity
@@ -37,6 +37,6 @@ class Api::ReviewsController < ApplicationController
 
   private
   def review_params
-    params.require(:review).permit(:reviewer_id, :product_id, :title, :rating, :review)
+    params.require(:review).permit(:reviewer_id, :product_id, :title, :rating, :review_details )
   end
 end
