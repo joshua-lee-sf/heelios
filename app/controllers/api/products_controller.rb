@@ -3,11 +3,12 @@ class Api::ProductsController < ApplicationController
 
   def index
     if params[:sku]
-      @products = Product.where("sku LIKE ?", params[:sku].split("-")[0].concat("%"))
+      @products = Product.where("sku LIKE ?", params[:sku].split("-")[0].concat("%")).includes(:reviews)
+      render :mini_index
     else
       @products = Product.all
+      render :index
     end
-    render :index
   end
 
   def show

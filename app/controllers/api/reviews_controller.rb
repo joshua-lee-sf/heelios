@@ -1,11 +1,6 @@
 class Api::ReviewsController < ApplicationController
   include ActiveStorage::SetCurrent
 
-  def index
-    @reviews = Review.where(product_id: params[:product_id])
-    render :index
-  end
-
   def create
     @review = Review.new(review_params)
 

@@ -128,7 +128,7 @@ ApplicationRecord.transaction do
     )
   end
 
-  20.times do
+  30.times do
     rand_product = products.sample
     rand_title = Faker::Lorem.sentence
     rand_rating = [1,2,3,4,5].sample

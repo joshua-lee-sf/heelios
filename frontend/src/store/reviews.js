@@ -1,4 +1,5 @@
 import csrfFetch from './csrf'
+import { RECEIVE_PRODUCTS } from './products'
 
 
 //action constants
@@ -22,10 +23,8 @@ export const removeReview = (reviewId) => ({
   payload: reviewId
 })
 
-// state selectors/updators
-
-export const getReviews = (state) => {
-  return state.reviews ? Object.values(state.reviews) : [];
+export const getReviews = (product)=> (state)  => {
+  return state.reviews ? Object.values(state.reviews).filter((review) => (review.productId === product.id)) :[]
 }
 
 export const getReview = reviewId => state => {
@@ -88,6 +87,8 @@ const reviewReducer = (state={},action) => {
     case REMOVE_REVIEW:
       delete nextState[action.payload]
       return nextState
+    case RECEIVE_PRODUCTS:
+      return {...nextState, ...action.payload.reviews}
     default:
       return state
   }

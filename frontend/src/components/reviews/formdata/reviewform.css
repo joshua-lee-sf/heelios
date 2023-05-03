@@ -1,0 +1,26 @@
+.new-review-form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.rating-input{
+  display: flex;
+  flex-direction: row;
+}
+
+.review-form-rating-container{
+  display: flex;
+}
+
+.review-form-header-container span{
+  color: red;
+}
+
+.filled{
+  color: rgb(44, 44, 44);
+}
+
+.empty{
+  color: rgb(149, 149, 149);
+}
