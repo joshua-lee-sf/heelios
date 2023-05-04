@@ -78,7 +78,7 @@ const ProductShow = () => {
         {product?.imageUrl.map((photo,idx) =>{
           return(
             <>
-              <img key={`${idx}-01`} src={photo} alt=""/>
+              <img key={`${idx}-01`} src={photo} alt={`${product?.name}`}/>
             </>
           )
         })}

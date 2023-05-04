@@ -71,7 +71,7 @@ const CartItemIndex = () => {
             return(
               <div className="cart-item">
                   <div className="cart-item-left-image">
-                    <img key={`${cartItem.productId}+00`} src={cartItem.product?.imageUrl[0]}/>
+                    <img key={`${cartItem.productId}+00`} src={cartItem.product?.imageUrl[0]} alt=""/>
                   </div>
                   <div key={`${cartItem.productId}+06`} className="cart-item-left">
                     <div className="cart-item-left-info">

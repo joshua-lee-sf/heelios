@@ -28,7 +28,7 @@ const Favorites = () => {
         return (
           <div className="favorite-item">
             <div className="favorite-item-image">
-              <img src={favorite.product.imageUrl[0]} />
+              <img src={favorite.product.imageUrl[0]} alt={`${favorite.product.name}`}/>
             </div>
               <div className="favorite-item-info">
                 <div className="favorite-item-info-left">
