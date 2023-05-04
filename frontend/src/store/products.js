@@ -56,11 +56,16 @@ export const fetchProductsByCategory = (category) => async(dispatch, getState) =
   dispatch(receiveProducts(products))
 }
 
+export const fetchProductsByQuery = (query) => async (dispatch, getState) => {
+  const res = await csrfFetch(`/api/search${query}`)
+  const products = await res.json();
+  dispatch(receiveProducts(products))
+}
+
 const productReducer = (state = {}, action) => {
   const nextState = {...state};
   switch(action.type){
     case RECEIVE_PRODUCTS:
-
       return {...nextState, ...action.payload.products};
     case RECEIVE_PRODUCT:
       return {...nextState, [action.payload.products.sku]: action.payload};

@@ -20,7 +20,7 @@ const NavBar = () => {
           {sessionUser ? <CartFavorite /> : null}
         </div>
           {sessionUser ? <Navigation /> : <LoginOptions />}
-        <label className="search-function">
+        <label className="search-function-container">
           <SearchFunction />
         </label>
         </div>

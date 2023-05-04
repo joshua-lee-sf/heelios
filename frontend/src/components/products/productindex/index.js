@@ -5,7 +5,7 @@ import { useHistory, useParams } from 'react-router-dom';
 import './productindex.css'
 
 
-const ProductIndex = ({result = {}}) => {
+const ProductIndex = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const products = useSelector(getProducts);
@@ -26,7 +26,7 @@ const ProductIndex = ({result = {}}) => {
   
   return(
     <>
-    <h1>All Products</h1>
+    <h1 className="page-header">{category ? `${category}` : "All Products"}</h1>
     <div className="products-container">
       {products.map(product => {
         if(category && product.category !== category){

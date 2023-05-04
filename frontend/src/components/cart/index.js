@@ -68,7 +68,7 @@ const CartItemIndex = () => {
     <>
       <div className="cart-container">
         <div className="cart-item-container">
-          <h1>Bag</h1>
+          <h1 className="page-header">Bag</h1>
           {cartItems.map((cartItem)  => {
             return(
               <div className="cart-item">
@@ -77,7 +77,7 @@ const CartItemIndex = () => {
                   </div>
                   <div key={`${cartItem.productId}+06`} className="cart-item-left">
                     <div className="cart-item-left-info">
-                    <h5 key={`${cartItem.productId}+01`} onClick={(() => history.push(`/products/${favorite?.product?.sku}`))} className="product-redirect" >{cartItem.product?.name}</h5>
+                    <h5 key={`${cartItem.productId}+01`} onClick={(() => history.push(`/products/${cartItem?.product?.sku}`))} className="product-redirect" >{cartItem.product?.name}</h5>
                     <p key={`${cartItem.productId}+02`}>{cartItem.product?.title}</p>
                     <p key={`${cartItem.productId}+03`}>{cartItem.product?.color}</p>
                     <div className="changeables">
@@ -116,7 +116,7 @@ const CartItemIndex = () => {
         <div className="payment-right">
           <h1>Summary</h1>
           <p>Total Cost: ${totalCartCost(cartItems).toFixed(2)}</p>
-          <button className="checkout-button">Checkout</button>
+          <button className="checkout-button" onClick={(()=>history.push('/checkout'))} >Checkout</button>
         </div>
       </div>
 

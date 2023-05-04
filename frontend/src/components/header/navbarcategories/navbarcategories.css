@@ -1,6 +1,7 @@
 .navbar-categories{
   display: flex;
   color: rgb(21, 21, 21);
+  /* justify-content: center; */
 }
 
 .navbar-categories li{
@@ -8,6 +9,8 @@
   margin-right: 20px;
   padding-bottom: 20px;
   font-weight: 500;
+  min-width: 60px;
+  text-align: center;
 }
 
 .navbar-categories li:hover{

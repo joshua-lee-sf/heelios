@@ -6,11 +6,13 @@
 .cart-item-container{
   display: flex;
   flex-direction: column;
+  /* min-width: 300px; */
 }
 
 .cart-item-left{
   margin:0px 10px;
   width: 40%;
+  /* min-width: 40%; */
 }
 
 .cart-item-left-info > *{

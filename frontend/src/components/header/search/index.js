@@ -1,28 +1,27 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import csrfFetch from "../../../store/csrf";
 import {AiOutlineSearch} from 'react-icons/ai';
-import ProductIndex from "../../products/productindex";
+import SearchIndex from "../../products/productindex";
+import { useHistory } from "react-router-dom";
 import './search.css'
 
 
 const SearchFunction = () => {
+  const history = useHistory();
   const [query, setQuery] = useState('');
-  const [results, setResults] = useState('');
 
   const handleSearch = async (e) => {
     e.preventDefault();
-    const res = await csrfFetch(`/api/search?query=${query}`)
-    const json = await res.json()
-    setResults(json)
+    history.push(`/search?query=${query}`)
   }
 
-  console.log(results);
+
 
   return(
     <>
     <form className="search-function" onSubmit={(e)=> handleSearch(e)}>
-      <AiOutlineSearch />
-      <input type="text" value={query} onChange={(e) => setQuery(e.target.value)}/>
+      <AiOutlineSearch id="search-icon"/>
+      <input type="text" value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search..."/>
       <button>Search</button>
     </form>
     </>

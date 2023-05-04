@@ -8,6 +8,8 @@ import ProductShow from './components/products/productshow';
 import CartItemIndex from "./components/cart";
 import Favorites from "./components/favorites"
 import Footer from "./components/footer";
+import SearchFunction from "./components/header/search";
+import SearchIndex from "./components/header/search/searchindex";
 
 
 function App() {
@@ -23,6 +25,7 @@ function App() {
         <Route exact path="/cart" component={CartItemIndex} />
         <Route exact path="/favorites" component={Favorites} />
         <Route exact path="/products/category/:category" component={ProductIndex} />
+        <Route exact path="/search" component={SearchIndex} />
         <Route exact path="/"/>
       </Switch>
       <Footer />

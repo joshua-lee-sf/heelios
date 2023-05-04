@@ -17,9 +17,6 @@
 }
 
 
-
-
-
 .nav-right{
   display: flex;
   align-items: center;
@@ -28,11 +25,6 @@
 .nav-right *{
   margin: 0px 5px;
 }
-
-
-
-
-
 
 .cart-favorite-icons{
   font-size: 20px;
