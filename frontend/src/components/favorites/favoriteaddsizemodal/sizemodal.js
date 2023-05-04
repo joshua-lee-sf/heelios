@@ -9,6 +9,7 @@ const SizeModal = ({closeModal, product}) => {
   const [selectedSize, setSelectedSize] = useState('');
   const [errors, setErrors] = useState([]);
   const sessionUser = useSelector(state => state.session.user)
+  const [dispatchCartSuccess, setDispatchCartSuccess] = useState(false)
   
 
   const handleAddToBagClick = (e) => {
@@ -21,6 +22,7 @@ const SizeModal = ({closeModal, product}) => {
       size: selectedSize
     }
     dispatch(createCartItem(newCartItem))
+      .then(()=> setDispatchCartSuccess(true))
       .catch(async (res) => {
         let data;
         try{
@@ -62,7 +64,7 @@ const SizeModal = ({closeModal, product}) => {
               )
             })}
           </div>
-          <button className="add-to-bag-button" onClick={(e) => handleAddToBagClick(e)}>Add To Bag</button>
+          <button className="add-to-bag-button" onClick={(e) => handleAddToBagClick(e)}>{dispatchCartSuccess ? "Added to Bag" : "Add To Bag"}</button>
           {errors?.map((error, idx) => {
             return <p className="error" key={idx}>{error}</p>
           })}

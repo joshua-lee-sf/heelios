@@ -1,5 +1,6 @@
 .favorite-item-container img{
   width: 100%;
+  height: auto;
 }
 
 #favorites-head{
@@ -16,7 +17,7 @@
 
 .favorite-item{
   width: 30%;
-  height: auto;
+  height: 10%;
   margin-bottom: 20px;
 }
 
@@ -29,7 +30,7 @@
   align-items: center;
 }
 
-#favorite-select-size-button, #favorite-delete-button{
+#favorite-select-size-button, #favorite-delete-button, .product-title{
   cursor: pointer;
 }
 

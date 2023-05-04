@@ -38,7 +38,7 @@ const Reviews = ({product}) => {
         <strong>Average Rating: </strong> 
         {Array.from(Array(averageRating).keys()).map(numStar => {
           return (
-              <AiFillStar key={`${numStar}`}/>
+              <AiFillStar key={`rating-${numStar}`}/>
           )
         })}
         </p>
@@ -49,14 +49,13 @@ const Reviews = ({product}) => {
           <ReviewModal product={product} reviewToEdit closeModal={(e) => setShowNewReviewModal(false)}/>
         )}
       </div>
-        {reviews.map((review)=>{
+        {reviews.map((review, i)=>{
           if(review.productId === product.id){
             return (
-              <>
-              <div className="review-container" key={review?.id}>
+              <div className="review-container" key={`container-${i}`}>
                 <h5>{review?.title}</h5>
-                  {[...Array(review?.rating)].map(num => {
-                    return <AiFillStar key={num}/>
+                  {[...Array(review.rating)].map((num, i) => {
+                    return <AiFillStar key={`review-${i}`}/>
                   })}
                 <p>{review?.reviewDetails}</p>
                 {sessionUser?.id === review?.reviewerId ? <BsTrash3 onClick={(e) => handleReviewTrashClick(e, review)} className="review-delete"/> : null}
@@ -65,7 +64,6 @@ const Reviews = ({product}) => {
                   <ReviewModal product={product} reviewToEdit={review} closeModal={(e) => setShowEditReviewModal(false)}/>
                 )}
               </div>
-              </>
             )
           }
         })}

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { useHistory } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
 import * as CartItemFunctions from '../../store/cartItem.js'
 import { GrFavorite } from 'react-icons/gr'
@@ -8,6 +9,7 @@ import './cartitemindex.css'
 
 const CartItemIndex = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const cartItems = useSelector(CartItemFunctions.getCartItems)
   const [errors, setErrors] = useState([])
   const sessionUser = useSelector(state => state.session.user);
@@ -75,7 +77,7 @@ const CartItemIndex = () => {
                   </div>
                   <div key={`${cartItem.productId}+06`} className="cart-item-left">
                     <div className="cart-item-left-info">
-                    <h5 key={`${cartItem.productId}+01`}>{cartItem.product?.name}</h5>
+                    <h5 key={`${cartItem.productId}+01`} className="product-name" onClick={() => history.push(`/products/${cartItem?.product?.sku}`)}>{cartItem?.product?.name}</h5>
                     <p key={`${cartItem.productId}+02`}>{cartItem.product?.title}</p>
                     <p key={`${cartItem.productId}+03`}>{cartItem.product?.color}</p>
                     <div className="changeables">

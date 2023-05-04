@@ -40,30 +40,31 @@ require 'open-uri'
 #   puts "Done!"
 # end
 
-#   puts 'Destroying tables...'
-#   Product.destroy_all
+  puts 'Destroying tables...'
+  Product.destroy_all
 
-#   puts "Resetting primary keys..."
-#   ActiveRecord::Base.connection.reset_pk_sequence!('products')
+  puts "Resetting primary keys..."
+  ActiveRecord::Base.connection.reset_pk_sequence!('products')
 
-#   puts 'Seeding Products...'
+  puts 'Seeding Products...'
 
-#   products = JSON.load_file "./nikecrawl/shoes.json", symbolize_names: true
+  products = JSON.load_file "./nikecrawl/shoes.json", symbolize_names: true
 
-#   products.each do |product|
-#     productHash = product.deep_transform_keys { |key| key.to_s.underscore.to_sym }
-#     puts "Creating product: #{product[:name]} (#{product[:sku]})"
-#     productHash[:sku] = productHash[:sku].downcase
-#     product = Product.new(productHash.slice(:name, :title, :description, :color, :p_type, :sku, :category, :size))
-#     product.price = productHash[:price][1..-1].to_f
-#     product.save!
-#     productHash[:images].each_with_index do |image_url, i|
-#       puts "Attaching image: #{product.sku}_#{i}.png"
-#       product.photos.attach(
-#         io: URI.open(image_url), 
-#         filename: "#{product.sku}_#{i}.png"
-#       )
-#     end
+  products.each do |product|
+    productHash = product.deep_transform_keys { |key| key.to_s.underscore.to_sym }
+    puts "Creating product: #{product[:name]} (#{product[:sku]})"
+    productHash[:sku] = productHash[:sku].downcase
+    product = Product.new(productHash.slice(:name, :title, :description, :color, :p_type, :sku, :category, :size))
+    product.price = productHash[:price][1..-1].to_f
+    product.save!
+    productHash[:images].each_with_index do |image_url, i|
+      puts "Attaching image: #{product.sku}_#{i}.png"
+      product.photos.attach(
+        io: URI.open(image_url), 
+        filename: "#{product.sku}_#{i}.png"
+      )
+    end
+  end
 #   end
 
 products = Product.all

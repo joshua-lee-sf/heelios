@@ -53,7 +53,7 @@
   cursor: pointer;
 }
 
-#cart-item-favorite-button{
+#cart-item-favorite-button, .product-name{
   cursor:pointer;
 }
 
