@@ -1,4 +1,5 @@
 import { receiveProducts } from './products'
+import csrfFetch from './csrf'
 
 //action constants
 
@@ -38,7 +39,7 @@ export const fetchFavorites = () => async (dispatch, getState) => {
   const res = await fetch('/api/favorites')
   const {favorites, products} = await res.json()
   dispatch(receiveFavorites(favorites))
-  dispatch(receiveProducts(products))
+  dispatch(receiveProducts(products)) 
 }
 
 export const fetchFavorite = (favoriteId) => async (dispatch, getState) => {
@@ -48,12 +49,8 @@ export const fetchFavorite = (favoriteId) => async (dispatch, getState) => {
 }
 
 export const createFavorite = (favorite) => async (dispatch, getState) => {
-  const res = await fetch(`/api/favorites`,{
+  const res = await csrfFetch(`/api/favorites`,{
     method: "POST",
-    headers: {
-      'Content-Type': 'application/json',
-      'X-CSRF-Token': sessionStorage.getItem('X-CSRF-Token'),
-    },
     body: JSON.stringify({favorite})
   })
   const data = await res.json()

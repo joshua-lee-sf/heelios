@@ -11,7 +11,6 @@ import './navbar.css'
 const NavBar = () => {
   const sessionUser = useSelector(state => state.session.user);
 
-
   return(
     <>
       <ul className="navbar">
@@ -21,7 +20,7 @@ const NavBar = () => {
         <div className="cart-favorite-icons">
           {sessionUser ? <CartFavorite /> : null}
         </div>
-          {sessionUser ? <Navigation />: <LoginOptions />}
+          {sessionUser ? <Navigation /> : <LoginOptions />}
         <label className="search-function">
           <div className="search-icon">
             <AiOutlineSearch />

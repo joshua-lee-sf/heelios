@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
 import {useParams, Link} from 'react-router-dom'
 import {AiOutlineHeart} from 'react-icons/ai'
+import Reviews from '../../reviews'
 import * as CartItemFunctions from '../../../store/cartItem'
 import * as FavoriteFunctions from '../../../store/favorite'
 import './productshow.css'
@@ -13,8 +14,11 @@ const ProductShow = () => {
   const [selectedSize, setSelectedSize] = useState('');
   const product = useSelector(getProduct(id));
   const products = useSelector(getProductBySku(id))
-  const [errors, setErrors] = useState([]);
   const sessionUser = useSelector(state => state.session.user);
+  const [dispatchCartSuccess, setDispatchCartSuccess] = useState(false)
+  const [dispatchFavoriteSuccess, setDispatchFavoriteSuccess] = useState(false)
+
+  const [errors, setErrors] = useState([]);
 
   useEffect(() => {
     if(id){
@@ -24,6 +28,7 @@ const ProductShow = () => {
 
   const handleAddToCartClick = (e) => {
     e.preventDefault();
+    setErrors([]);
     const newCartItem = {
       productId: product.id,
       userId: sessionUser.id,
@@ -31,15 +36,40 @@ const ProductShow = () => {
       size: selectedSize
     }
     dispatch(CartItemFunctions.createCartItem(newCartItem))
-  }
+    .then(()=> setDispatchCartSuccess(true))
+      .catch(async (res) => {
+        let data;
+        try{
+          data = await res.clone().json();
+        } catch{
+          data = await res.text()
+        }
+        if (data?.errors) setErrors(data.errors);
+        else if (data) setErrors(data)
+        else setErrors([res.statusText])
+      });
+    }
 
   const handleFavoriteClick = (e) => {
     e.preventDefault();
+    setErrors([]);
     const newFavorite = {
       favoriterId: sessionUser.id,
       productId: product.id
     }
     dispatch(FavoriteFunctions.createFavorite(newFavorite))
+      .then(()=> setDispatchFavoriteSuccess(true))
+      .catch(async (res) => {
+        let data;
+        try{
+          data = await res.clone().json();
+        } catch{
+          data = await res.text()
+        }
+        if (data?.errors) setErrors(data.errors);
+        else if (data) setErrors(data)
+        else setErrors([res.statusText])
+      });
   }
   
   return (
@@ -48,7 +78,7 @@ const ProductShow = () => {
         {product?.imageUrl.map((photo,idx) =>{
           return(
             <>
-              <img key={idx} src={photo} alt={`${product?.name}`}/>
+              <img key={`${idx}-01`} src={photo} alt={`${product?.name}`}/>
             </>
           )
         })}
@@ -61,10 +91,10 @@ const ProductShow = () => {
         <div className="color-selector">
           {products.map((product) => {
             return(
-              <Link to={`/products/${product.sku}`} className="color-selector-link">
-                  <img src={product?.imageUrl[0]} alt={`${product?.name}`}/>
-                  <input type="radio" value={product.sku} id={product.sku} name="color"/>
-                  <label className="color-selector-item" htmlFor={product.sku}></label>
+              <Link to={`/products/${product.sku}`} className="color-selector-link" key={`${product.id}-00`}>
+                  <img src={product?.imageUrl[0]} alt="" key={`${product.id}-01`}/>
+                  <input type="radio" value={product.sku} id={product.sku} name="color" key={`${product.id}-02`}/>
+                  <label className="color-selector-item" htmlFor={product.sku} key={`${product.id}-03`}></label>
               </Link>
             )
           })}
@@ -74,21 +104,27 @@ const ProductShow = () => {
           {product?.size.map((size, idx) => {
             return (
               <>
-                <input key={size} type="radio" name="size" id={size} value={size}></input>
-                <label key={(idx+1)*100} htmlFor={size} onClick={(e)=> setSelectedSize(size)}>{size}</label>
+                <input key={`${size}-00`} type="radio" name="size" id={size} value={size}></input>
+                <label key={`${size}-01`} htmlFor={size} onClick={(e)=> setSelectedSize(size)}>{size}</label>
               </>
             )
           })}
         </div>
         <div className="product-buttons">
-          <button className="add-to-bag-button"  onClick={(handleAddToCartClick)}>Add to Bag</button>
-          <button className="favorite-button" onClick={handleFavoriteClick}>Favorite <AiOutlineHeart className="heart-icon"/></button>
+          <button className="add-to-bag-button"  onClick={(handleAddToCartClick)}>{dispatchCartSuccess ? "Added To Bag" : "Add To Bag"}</button>
+          <button className="favorite-button" onClick={handleFavoriteClick}>{dispatchFavoriteSuccess ? "Added To Favorites" : "Favorite"} <AiOutlineHeart className="heart-icon"/></button>
         </div>
+        {errors?.map((error,idx) => {
+            return <span className="error" key={idx}>{error}</span>
+          })}
         <p className="product-description info">{product?.description}</p>
         <ul className="product-info-container">
-          <li className="product-color info"><strong>Shown:</strong> {product?.color}</li>
-          <li className="product-sku info"><strong>Style:</strong> {product?.sku.toUpperCase()}</li>
+          <li key="product-info-li-1" className="product-color info"><strong>Shown:</strong> {product?.color}</li>
+          <li key="product-info-li-2" className="product-sku info"><strong>Style:</strong> {product?.sku.toUpperCase()}</li>
         </ul>
+        <div className="review-container">
+          <Reviews product={product}/>
+        </div>
       </div>
     </div>
   )
