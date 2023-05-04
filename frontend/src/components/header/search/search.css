@@ -1,0 +1,33 @@
+.search-function{
+  border: 1px solid rgb(21,21,21);
+  background-color: rgb(225, 225, 225);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  padding: 2px;
+}
+.search-icon:hover{
+  cursor: pointer;
+  background-color: gray;
+  border-radius: 100px;
+}
+.search-function *{
+  /* margin-left: 5px; */
+  margin-right: 5px;
+  height: 30px;
+  padding: 2px 3px;
+}
+
+.search-icon{
+  margin-right: 6px;
+}
+
+input[type='search']{
+  background-color: transparent;
+  border: none;
+  opacity: 0.7;
+}
+
+input[type='search']:hover{
+  opacity: 1;
+}

@@ -6,7 +6,8 @@ import App from './App';
 import configureStore from './store';
 import csrfFetch from './store/csrf';
 import * as sessionActions from './store/session';
-import * as productActions from './store/products'
+import * as productActions from './store/products';
+import Footer from './components/footer';
 import './reset.css';
 import './index.css';
 

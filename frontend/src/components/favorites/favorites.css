@@ -29,7 +29,7 @@
   align-items: center;
 }
 
-#favorite-select-size-button, #favorite-delete-button{
+#favorite-select-size-button, #favorite-delete-button, .product-redirect{
   cursor: pointer;
 }
 

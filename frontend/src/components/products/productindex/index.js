@@ -5,7 +5,7 @@ import { useHistory, useParams } from 'react-router-dom';
 import './productindex.css'
 
 
-const ProductIndex = () => {
+const ProductIndex = ({result = {}}) => {
   const history = useHistory();
   const dispatch = useDispatch();
   const products = useSelector(getProducts);
