@@ -17,12 +17,12 @@
   font-size: 17px;
   font-weight: 500;
   cursor: pointer;
+  margin-top : 20px;
 }
 
 .size-modal-foreground{
   position: absolute;
-  width: 45vw;
-  height: 60vh;
+  width: 50vw;
   background-color: rgb(251,251,251);
   z-index: 3;
   top: calc(50% - 300px );
@@ -72,7 +72,7 @@
   border-radius: 6px;
   cursor: pointer;
   margin: 7px;
-  width: 23%
+  width: 20%;
 }
 
 .product-size-modal-size-selector label:hover{

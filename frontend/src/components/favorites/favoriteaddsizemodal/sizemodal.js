@@ -7,11 +7,13 @@ import './sizemodal.css'
 const SizeModal = ({closeModal, product}) => {
   const dispatch = useDispatch();
   const [selectedSize, setSelectedSize] = useState('');
+  const [errors, setErrors] = useState([]);
   const sessionUser = useSelector(state => state.session.user)
   
 
   const handleAddToBagClick = (e) => {
     e.preventDefault();
+    setErrors([]);
     const newCartItem = {
       productId: product.id,
       userId: sessionUser.id,
@@ -19,6 +21,17 @@ const SizeModal = ({closeModal, product}) => {
       size: selectedSize
     }
     dispatch(createCartItem(newCartItem))
+      .catch(async (res) => {
+        let data;
+        try{
+          data = await res.clone().json();
+        } catch{
+          data = await res.text();
+        }
+        if (data?.errors) setErrors(data.errors);
+        else if (data) setErrors(data)
+        else setErrors([res.statusText])
+      });
   }
 
 
@@ -35,10 +48,10 @@ const SizeModal = ({closeModal, product}) => {
               <p>${product?.price.toFixed(2)}</p>
             </div>
             <h1>{product?.name}</h1>
+          </div>
             <div>
               <p>Select Size: </p>
             </div>
-          </div>
           <div className="product-size-modal-size-selector">
             {product?.size.map((productSize)=>{
               return(
@@ -50,6 +63,9 @@ const SizeModal = ({closeModal, product}) => {
             })}
           </div>
           <button className="add-to-bag-button" onClick={(e) => handleAddToBagClick(e)}>Add To Bag</button>
+          {errors?.map((error, idx) => {
+            return <p className="error" key={idx}>{error}</p>
+          })}
         </div>
       </div>
     </div>

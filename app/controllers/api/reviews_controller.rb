@@ -3,10 +3,10 @@ class Api::ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
-    if @review.save!
+    if @review.save
       render :show
     else
-      render json: @review.errors.full_message, status: :unprocessable_entity
+      render json: @review.errors.full_messages, status: :unprocessable_entity
     end
   end
 
@@ -14,11 +14,10 @@ class Api::ReviewsController < ApplicationController
     user = current_user
     @review = Review.find_by(id: params[:id])
 
-    if user.id == @review.reviewer_id
-      @review.update(review_params)
+    if user.id == @review.reviewer_id && @review.update(review_params)
       render :show
     else
-      render json: @review.errors.full_message, status: :unprocessable_entity
+      render json: @review.errors.full_messages, status: :unprocessable_entity
     end
   end
 

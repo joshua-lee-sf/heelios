@@ -15,6 +15,8 @@ const ProductShow = () => {
   const product = useSelector(getProduct(id));
   const products = useSelector(getProductBySku(id))
   const sessionUser = useSelector(state => state.session.user);
+  const [dispatchCartSuccess, setDispatchCartSuccess] = useState(false)
+  const [dispatchFavoriteSuccess, setDispatchFavoriteSuccess] = useState(false)
 
   const [errors, setErrors] = useState([]);
 
@@ -26,17 +28,19 @@ const ProductShow = () => {
 
   const handleAddToCartClick = (e) => {
     e.preventDefault();
+    setErrors([]);
     const newCartItem = {
       productId: product.id,
       userId: sessionUser.id,
       quantity: 1,
       size: selectedSize
     }
-    return dispatch(CartItemFunctions.createCartItem(newCartItem))
+    dispatch(CartItemFunctions.createCartItem(newCartItem))
+    .then(()=> setDispatchCartSuccess(true))
       .catch(async (res) => {
         let data;
         try{
-          data = await res.clone().json;
+          data = await res.clone().json();
         } catch{
           data = await res.text()
         }
@@ -44,17 +48,28 @@ const ProductShow = () => {
         else if (data) setErrors(data)
         else setErrors([res.statusText])
       });
-  }
-
-  console.log(errors)
+    }
 
   const handleFavoriteClick = (e) => {
     e.preventDefault();
+    setErrors([]);
     const newFavorite = {
       favoriterId: sessionUser.id,
       productId: product.id
     }
     dispatch(FavoriteFunctions.createFavorite(newFavorite))
+      .then(()=> setDispatchFavoriteSuccess(true))
+      .catch(async (res) => {
+        let data;
+        try{
+          data = await res.clone().json();
+        } catch{
+          data = await res.text()
+        }
+        if (data?.errors) setErrors(data.errors);
+        else if (data) setErrors(data)
+        else setErrors([res.statusText])
+      });
   }
   
   return (
@@ -96,9 +111,12 @@ const ProductShow = () => {
           })}
         </div>
         <div className="product-buttons">
-          <button className="add-to-bag-button"  onClick={(handleAddToCartClick)}>Add to Bag</button>
-          <button className="favorite-button" onClick={handleFavoriteClick}>Favorite <AiOutlineHeart className="heart-icon"/></button>
+          <button className="add-to-bag-button"  onClick={(handleAddToCartClick)}>{dispatchCartSuccess ? "Added To Bag" : "Add To Bag"}</button>
+          <button className="favorite-button" onClick={handleFavoriteClick}>{dispatchFavoriteSuccess ? "Added To Favorites" : "Favorite"} <AiOutlineHeart className="heart-icon"/></button>
         </div>
+        {errors?.map((error,idx) => {
+            return <span className="error" key={idx}>{error}</span>
+          })}
         <p className="product-description info">{product?.description}</p>
         <ul className="product-info-container">
           <li key="product-info-li-1" className="product-color info"><strong>Shown:</strong> {product?.color}</li>

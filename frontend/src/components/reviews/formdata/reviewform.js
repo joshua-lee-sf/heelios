@@ -1,10 +1,9 @@
-import {useState, useEffect} from 'react'
-import { useDispatch } from 'react-redux'
-import { createReview, getReview, updateReview } from '../../../store/reviews'
-import ProductRating from './productrating'
-import { useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
-import './reviewform.css'
+import {useState, useEffect} from 'react';
+import { useDispatch } from 'react-redux';
+import { createReview, getReview, updateReview } from '../../../store/reviews';
+import ProductRating from './productrating';
+import { useSelector } from 'react-redux';
+import './reviewform.css';
 
 const ReviewForm = ({product, reviewToEdit }) => {
   const dispatch = useDispatch();
@@ -12,6 +11,7 @@ const ReviewForm = ({product, reviewToEdit }) => {
   const [rating, setRating] = useState(product?.review?.rating);
   const [title, setTitle] = useState('');
   const [reviewDetails, setReviewDetails] = useState('');
+  const [errors, setErrors] = useState([]);
   
 
   const reviewToEditKeys = Object.keys(reviewToEdit).length !== 0
@@ -22,11 +22,12 @@ const ReviewForm = ({product, reviewToEdit }) => {
       setTitle(reviewToEdit?.title)
       setReviewDetails(reviewToEdit?.reviewDetails)
     }
-  }, [reviewToEdit])
+  }, [reviewToEdit, reviewToEditKeys])
 
   
   const handleFormSubmit = (e) => {
     e.preventDefault()
+    setErrors([])
     if(!reviewToEditKeys){
       const newReview = {
         title: title,
@@ -36,6 +37,17 @@ const ReviewForm = ({product, reviewToEdit }) => {
         productId: product?.id
       }
       dispatch(createReview(newReview))
+        .catch(async (res) => {
+          let data;
+          try{
+            data = await res.clone().json();
+          } catch{
+            data = await res.text()
+          }
+          if (data?.errors) setErrors(data.errors);
+          else if (data) setErrors(data)
+          else setErrors([res.statusText])
+        });
     } else {
       const newReview = {
         id: reviewToEdit.id,
@@ -46,8 +58,18 @@ const ReviewForm = ({product, reviewToEdit }) => {
         productId: product?.id
       }
       dispatch(updateReview(newReview))
+        .catch(async (res) => {
+          let data;
+          try{
+            data = await res.clone().json();
+          } catch{
+            data = await res.text();
+          }
+          if (data?.errors) setErrors(data.errors);
+          else if (data) setErrors(data)
+          else setErrors([res.statusText])
+        });
     }
-
   }
 
   const onChange = (number) => {
@@ -74,6 +96,9 @@ const ReviewForm = ({product, reviewToEdit }) => {
           </label>
           <button className="submit-review-button">{reviewToEditKeys ? "Save Review" : "Submit Review"}</button>
         </form>
+        {errors?.map((error, idx) => {
+          return <p className="error" key={idx}>{error}</p>
+        })}
       </div>
     </div>
   )

@@ -12,7 +12,7 @@
 #
 class CartItem < ApplicationRecord
   validates :product_id, :user_id, :quantity, :size, presence: true
-  validates :product_id, uniqueness: true
+  validates :product_id, uniqueness: {message: "already in cart"} 
 
   before_validation :set_default_quantity
 

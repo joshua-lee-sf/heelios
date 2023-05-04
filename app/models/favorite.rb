@@ -10,7 +10,7 @@
 #
 class Favorite < ApplicationRecord
   validates :favoriter_id, :product_id, presence: true
-  validates :product_id, uniqueness: true
+  validates :product_id, uniqueness: {message: "already in your favorites"}
 
   belongs_to :favoriter,
     foreign_key: :favoriter_id,
