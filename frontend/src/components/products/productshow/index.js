@@ -1,7 +1,7 @@
 import {getProduct, fetchProductsBySku, getProductBySku} from '../../../store/products'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
-import {useParams, Link} from 'react-router-dom'
+import {useParams, Link, useHistory} from 'react-router-dom'
 import {AiOutlineHeart} from 'react-icons/ai'
 import Reviews from '../../reviews'
 import * as CartItemFunctions from '../../../store/cartItem'
@@ -9,6 +9,7 @@ import * as FavoriteFunctions from '../../../store/favorite'
 import './productshow.css'
 
 const ProductShow = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const {id} = useParams();
   const [selectedSize, setSelectedSize] = useState('');
@@ -41,10 +42,12 @@ const ProductShow = () => {
         let data;
         try{
           data = await res.clone().json();
+          console.log(data.message, "message")
         } catch{
           data = await res.text()
         }
         if (data?.errors) setErrors(data.errors);
+        else if (data?.message) history.push('/account/signin');
         else if (data) setErrors(data)
         else setErrors([res.statusText])
       });
@@ -67,7 +70,8 @@ const ProductShow = () => {
           data = await res.text()
         }
         if (data?.errors) setErrors(data.errors);
-        else if (data) setErrors(data)
+        else if (data?.message) history.push('/account/signin');
+        else if (data) setErrors(data);
         else setErrors([res.statusText])
       });
   }

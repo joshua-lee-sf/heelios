@@ -7,6 +7,10 @@ class Api::ProductsController < ApplicationController
       render :mini_index
     elsif params[:category]
       @products = Product.where("category = ?", params[:category])
+    elsif params[:limit] && params[:offset]
+      limit = params[:limit]
+      offset = params[:offset]
+      @products = Product.limit(limit).offset(offset)
     else
       @products = Product.all
       render :index

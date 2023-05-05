@@ -1,0 +1,114 @@
+.splash-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+}
+
+.first-item-container img{
+  width: 70vw;
+}
+
+.first-item-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.image-text-box{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.image-text-box h1{
+  font-size: 40px;
+}
+
+.image-text-box p{
+  font-size: 15px;
+  /* font-weight: 350; */
+}
+
+.image-text-box button{
+  /* width: 5vw;
+  height: 3vh; */
+  background-color: rgb(21,21,21);
+  color: rgb(251,251,251);
+  font-weight: 300;
+  padding: 10px 50px;
+  border-radius: 20px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.featured-footwear-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+}
+
+.featured-footwear-product-container img{
+  width: 100%;
+  /* padding: 20px; */
+}
+
+.featured-footwear-product-container{
+  margin: 10px 10px;
+  position: relative;
+}
+
+.featured-product-info{
+  position: absolute;
+  top: 30px;
+  left: 20px;
+}
+
+.featured-product-info > *{
+  margin: 5px 0px;
+}
+
+.featured-footwear-product-container button{
+  background-color: rgb(21,21,21);
+  color: rgb(251,251,251);
+  font-weight: 300;
+  padding: 10px 50px;
+  border-radius: 20px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.member-join-container{
+  position: relative;
+}
+
+.member-join-text{
+  position: absolute;
+  color: rgb(251,251,251);
+  top: 40%;
+  left: 5%;
+}
+
+.member-join-text > *{
+  margin: 10px 0px;
+}
+
+.member-join-text h1{
+  font-size: 40px;
+  /* font-weight: 500; */
+}
+
+.member-join-text button{
+  background-color: rgb(251,251,251);
+  color: rgb(21,21,21);
+  padding: 10px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+#member-join-text-signin-button{
+  margin-left: 20px;
+}

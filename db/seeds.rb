@@ -1,10 +1,10 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+# # This file should contain all the record creation needed to seed the database with its default values.
+# # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
+# #
+# # Examples:
+# #
+# #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
+# #   Character.create(name: "Luke", movie: movies.first)
 
 # Users Seed Data
 require 'faker'
@@ -12,39 +12,49 @@ require 'uri'
 require 'net/http'
 require 'openssl'
 require 'open-uri'
-# require 'aws/s3'
+# # require 'aws/s3'
 
-# ApplicationRecord.transaction do 
-#   puts "Destroying tables..."
-#   # Unnecessary if using `rails db:seed:replant`
-#   User.destroy_all
 
-#   puts "Resetting primary keys..."
-#   # For easy testing, so that after seeding, the first `User` has `id` of 1
-#   ActiveRecord::Base.connection.reset_pk_sequence!('users')
-
-#   puts "Creating users..."
-#   # Create one user with an easy to remember username, email, and password:
-#   User.create!(
-#     email: 'demo@user.io', 
-#     password: 'password'
-#   )
-
-#   # More users
-#   10.times do 
-#     User.create!({
-#       email: Faker::Internet.unique.email,
-#       password: 'password'
-#     }) 
-#   end
-#   puts "Done!"
-# end
 
   puts 'Destroying tables...'
+
+  CartItem.destroy_all
+  puts "Destroyed Cart Items table"
+  Favorite.destroy_all
+  puts "Destroyed Favorites table"
+  Review.destroy_all
+  puts "Destroyed Reviews table"
   Product.destroy_all
+  User.destroy_all
+  puts "Destroyed Users table"
 
   puts "Resetting primary keys..."
   ActiveRecord::Base.connection.reset_pk_sequence!('products')
+  puts "Reset products primary keys"
+  ActiveRecord::Base.connection.reset_pk_sequence!('users')
+  puts "Reset users primary keys"
+  ActiveRecord::Base.connection.reset_pk_sequence!('cart_items')
+  puts "Reset cart items primary keys"
+  ActiveRecord::Base.connection.reset_pk_sequence!('favorites')
+  puts "Reset favorites primary keys"
+  ActiveRecord::Base.connection.reset_pk_sequence!('reviews')
+  puts "Reset reviews primary keys"
+  
+
+  puts "Seeding users..."
+  # Create one user with an easy to remember username, email, and password:
+  User.create!(
+    email: 'demo@user.io', 
+    password: 'password'
+  )
+
+  # More users
+  10.times do 
+    User.create!({
+      email: Faker::Internet.unique.email,
+      password: 'password'
+    }) 
+  end
 
   puts 'Seeding Products...'
 
@@ -60,32 +70,18 @@ require 'open-uri'
     productHash[:images].each_with_index do |image_url, i|
       puts "Attaching image: #{product.sku}_#{i}.png"
       product.photos.attach(
-        io: URI.open(image_url), 
+        io: URI.open(image_url, read_timeout: 2000), 
         filename: "#{product.sku}_#{i}.png"
       )
     end
   end
-#   end
 
-products = Product.all
-numbers = (1..10).to_a
+  puts "Products Seeded"
 
-ApplicationRecord.transaction do
-  puts "Destroying tables..."
-  # Unnecessary if using `rails db:seed:replant`
-  CartItem.destroy_all
-  Favorite.destroy_all
-  Review.destroy_all
+  products = Product.all
+  numbers = (1..10).to_a
 
-  puts "Resetting primary keys..."
-  ActiveRecord::Base.connection.reset_pk_sequence!('cart_items')
-  ActiveRecord::Base.connection.reset_pk_sequence!('favorites')
-  ActiveRecord::Base.connection.reset_pk_sequence!('reviews')
-
-
-
-  puts "Creating new carts..."
-
+  puts "Seeding Carts..."
   20.times do 
     rand_product = products.sample
     rand_num = numbers.sample
@@ -93,13 +89,15 @@ ApplicationRecord.transaction do
     CartItem.create(product_id: rand_product.id, quantity: rand_num, user_id: 1, size: size)
   end
 
+  puts "Carts seeded"
+
   puts "Creating Favorites..."
   20.times do
     rand_product = products.sample
     Favorite.create(product_id: rand_product.id, favoriter_id: 1)
   end
 
-  puts "Done!"
+  puts "Favorites seeded"
 
   puts "Creating Reviews..."
   5.times do
@@ -128,7 +126,9 @@ ApplicationRecord.transaction do
       rating: rand_rating,
       review_details: rand_review
     )
-  end
+  end  
 
-end
+  puts "Reviews seeded!"
+
+  puts "Done!"
 

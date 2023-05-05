@@ -26,7 +26,7 @@ const ProductIndex = () => {
   
   return(
     <>
-    <h1>All Products</h1>
+    <h1 className="page-header">{category ? `${category}` : "All Products"}</h1>
     <div className="products-container">
       {products.map(product => {
         if(category && product.category !== category){

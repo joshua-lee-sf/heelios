@@ -1,11 +1,10 @@
 import NavBarCategories from "../navbarcategories"
 import LoginOptions from "../loginoptions"
-import {AiOutlineSearch} from 'react-icons/ai';
 import { Link } from 'react-router-dom'
 import {useSelector } from 'react-redux'
-import { useEffect } from "react";
 import Navigation from '../../authentication/navigation'
 import CartFavorite from "./cartfavorite";
+import SearchFunction from "../search";
 import './navbar.css'
 
 const NavBar = () => {
@@ -21,11 +20,8 @@ const NavBar = () => {
           {sessionUser ? <CartFavorite /> : null}
         </div>
           {sessionUser ? <Navigation /> : <LoginOptions />}
-        <label className="search-function">
-          <div className="search-icon">
-            <AiOutlineSearch />
-          </div>
-          <input type="search" placeholder="Search"></input>
+        <label className="search-function-container">
+          <SearchFunction />
         </label>
         </div>
       </ul>

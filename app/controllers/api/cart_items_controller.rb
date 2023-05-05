@@ -1,5 +1,6 @@
 class Api::CartItemsController < ApplicationController
   include ActiveStorage::SetCurrent
+  before_action :require_logged_in, only: [:create, :update, :destroy]
   wrap_parameters include: CartItem.attribute_names + [:productId, :userId]
 
   def index

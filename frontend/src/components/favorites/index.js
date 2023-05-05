@@ -2,6 +2,7 @@ import { getFavorites, fetchFavorites, deleteFavorite } from "../../store/favori
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect, useState } from "react";
 import { BsTrash3 } from 'react-icons/bs'
+import { useHistory } from "react-router-dom";
 import SizeModal from "./favoriteaddsizemodal/sizemodal";
 import { useHistory } from "react-router-dom";
 import './favorites.css' 
@@ -10,6 +11,8 @@ import { createPortal } from "react-dom";
 const Favorites = () => {
   const history = useHistory();
   const dispatch = useDispatch();
+  const history = useHistory();
+  
   const favorites = useSelector(getFavorites);
   const [showSizeModal, setShowSizeModal] = useState(false);
 
@@ -34,7 +37,7 @@ const Favorites = () => {
             </div>
               <div className="favorite-item-info">
                 <div className="favorite-item-info-left">
-                  <h6 onClick={() => history.push(`/products/${favorite.product?.sku}`)} className="product-title">{favorite.product?.name}</h6>
+                  <h6 onClick={(() => history.push(`/products/${favorite?.product?.sku}`))} className="product-redirect">{favorite.product?.name}</h6>
                   <p>{favorite.product?.title}</p>
                 </div>
                 <div className="favorite-item-info-right">

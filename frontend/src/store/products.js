@@ -4,6 +4,7 @@ import csrfFetch from './csrf'
 
 export const RECEIVE_PRODUCTS = 'products/RECEIVE_PRODUCTS'
 export const RECEIVE_PRODUCT = 'products/RECEIVE_PRODUCT'
+export const RECEIVE_SEARCH_PRODUCTS = "products/RECEIVE_SEARCH_PRODUCTS"
 
 //action creators
 
@@ -15,6 +16,11 @@ export const receiveProducts = (products) => ({
 export const receiveProduct = (product) => ({
   type: RECEIVE_PRODUCT,
   payload: product
+})
+
+export const receiveSearchProducts = (products) => ({
+  type: RECEIVE_SEARCH_PRODUCTS,
+  payload: products
 })
 
 // state selectors
@@ -56,6 +62,18 @@ export const fetchProductsByCategory = (category) => async(dispatch, getState) =
   dispatch(receiveProducts(products))
 }
 
+export const fetchProductsByQuery = (query) => async (dispatch, getState) => {
+  const res = await csrfFetch(`/api/search${query}`)
+  const products = await res.json();
+  dispatch(receiveSearchProducts(products))
+}
+
+export const fetchProductsByLimitandOffset = (limit, offset=0) => async (dispatch, getState) => {
+  const res = await csrfFetch(`/api/products?limit=${limit}&offset=${offset}`)
+  const products = await res.json()
+  dispatch(receiveProducts(products))
+}
+
 const productReducer = (state = {}, action) => {
   const nextState = {...state};
   switch(action.type){
@@ -63,6 +81,8 @@ const productReducer = (state = {}, action) => {
       return {...nextState, ...action.payload?.products};
     case RECEIVE_PRODUCT:
       return {...nextState, [action.payload.products.sku]: action.payload};
+    case RECEIVE_SEARCH_PRODUCTS:
+      return{...action.payload.products};
     default:
       return state
   }

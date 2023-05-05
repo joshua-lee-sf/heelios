@@ -1,5 +1,6 @@
 class Api::FavoritesController < ApplicationController
   include ActiveStorage::SetCurrent
+  before_action :require_logged_in, only: [:create, :destroy]
 
   def index
     @user = current_user

@@ -8,6 +8,9 @@ import ProductShow from './components/products/productshow';
 import CartItemIndex from "./components/cart";
 import Favorites from "./components/favorites"
 import Footer from "./components/footer";
+import SearchFunction from "./components/header/search";
+import SearchIndex from "./components/header/search/searchindex";
+import SplashPage from "./components/splashpage";
 
 
 function App() {
@@ -23,7 +26,8 @@ function App() {
         <Route exact path="/cart" component={CartItemIndex} />
         <Route exact path="/favorites" component={Favorites} />
         <Route exact path="/products/category/:category" component={ProductIndex} />
-        <Route exact path="/"/>
+        <Route exact path="/search" component={SearchIndex} />
+        <Route exact path="/" component={SplashPage}/>
       </Switch>
       <Footer />
     </>

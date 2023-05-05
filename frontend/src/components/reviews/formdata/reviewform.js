@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { createReview, getReview, updateReview } from '../../../store/reviews';
 import ProductRating from './productrating';
 import { useSelector } from 'react-redux';
@@ -7,6 +8,7 @@ import './reviewform.css';
 
 const ReviewForm = ({product, reviewToEdit }) => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const sessionUser = useSelector(state => state.session.user)
   const [rating, setRating] = useState(product?.review?.rating);
   const [title, setTitle] = useState('');
@@ -45,8 +47,12 @@ const ReviewForm = ({product, reviewToEdit }) => {
             data = await res.text()
           }
           if (data?.errors) setErrors(data.errors);
-          else if (data) setErrors(data)
-          else setErrors([res.statusText])
+          else if (data?.message) {
+            history.push('/account/signin')
+            alert('Please Log In!')
+          }
+          else if (data) setErrors(data);
+          else setErrors([res.statusText]);
         });
     } else {
       const newReview = {

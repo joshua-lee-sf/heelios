@@ -1,24 +1,14 @@
-# README
+# Production README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Welcome to Helios! A clone of the popular sneaker/apparel store Nike! It was a blast to make and it challenged me to learn new things! Please check it out [here](https://helios-l1p3.onrender.com/)! The website is currently
 
-Things you may want to cover:
+# Table of Contents
+1. [Technologies]()
+2. [Instructions]()
+3. [Technical Implementations]()
 
-* Ruby version
+# Technologies
 
-* System dependencies
+Technologies used: `HTML5`, `CSS`, `JavaScript`, `Ruby On Rails`, `React`, `Redux`, `AWS S3`
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Instructions

@@ -44,7 +44,7 @@ const fs = require('fs').promises;
         const types = queries[p_type];
         for (let category in types) {
             let type = types[category];
-            for (let i in type.slice(0, 1)) {
+            for (let i in type.slice(0, 3)) {
                 const shoe = type[i];
                 console.log('Going to:', shoe)
                 await page.goto(shoe);

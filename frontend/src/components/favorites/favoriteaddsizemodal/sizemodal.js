@@ -7,6 +7,7 @@ import './sizemodal.css'
 const SizeModal = ({closeModal, product}) => {
   const dispatch = useDispatch();
   const [selectedSize, setSelectedSize] = useState('');
+  const [dispatchSuccess, setDispatchSuccess] = useState(false)
   const [errors, setErrors] = useState([]);
   const sessionUser = useSelector(state => state.session.user)
   const [dispatchCartSuccess, setDispatchCartSuccess] = useState(false)
@@ -22,7 +23,7 @@ const SizeModal = ({closeModal, product}) => {
       size: selectedSize
     }
     dispatch(createCartItem(newCartItem))
-      .then(()=> setDispatchCartSuccess(true))
+      .then(()=> setDispatchSuccess(true))
       .catch(async (res) => {
         let data;
         try{
@@ -64,7 +65,7 @@ const SizeModal = ({closeModal, product}) => {
               )
             })}
           </div>
-          <button className="add-to-bag-button" onClick={(e) => handleAddToBagClick(e)}>{dispatchCartSuccess ? "Added to Bag" : "Add To Bag"}</button>
+          <button className="add-to-bag-button" onClick={(e) => handleAddToBagClick(e)}>{dispatchSuccess ? "Added to Bag" : "Add to Bag"}</button>
           {errors?.map((error, idx) => {
             return <p className="error" key={idx}>{error}</p>
           })}
