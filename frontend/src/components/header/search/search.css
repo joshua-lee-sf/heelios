@@ -1,10 +1,11 @@
 .search-function-container{
   border: 1px solid grey;
-  height: 5vh;
+  height: 40px;
   display: flex;
   align-items: center;
   background-color: rgb(204, 204, 204);
   border-radius: 40px;
+  opacity: 0.4;
 }
 
 #search-icon{
@@ -19,7 +20,7 @@
 
 .search-function input{
   border: none;
-  height: 3vh;
+  height: 30px;
   padding: 5px;
   background-color: rgb(204, 204, 204);
   color: rgb(21,21,21);
@@ -27,7 +28,6 @@
 
 .searchbox:focus{
   outline: none;
-  /* padding: 1000px; */
 }
 
 .search-products-container{

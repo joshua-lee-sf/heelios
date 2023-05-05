@@ -8,9 +8,7 @@ const SplashPage = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const products = useSelector(getProducts)
-
-  console.log(products, 'products')
-
+  
   const [limit, setLimit] = useState(10);
   const [offset, setOffset] = useState(0)
 

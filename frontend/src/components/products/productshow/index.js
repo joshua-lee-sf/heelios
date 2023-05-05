@@ -42,11 +42,10 @@ const ProductShow = () => {
         let data;
         try{
           data = await res.clone().json();
-          console.log(data.message, "message")
         } catch{
           data = await res.text()
         }
-        if (data?.errors) setErrors(data.errors);
+        if (data?.errors) setErrors(data.errors, data?.message);
         else if (data?.message) history.push('/account/signin');
         else if (data) setErrors(data)
         else setErrors([res.statusText])

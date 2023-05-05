@@ -13,6 +13,8 @@ const CartItemIndex = () => {
   const cartItems = useSelector(CartItemFunctions.getCartItems)
   const sessionUser = useSelector(state => state.session.user);
 
+  const areThereCartItems = Object.values(cartItems).length > 0;
+
   useEffect(() => {
     dispatch(CartItemFunctions.fetchCartItems());
   }, [dispatch])
@@ -68,6 +70,7 @@ const CartItemIndex = () => {
       <div className="cart-container">
         <div className="cart-item-container">
           <h1 className="page-header">Bag</h1>
+          {!areThereCartItems ? <p className="no-cart-items">Add some items to your bag!</p> : null}
           {cartItems.map((cartItem)  => {
             return(
               <div className="cart-item">

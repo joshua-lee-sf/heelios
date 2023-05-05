@@ -55,3 +55,7 @@
   border: 1px solid rgb(21,21,21);
   border-radius: 10px;
 }
+
+.no-favorites{
+  height: 100vh;
+}

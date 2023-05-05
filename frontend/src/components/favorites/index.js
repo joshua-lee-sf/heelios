@@ -12,6 +12,8 @@ const Favorites = () => {
   const favorites = useSelector(getFavorites);
   const [showSizeModal, setShowSizeModal] = useState(false);
 
+  const areThereFavorites = Object.values(favorites).length > 0
+
   useEffect(() => {
     dispatch(fetchFavorites())
   }, [dispatch])
@@ -25,6 +27,7 @@ const Favorites = () => {
     <>
     <h2 id="favorites-head">Favorites</h2>
     <div className="favorite-item-container"> 
+    {areThereFavorites ? null : <p className="no-favorites">Add Something To Your Favorites!</p>}
       {favorites.map(favorite => {
         return (
           <div className="favorite-item">
