@@ -25,14 +25,15 @@ require 'open-uri'
   Review.destroy_all
   puts "Destroyed Reviews table"
   Product.destroy_all
-  User.destroy_all
-  puts "Destroyed Users table"
+  puts "products destroyed"
+  # User.destroy_all
+  # puts "Destroyed Users table"
 
   puts "Resetting primary keys..."
   ActiveRecord::Base.connection.reset_pk_sequence!('products')
   puts "Reset products primary keys"
-  ActiveRecord::Base.connection.reset_pk_sequence!('users')
-  puts "Reset users primary keys"
+  # ActiveRecord::Base.connection.reset_pk_sequence!('users')
+  # puts "Reset users primary keys"
   ActiveRecord::Base.connection.reset_pk_sequence!('cart_items')
   puts "Reset cart items primary keys"
   ActiveRecord::Base.connection.reset_pk_sequence!('favorites')
@@ -41,20 +42,20 @@ require 'open-uri'
   puts "Reset reviews primary keys"
   
 
-  puts "Seeding users..."
-  # Create one user with an easy to remember username, email, and password:
-  User.create!(
-    email: 'demo@user.io', 
-    password: 'password'
-  )
+  # puts "Seeding users..."
+  # # Create one user with an easy to remember username, email, and password:
+  # User.create!(
+  #   email: 'demo@user.io', 
+  #   password: 'password'
+  # )
 
-  # More users
-  10.times do 
-    User.create!({
-      email: Faker::Internet.unique.email,
-      password: 'password'
-    }) 
-  end
+  # # More users
+  # 10.times do 
+  #   User.create!({
+  #     email: Faker::Internet.unique.email,
+  #     password: 'password'
+  #   }) 
+  # end
 
   puts 'Seeding Products...'
 
