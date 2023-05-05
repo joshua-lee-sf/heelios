@@ -8,6 +8,10 @@
   opacity: 0.4;
 }
 
+.search-function-container:hover{
+  opacity: 1;
+}
+
 #search-icon{
   position: relative;
   top: 5px;
@@ -28,6 +32,7 @@
 
 .searchbox:focus{
   outline: none;
+  opacity: 1;
 }
 
 .search-products-container{

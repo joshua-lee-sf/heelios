@@ -88,7 +88,7 @@ const ProductShow = () => {
         <h1 className="product-name">{product?.name}</h1>
         <p className="product-title info" >{product?.title}</p>
         <p className="product-type info">{product?.pType}</p>
-        <p className="product-price info">${product?.price}.00</p>
+        <p className="product-price info">${(product?.price).toFixed(2)}</p>
         <div className="color-selector">
           {products.map((product) => {
             return(

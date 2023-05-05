@@ -35,12 +35,16 @@
 
 .color-selector{
   display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
 }
 
 .color-selector > *{
   margin: 0px 5px;
   border-radius: 4px;
-  height: 60%;
+  height: 22%;
 }
 
 .color-selector label{
