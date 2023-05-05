@@ -17,6 +17,7 @@ require 'open-uri'
 
 
   puts 'Destroying tables...'
+
   CartItem.destroy_all
   puts "Destroyed Cart Items table"
   Favorite.destroy_all

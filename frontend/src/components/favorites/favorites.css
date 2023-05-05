@@ -1,5 +1,6 @@
 .favorite-item-container img{
   width: 100%;
+  height: auto;
 }
 
 #favorites-head{
@@ -16,7 +17,7 @@
 
 .favorite-item{
   width: 30%;
-  height: auto;
+  height: 10%;
   margin-bottom: 20px;
 }
 

@@ -24,7 +24,7 @@ export const removeReview = (reviewId) => ({
 })
 
 export const getReviews = (product)=> (state)  => {
-  return state.reviews ? Object.values(state.reviews).filter((review) => (review.productId === product.id)) :[]
+  return state.reviews ? Object.values(state.reviews).filter((review) => (review?.productId === product?.id)) :[]
 }
 
 export const getReview = reviewId => state => {

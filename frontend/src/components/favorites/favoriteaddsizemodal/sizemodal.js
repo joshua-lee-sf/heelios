@@ -10,6 +10,7 @@ const SizeModal = ({closeModal, product}) => {
   const [dispatchSuccess, setDispatchSuccess] = useState(false)
   const [errors, setErrors] = useState([]);
   const sessionUser = useSelector(state => state.session.user)
+  const [dispatchCartSuccess, setDispatchCartSuccess] = useState(false)
   
 
   const handleAddToBagClick = (e) => {

@@ -81,9 +81,7 @@ const ProductShow = () => {
       <div className="product-show-left">
         {product?.imageUrl.map((photo,idx) =>{
           return(
-            <>
-              <img key={`${idx}-01`} src={photo} alt={`${product?.name}`}/>
-            </>
+            <img key={`${idx}-01`} src={photo} alt={`${product?.name}`}/>
           )
         })}
       </div>
@@ -107,10 +105,10 @@ const ProductShow = () => {
         <div className="size-selector">
           {product?.size.map((size, idx) => {
             return (
-              <>
-                <input key={`${size}-00`} type="radio" name="size" id={size} value={size}></input>
+              <div key={`${size}-00`} className="product-size">
+                <input  type="radio" name="size" id={size} value={size}></input>
                 <label key={`${size}-01`} htmlFor={size} onClick={(e)=> setSelectedSize(size)}>{size}</label>
-              </>
+              </div>
             )
           })}
         </div>
@@ -119,7 +117,7 @@ const ProductShow = () => {
           <button className="favorite-button" onClick={handleFavoriteClick}>{dispatchFavoriteSuccess ? "Added To Favorites" : "Favorite"} <AiOutlineHeart className="heart-icon"/></button>
         </div>
         {errors?.map((error,idx) => {
-            return <span className="error" key={idx}>{error}</span>
+            return <p className="error" key={idx}>{error}</p>
           })}
         <p className="product-description info">{product?.description}</p>
         <ul className="product-info-container">

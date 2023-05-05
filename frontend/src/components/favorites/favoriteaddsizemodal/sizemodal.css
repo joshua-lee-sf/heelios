@@ -30,6 +30,8 @@
   padding: 25px;
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
 .product-image-size-modal-container{

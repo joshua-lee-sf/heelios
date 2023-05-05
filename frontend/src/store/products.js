@@ -78,7 +78,7 @@ const productReducer = (state = {}, action) => {
   const nextState = {...state};
   switch(action.type){
     case RECEIVE_PRODUCTS:
-      return {...nextState, ...action.payload.products};
+      return {...nextState, ...action.payload?.products};
     case RECEIVE_PRODUCT:
       return {...nextState, [action.payload.products.sku]: action.payload};
     case RECEIVE_SEARCH_PRODUCTS:
