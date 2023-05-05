@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import * as ReviewFunctions from '../../store/reviews'
 import { AiFillStar } from 'react-icons/ai'
 import ReviewModal from "./formmodals/reviewmodal";

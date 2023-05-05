@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react"
-import { useHistory } from "react-router-dom"
+import { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import * as CartItemFunctions from '../../store/cartItem.js'
 import { useHistory } from "react-router-dom"
@@ -12,7 +11,6 @@ const CartItemIndex = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const cartItems = useSelector(CartItemFunctions.getCartItems)
-  const [errors, setErrors] = useState([])
   const sessionUser = useSelector(state => state.session.user);
 
   useEffect(() => {

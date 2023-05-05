@@ -26,13 +26,13 @@ const SplashPage = () => {
 
   useEffect(()=>{
     dispatch(fetchProductsByLimitandOffset(limit, offset))
-  }, [dispatch])
+  }, [dispatch, limit, offset])
 
 
   return(
     <div className="splash-container">
       <div className="first-item-container" onClick={()=> history.push('/products/category/women')}>
-        <img src="../../../assets/nike.webp"/>
+        <img src="../../../assets/nike.webp" alt=""/>
         <div className="image-text-box">
           <h1>GIFTS FOR HER</h1>
           <p>This Mother's Day, Members get free expedited shipping on orders $150+. ends 5.7 -- exlcusions Apply</p>
@@ -58,7 +58,7 @@ const SplashPage = () => {
         </div>
       </div>
       <div className="member-join-container">
-        <img src="../../../assets/nikesplashpage.webp"/> {/* backgroung image ?*/}
+        <img src="../../../assets/nikesplashpage.webp" alt=""/> {/* backgroung image ?*/}
         <div className="member-join-text">
           <h1>Become A Member</h1>
           <p>Sign up for free. Join the community</p>

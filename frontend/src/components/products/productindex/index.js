@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { getProducts, fetchProducts, fetchProductsByCategory } from '../../../store/products';
 import { useHistory, useParams } from 'react-router-dom';
 import './productindex.css'
@@ -17,7 +17,7 @@ const ProductIndex = () => {
     } else {
     }
     dispatch(fetchProducts())
-  }, [dispatch])
+  }, [dispatch, category])
 
 
   const handleClick = (id) => {
@@ -34,7 +34,7 @@ const ProductIndex = () => {
         }
         return (
             <div key={product.id} className='product-container' onClick={() => handleClick(product.sku)}>
-              <img src={product?.imageUrl?.[0]} />
+              <img src={product?.imageUrl?.[0]} alt=""/>
               <h5 className="product-name">{product.name}</h5>
               {product.title ? <p>{product.title}</p> : null}
               <p>{product.pType}</p>

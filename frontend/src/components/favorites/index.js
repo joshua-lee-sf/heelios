@@ -4,15 +4,11 @@ import { useEffect, useState } from "react";
 import { BsTrash3 } from 'react-icons/bs'
 import { useHistory } from "react-router-dom";
 import SizeModal from "./favoriteaddsizemodal/sizemodal";
-import { useHistory } from "react-router-dom";
 import './favorites.css' 
-import { createPortal } from "react-dom";
 
 const Favorites = () => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const history = useHistory();
-  
   const favorites = useSelector(getFavorites);
   const [showSizeModal, setShowSizeModal] = useState(false);
 

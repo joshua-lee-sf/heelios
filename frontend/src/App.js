@@ -8,7 +8,6 @@ import ProductShow from './components/products/productshow';
 import CartItemIndex from "./components/cart";
 import Favorites from "./components/favorites"
 import Footer from "./components/footer";
-import SearchFunction from "./components/header/search";
 import SearchIndex from "./components/header/search/searchindex";
 import SplashPage from "./components/splashpage";
 

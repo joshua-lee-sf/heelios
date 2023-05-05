@@ -9,9 +9,7 @@ const SizeModal = ({closeModal, product}) => {
   const [selectedSize, setSelectedSize] = useState('');
   const [dispatchSuccess, setDispatchSuccess] = useState(false)
   const [errors, setErrors] = useState([]);
-  const sessionUser = useSelector(state => state.session.user)
-  const [dispatchCartSuccess, setDispatchCartSuccess] = useState(false)
-  
+  const sessionUser = useSelector(state => state.session.user)  
 
   const handleAddToBagClick = (e) => {
     e.preventDefault();
@@ -42,7 +40,7 @@ const SizeModal = ({closeModal, product}) => {
     <div className="size-modal-background" onClick={(closeModal)}>
       <div className="size-modal-foreground" onClick={(e)=> e.stopPropagation()}>
         <div className="product-image-size-modal-container">
-          <img src={product?.imageUrl?.[0]}/>
+          <img src={product?.imageUrl?.[0]} alt=""/>
         </div>
         <div className="product-info-size-modal-container">
           <div className="product-info-size-modal-header-container">

@@ -1,7 +1,5 @@
-import { useEffect, useState } from "react"
-import csrfFetch from "../../../store/csrf";
+import { useState } from "react"
 import {AiOutlineSearch} from 'react-icons/ai';
-import SearchIndex from "../../products/productindex";
 import { useHistory } from "react-router-dom";
 import './search.css'
 

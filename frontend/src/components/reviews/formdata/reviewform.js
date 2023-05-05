@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { createReview, getReview, updateReview } from '../../../store/reviews';
+import { createReview, updateReview } from '../../../store/reviews';
 import ProductRating from './productrating';
 import { useSelector } from 'react-redux';
 import './reviewform.css';

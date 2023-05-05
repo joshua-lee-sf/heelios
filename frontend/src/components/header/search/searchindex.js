@@ -1,10 +1,8 @@
-import { useHistory, useLocation, useParams } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProductsByQuery, getProducts } from "../../../store/products";
 import './search.css'
-import csrfFetch from "../../../store/csrf";
-
 
 const SearchIndex = () => {
     const history = useHistory();
@@ -28,7 +26,7 @@ const SearchIndex = () => {
             <>
             <div key={idx} className="product-item" onClick={() => (history.push(`/products/${product?.sku}`))}>
               <div className="product-left">
-                <img src={product?.imageUrl?.[0]} />
+                <img src={product?.imageUrl?.[0]} alt="" />
               </div>
               <div className="product-right">
                 <h5>{product?.name}</h5>
