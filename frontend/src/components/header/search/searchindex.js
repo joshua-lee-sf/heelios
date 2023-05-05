@@ -35,7 +35,7 @@ const SearchIndex = () => {
                 {product?.title ? <p>{product?.title}</p> : null}
                 <p>{product?.pType}</p>
                 <div className="price-container">
-                  <p className={product?.salePrice ? "onsaleproduct" : "notonsale"}>${(product?.price).toFixed(2)}</p>
+                  <p className={product?.salePrice ? "onsaleproduct" : "notonsale"}>${(product?.price)?.toFixed(2)}</p>
                   { product?.salePrice ? <p className="onsale">${product?.salePrice}</p> : null}
                 </div>
               </div>

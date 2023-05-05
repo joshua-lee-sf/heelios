@@ -46,7 +46,7 @@ const SizeModal = ({closeModal, product}) => {
           <div className="product-info-size-modal-header-container">
             <div className="product-info-size-modal-header-top-line-container">
               <p>{product?.pType}</p>
-              <p>${product?.price.toFixed(2)}</p>
+              <p>${product?.price?.toFixed(2)}</p>
             </div>
             <h1>{product?.name}</h1>
           </div>

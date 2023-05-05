@@ -40,7 +40,7 @@ const Favorites = () => {
                   <p>{favorite.product?.title}</p>
                 </div>
                 <div className="favorite-item-info-right">
-                  <p>${(favorite.product?.price).toFixed(2)}</p>
+                  <p>${(favorite.product?.price)?.toFixed(2)}</p>
                 </div>
             </div>
             <div className="favorite-options">

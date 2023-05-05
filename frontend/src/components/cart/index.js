@@ -117,7 +117,7 @@ const CartItemIndex = () => {
         </div>
         <div className="payment-right">
           <h1>Summary</h1>
-          <p>Total Cost: ${totalCartCost(cartItems).toFixed(2)}</p>
+          <p>Total Cost: ${totalCartCost(cartItems)?.toFixed(2)}</p>
           <button className="checkout-button" onClick={(()=>history.push('/checkout'))} >Checkout</button>
         </div>
       </div>
