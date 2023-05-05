@@ -3,7 +3,7 @@
   height: 5vh;
   display: flex;
   align-items: center;
-  background-color: rgb(181, 181, 181);
+  background-color: rgb(204, 204, 204);
   border-radius: 40px;
 }
 
@@ -21,12 +21,13 @@
   border: none;
   height: 3vh;
   padding: 5px;
-  background-color: rgb(181, 181, 181);
+  background-color: rgb(204, 204, 204);
   color: rgb(21,21,21);
-};
+}
 
-.search-function input:focus{
-  border: none;
+.searchbox:focus{
+  outline: none;
+  /* padding: 1000px; */
 }
 
 .search-products-container{

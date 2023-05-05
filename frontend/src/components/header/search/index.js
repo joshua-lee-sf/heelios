@@ -10,18 +10,18 @@ const SearchFunction = () => {
   const history = useHistory();
   const [query, setQuery] = useState('');
 
+
+
   const handleSearch = async (e) => {
     e.preventDefault();
     history.push(`/search?query=${query}`)
   }
 
-
-
   return(
     <>
     <form className="search-function" onSubmit={(e)=> handleSearch(e)}>
       <AiOutlineSearch id="search-icon"/>
-      <input type="text" value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search..."/>
+      <input className="searchbox" type="text" value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search..."/>
       <button>Search</button>
     </form>
     </>

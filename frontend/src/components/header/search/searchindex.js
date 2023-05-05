@@ -15,7 +15,9 @@ const SearchIndex = () => {
 
     useEffect(()=>{
       dispatch(fetchProductsByQuery(location.search))
-    },[dispatch])
+    },[dispatch, location.search])
+
+
 
     return(
       <>
