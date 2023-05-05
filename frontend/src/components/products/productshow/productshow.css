@@ -44,7 +44,6 @@
 .color-selector > *{
   margin: 0px 5px;
   border-radius: 4px;
-  height: 22%;
 }
 
 .color-selector label{
