@@ -10,16 +10,18 @@ const SearchIndex = () => {
     const dispatch = useDispatch();
     const products = useSelector(getProducts)
 
+    
+    const areThereProducts = products.length > 0
 
     useEffect(()=>{
       dispatch(fetchProductsByQuery(location.search))
     },[dispatch, location.search])
 
 
-
     return(
       <>
       <h1 className="page-header">Search Results</h1>
+      <p id="no-search-results">{areThereProducts ? null : "Sorry, we couldn't find what you were looking for :("}</p>
         <div className="search-products-container">
         {products?.map((product, idx) => {
           return(
