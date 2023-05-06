@@ -11,6 +11,10 @@
   overflow: scroll;
 }
 
+.favorited{
+  color: red;
+}
+
 .cart-item-left{
   margin:0px 10px;
   width: 40%;

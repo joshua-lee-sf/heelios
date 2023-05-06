@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import * as CartItemFunctions from '../../store/cartItem.js'
 import { useHistory } from "react-router-dom"
@@ -12,6 +12,11 @@ const CartItemIndex = () => {
   const history = useHistory();
   const cartItems = useSelector(CartItemFunctions.getCartItems)
   const sessionUser = useSelector(state => state.session.user);
+  const [errors, setErrors] = useState([]);
+  const [comparisonFavorite, setComparisonFavorite] = useState("");
+  const [favorited, setFavorited] = useState(false);
+  const [dispatchFavoriteSuccess, setDispatchFavoriteSuccess] = useState(false)
+
 
   const areThereCartItems = Object.values(cartItems).length > 0;
 
@@ -58,11 +63,26 @@ const CartItemIndex = () => {
 
   const handleFavoriteClick = (e,cartItem) => {
     e.preventDefault();
+    setErrors([]);
+    setFavorited(true)
     const newFavorite = {
       favoriterId: sessionUser.id,
       productId: cartItem.product.id
     }
+    setComparisonFavorite(newFavorite)
     dispatch(FavoriteFunctions.createFavorite(newFavorite))
+      .then(() => setDispatchFavoriteSuccess(true))
+      .catch(async (res) => {
+        let data;
+        try{
+          data = await res.clone().json();
+        } catch{
+          data = await res.text()
+        }
+        if (data?.errors) setErrors(data.errors);
+        else if (data) setErrors(data)
+        else setErrors([res.statusText])
+      });
   }
 
   return(
@@ -102,9 +122,13 @@ const CartItemIndex = () => {
                       </label>
                     </div>
                     <div className="cart-buttons">
-                      <GrFavorite id="cart-item-favorite-button" onClick={(e) => handleFavoriteClick(e, cartItem)}/>
+                      <GrFavorite id="cart-item-favorite-button"  className={favorited ? "favorited" : "not-favorited"} onClick={(e) => handleFavoriteClick(e, cartItem)}/>
                       <BsTrash3 onClick={(e) => handleTrashClick(e, cartItem)} id="cart-item-delete-button"/>
+                      { errors?.map((error, idx) => {
+                        return cartItem?.productId === comparisonFavorite?.productId ? <p key={idx} className="error">{error}</p> : null
+                      })}
                     </div>
+                      {dispatchFavoriteSuccess && cartItem?.productId === comparisonFavorite?.productId ? <p>Successfully added to favorites</p> : null}
                     </div>
                 {/* </div> */}
               </div>

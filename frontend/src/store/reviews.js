@@ -88,7 +88,7 @@ const reviewReducer = (state={},action) => {
       delete nextState[action.payload]
       return nextState
     case RECEIVE_PRODUCTS:
-      return {...nextState, ...action.payload.reviews}
+      return {...nextState, ...action.payload?.reviews}
     default:
       return state
   }

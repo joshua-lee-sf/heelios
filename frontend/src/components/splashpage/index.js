@@ -9,21 +9,23 @@ const SplashPage = () => {
   const dispatch = useDispatch();
   const products = useSelector(getProducts)
   
-  const [limit, setLimit] = useState(10);
-  const [offset, setOffset] = useState(0)
+
 
   let num1 = Math.floor(Math.random()*10)
   let num2 = Math.floor(Math.random()*10)
+
+  const [limit, setLimit] = useState(10);
+  const [offset, setOffset] = useState(num2);
   
   while (num2 === num1){
-    num2 = Math.floor(Math.random()*10)
+    num2 = Math.floor(Math.random()*10);
   }
 
-  const product1 = products[num1]
-  const product2 = products[num2]
+  const product1 = products[num1];
+  const product2 = products[num2];
 
   useEffect(()=>{
-    dispatch(fetchProductsByLimitandOffset(limit, offset))
+    dispatch(fetchProductsByLimitandOffset(limit, offset));
   }, [dispatch, limit, offset])
 
 
