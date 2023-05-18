@@ -64,11 +64,11 @@ const CartItemIndex = () => {
   const handleFavoriteClick = (e,cartItem) => {
     e.preventDefault();
     setErrors([]);
-    setFavorited(true)
+    setFavorited(true);
     const newFavorite = {
       favoriterId: sessionUser.id,
       productId: cartItem.product.id
-    }
+    };
     setComparisonFavorite(newFavorite)
     dispatch(FavoriteFunctions.createFavorite(newFavorite))
       .then(() => setDispatchFavoriteSuccess(true))
@@ -77,12 +77,19 @@ const CartItemIndex = () => {
         try{
           data = await res.clone().json();
         } catch{
-          data = await res.text()
+          data = await res.text();
         }
         if (data?.errors) setErrors(data.errors);
-        else if (data) setErrors(data)
-        else setErrors([res.statusText])
+        else if (data) setErrors(data);
+        else setErrors([res.statusText]);
       });
+  }
+
+  const handleCheckoutClick = () => {
+    history.push('/checkout');
+    cartItems.forEach(cartItem => {
+      dispatch(CartItemFunctions.deleteCartItem(cartItem.id));
+    })
   }
 
   return(
@@ -142,7 +149,7 @@ const CartItemIndex = () => {
         <div className="payment-right">
           <h1>Summary</h1>
           <p>Total Cost: ${totalCartCost(cartItems)?.toFixed(2)}</p>
-          <button className="checkout-button" onClick={(()=>history.push('/checkout'))} >Checkout</button>
+          <button className="checkout-button" onClick={handleCheckoutClick} >Checkout</button>
         </div>
       </div>
 

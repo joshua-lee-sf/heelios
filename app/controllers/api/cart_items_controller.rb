@@ -41,6 +41,11 @@ class Api::CartItemsController < ApplicationController
     end
   end
 
+  # def destroy_cart_items
+  #   @cart_items = CartItem.where(user: current_user)
+  #   @cart_items.destroy_all
+  # end
+
   private
   def cart_items_params
     params.require(:cart_item).permit(:product_id, :user_id, :quantity, :size)

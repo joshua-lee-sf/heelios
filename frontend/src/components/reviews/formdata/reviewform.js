@@ -6,7 +6,7 @@ import ProductRating from './productrating';
 import { useSelector } from 'react-redux';
 import './reviewform.css';
 
-const ReviewForm = ({product, reviewToEdit }) => {
+const ReviewForm = ({product, reviewToEdit, closeModal }) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const sessionUser = useSelector(state => state.session.user)
@@ -14,7 +14,6 @@ const ReviewForm = ({product, reviewToEdit }) => {
   const [title, setTitle] = useState('');
   const [reviewDetails, setReviewDetails] = useState('');
   const [errors, setErrors] = useState([]);
-  
 
   const reviewToEditKeys = Object.keys(reviewToEdit).length !== 0
 
@@ -39,6 +38,7 @@ const ReviewForm = ({product, reviewToEdit }) => {
         productId: product?.id
       }
       dispatch(createReview(newReview))
+        .then(closeModal)
         .catch(async (res) => {
           let data;
           try{
@@ -64,6 +64,7 @@ const ReviewForm = ({product, reviewToEdit }) => {
         productId: product?.id
       }
       dispatch(updateReview(newReview))
+        .then(closeModal)
         .catch(async (res) => {
           let data;
           try{

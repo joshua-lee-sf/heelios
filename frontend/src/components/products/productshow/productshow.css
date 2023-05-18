@@ -54,10 +54,13 @@
 
 .color-selector img{
   max-width: 120px;
-  border: 1px solid rgb(208, 208, 208);
   border-radius: 4px;
   cursor: pointer;
   height: 98%;
+}
+
+.active{
+  border: 1px solid black;
 }
 
 .size-selector{

@@ -2,12 +2,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* width: 25%; */
   flex-direction: column;
   margin-top: 50px;
+  min-width: 400px;
 }
 
-.signup-form-items *{
+.signup-form-items > *{
   margin: 10px;
   display: flex;
   justify-content: flex-start;
@@ -41,6 +41,8 @@
 
 .errors{
   color: red;
+  display: flex;
+  justify-content: center;
 }
 
 .signup-button:hover{

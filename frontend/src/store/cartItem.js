@@ -74,6 +74,13 @@ export const deleteCartItem = cartItemId => async (dispatch, getState) => {
   dispatch(removeCartItem(cartItemId))
 }
 
+export const deleteAllCartItems = () => async (dispatch, getState) => {
+  const res = await csrfFetch('/api/cart_items',{
+    method: "Delete",
+  });
+  dispatch(removeCartItem)
+}
+
 //cartitem reducer
 
 const cartItemReducer = (state={}, action) => {
