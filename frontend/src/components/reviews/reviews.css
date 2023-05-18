@@ -4,9 +4,16 @@
   margin-bottom: 10px;
 }
 
-.reviews-container{
+.review-container{
   margin: 10px 0px;
 }
+
+.review-container h5{
+  font-size: 18px;
+}
+.review-container > * {
+  margin: 3px 0px;
+} 
 
 .reviews-rating-header{
   text-align: center;
@@ -22,6 +29,11 @@
 
 #new-review-button{
   cursor: pointer;
+  opacity: 0.4;
+}
+
+#new-review-button:hover{
+  opacity: 1;
 }
 
 .review-modal-background{
@@ -51,6 +63,12 @@
   justify-content: center;
 }
 
-.review-delete{
+.review-delete, .review-edit{
   cursor: pointer;
+  font-size: 18px;
+  vertical-align: center;
+}
+
+.review-edit{
+  margin-left: 10px;
 }

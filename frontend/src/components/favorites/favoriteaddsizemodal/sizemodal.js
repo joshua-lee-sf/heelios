@@ -21,7 +21,10 @@ const SizeModal = ({closeModal, product}) => {
       size: selectedSize
     }
     dispatch(createCartItem(newCartItem))
-      .then(()=> setDispatchSuccess(true))
+      .then(()=> {
+        setDispatchSuccess(true);
+        setTimeout(() => setDispatchSuccess(false), 3000);
+      })
       .catch(async (res) => {
         let data;
         try{

@@ -37,7 +37,10 @@ const ProductShow = () => {
       size: selectedSize
     }
     dispatch(CartItemFunctions.createCartItem(newCartItem))
-    .then(()=> setDispatchCartSuccess(true))
+      .then(()=> {
+        setDispatchCartSuccess(true);
+        setTimeout(() => setDispatchCartSuccess(false), 3000);
+      })
       .catch(async (res) => {
         let data;
         try{
@@ -60,7 +63,10 @@ const ProductShow = () => {
       productId: product?.id
     }
     dispatch(FavoriteFunctions.createFavorite(newFavorite))
-      .then(()=> setDispatchFavoriteSuccess(true))
+    .then(()=> {
+      setDispatchFavoriteSuccess(true);
+      setTimeout(() => setDispatchFavoriteSuccess(false), 3000);
+    })
       .catch(async (res) => {
         let data;
         try{
