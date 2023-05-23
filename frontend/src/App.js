@@ -12,6 +12,7 @@ import SearchIndex from "./components/header/search/searchindex";
 import SplashPage from "./components/splashpage";
 import Checkout from "./components/splashpage/checkout";
 import { BsCheckLg } from "react-icons/bs";
+import SideBar from "./components/sidebar";
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
         <Route exact path="/products/category/:category" component={ProductIndex} />
         <Route exact path="/search" component={SearchIndex} />
         <Route exact path="/checkout" component={Checkout}/>
+        <Route exact path="/sidebar" component={SideBar}/>
         <Route exact path="/" component={SplashPage}/>
       </Switch>
       <Footer />

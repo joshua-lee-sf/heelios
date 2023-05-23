@@ -2,7 +2,11 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  width: 100%
+  width: 75%;
+}
+
+.sidebar-container{
+  width: 20%;
 }
 
 .product-container{
@@ -32,4 +36,8 @@
 
 .price-container > p{
   margin-right: 5px;
+}
+
+.products-index-container{
+  display: flex;
 }

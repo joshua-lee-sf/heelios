@@ -1,0 +1,143 @@
+.inputs-label-container input[type="radio"]:checked+label{
+    border: none;
+}
+
+
+.inputs-label-container  input[type="radio"]{
+    height: 15px;
+    width: 15px;
+}
+
+.sidebar-container{
+    height: 100vh;
+    overflow: scroll;
+    margin-left: 10px;
+}
+
+.inputs-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-heading{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.inputs-label-container{
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.sidebar-label span{
+    margin-left: 10px;
+}
+
+.sidebar-item{
+    margin-top: 20px;
+}
+
+.arrow{
+    margin-right: 30px;
+}
+
+.collapsed{
+    height: 0px;
+    overflow: hidden;
+}
+
+.color-selector-container{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.color-selector-item{
+    width: 33%;
+    margin: 5px 0px;
+}
+
+.color-selector-item > *{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.color-selector-item input[type="radio"]{
+    height: 1px;
+    width: 1px;
+}
+
+.color-selector-item label:hover{
+    background-color: rgba(0,0,0, 0.4)
+}
+
+.grey-circle, 
+.black-circle, 
+.white-circle, 
+.brown-circle, 
+.red-circle,
+.pink-circle, 
+.orange-circle,
+.yellow-circle,
+.green-circle,
+.blue-circle,
+.purple-circle,
+.multicolor-circle{
+    height: 30px;
+    width: 30px;
+    border-radius: 100%;
+    border: 1px solid black;
+}
+
+.grey-circle{
+    background-color: grey;
+}
+
+.black-circle{
+    background-color: black;
+}
+
+.white-circle{
+    background-color: white;
+}
+
+.brown-circle{
+    background-color: brown;
+}
+
+.red-circle{
+        background-color: red;
+}
+
+.pink-circle{
+        background-color: pink;
+}
+
+.orange-circle{
+        background-color: orange;
+}
+
+.yellow-circle{
+        background-color: yellow;
+}
+
+.green-circle{
+        background-color: green;
+}
+
+.blue-circle{
+        background-color: blue;
+}
+
+.purple-circle{
+        background-color: purple;
+}
+
+.multicolor-circle{
+        background-color: rainbow;
+}

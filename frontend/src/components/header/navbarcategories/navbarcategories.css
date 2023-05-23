@@ -1,7 +1,12 @@
 .navbar-categories{
   display: flex;
-  color: rgb(21, 21, 21);
+
   /* justify-content: center; */
+}
+
+.navbar-categories a{
+  text-decoration: none;
+  color: rgb(21, 21, 21);
 }
 
 .navbar-categories li{
