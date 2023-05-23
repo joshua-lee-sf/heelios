@@ -37,6 +37,7 @@ const SignUpForm = () => {
   }
 
   return(
+    <div className="signinform-container">
     <div className="signup-form">
       <div className="signup-form-items">
         <img className="signup-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Logo_NIKE.svg/2880px-Logo_NIKE.svg.png" alt="logo"/>
@@ -56,6 +57,8 @@ const SignUpForm = () => {
           </div>
       </div>
     </div>
+    </div>
+
   )
 }
 

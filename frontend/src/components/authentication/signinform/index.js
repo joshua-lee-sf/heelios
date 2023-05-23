@@ -35,6 +35,7 @@ const SignInForm = () => {
   }
 
   return(
+    <div className="signinform-container">
     <div className="signin-form">
       <div className="sign-form-items">
         <img className="signin-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Logo_NIKE.svg/2880px-Logo_NIKE.svg.png" alt="logo"/>
@@ -53,6 +54,8 @@ const SignInForm = () => {
         <p>If you do not have an account, <Link to="/account/signup" className="signup-link"> join us</Link></p> 
       </div>
     </div>
+    </div>
+
   )
 }
 
