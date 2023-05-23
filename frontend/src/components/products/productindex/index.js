@@ -3,6 +3,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { getProducts, fetchProducts, fetchProductsByCategory } from '../../../store/products';
 import { useHistory, useParams } from 'react-router-dom';
 import SideBar from '../../sidebar';
+import Loading from '../../loading';
 import './productindex.css'
 
 
@@ -14,6 +15,7 @@ const ProductIndex = () => {
   const [categoryFilter, setCategoryFilter] = useState();
   const [productTypeFilter, setProductTypeFilter] = useState();
   const [colorFilter, setColorFilter] = useState();
+  const [loading, setLoading] = useState(true);
 
   const COLORS = {
     "yellow": ["Saturn Gold", "Opti Yellow", "Wheat Gold", "Citron Tint", "Moss", "Olive Flak"],
@@ -43,8 +45,10 @@ const ProductIndex = () => {
   useEffect(() => {
     if(category){
       dispatch(fetchProductsByCategory(category))
+        .finally(() => setLoading(false))
     } else {
       dispatch(fetchProducts())
+      .finally(() => setLoading(false))
     }
   }, [dispatch, category])
 
@@ -53,34 +57,39 @@ const ProductIndex = () => {
     history.push(`/products/${id}`)
   }
   
-  return(
-    <div className='products-index-page-container'>
-    <h1 className="page-header">{category ? `${category}` : "All Products"}</h1>
-    <div className="products-index-container">
-      <SideBar setCategoryFilter={setCategoryFilter} setProductTypeFilter={setProductTypeFilter} setColorFilter={setColorFilter}/>
-      <div className="products-container">
-        {filteredProducts?.map(product => {
-          if(category && product.category !== category){
-            return null
-          }
-          return (
-              <div key={product.id} className='product-container' onClick={() => handleClick(product.sku)}>
-                <img src={product?.imageUrl?.[0]} alt=""/>
-                <h5 className="product-name">{product.name}</h5>
-                {product.title ? <p>{product.title}</p> : null}
-                <p>{product.pType}</p>
-                <div className="price-container">
-                  <p className={product.salePrice ? "onsaleproduct" : "notonsale"}>${product.price}</p>
-                  { product.salePrice ? <p className="onsale">${product.salePrice}</p> : null}
+  const content = () => {
+    return(
+      <div className='products-index-page-container'>
+      <h1 className="page-header">{category ? `${category}` : "All Products"}</h1>
+      <div className="products-index-container">
+        <SideBar setCategoryFilter={setCategoryFilter} setProductTypeFilter={setProductTypeFilter} setColorFilter={setColorFilter} colorFilter={colorFilter}/>
+        <div className="products-container">
+          {filteredProducts?.map(product => {
+            if(category && product.category !== category){
+              return null
+            }
+            return (
+                <div key={product.id} className='product-container' onClick={() => handleClick(product.sku)}>
+                  <img src={product?.imageUrl?.[0]} alt=""/>
+                  <h5 className="product-name">{product.name}</h5>
+                  {product.title ? <p>{product.title}</p> : null}
+                  <p>{product.pType}</p>
+                  <div className="price-container">
+                    <p className={product.salePrice ? "onsaleproduct" : "notonsale"}>${product.price}</p>
+                    { product.salePrice ? <p className="onsale">${product.salePrice}</p> : null}
+                  </div>
                 </div>
-              </div>
-            )
-          })}
+              )
+            })}
+        </div>
       </div>
-    </div>
-    </div>
+      </div>
+  
+    )
+  }
 
-  )
-}
+  return loading ? <Loading /> : content();
+  }
+
 
 export default ProductIndex;

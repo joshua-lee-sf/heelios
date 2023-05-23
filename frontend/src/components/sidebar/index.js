@@ -2,7 +2,7 @@ import { GoChevronUp, GoChevronDown } from 'react-icons/go';
 import { useState } from 'react';
 import './sidebar.css'
 
-const SideBar = ({ setCategoryFilter, setProductTypeFilter, setColorFilter }) => {
+const SideBar = ({ setCategoryFilter, setProductTypeFilter, setColorFilter, colorFilter }) => {
 
     const [categoryCollapsed, setCategoryCollapsed] = useState(false);
     const [colorCollapsed, setColorCollapsed] = useState(false);
@@ -14,12 +14,12 @@ const SideBar = ({ setCategoryFilter, setProductTypeFilter, setColorFilter }) =>
             <div className="sidebar-item">
                 <div className="sidebar-heading" onClick={() => setCategoryCollapsed(!categoryCollapsed)}>
                     <h1>Category </h1>
-                    {categoryCollapsed ? <GoChevronDown className="arrow" /> : <GoChevronUp className="arrow"/>}
+                    {categoryCollapsed ? <GoChevronDown className="arrow"/> : <GoChevronUp className="arrow"/>}
                 </div>
                 <div className={categoryCollapsed ? "inputs-container collapsed" :"inputs-container"} onChange={(e) => setCategoryFilter(e.target.value)}>
                     <div className="inputs-label-container">
                         <label className="sidebar-label"> 
-                            <input type='radio' name='category-picker' value={null} className="sidebar-radio-button"/>
+                            <input type='radio' name='category-picker' value="" className="sidebar-radio-button"/>
                             <span>All</span>
                         </label>
                     </div>
@@ -49,84 +49,91 @@ const SideBar = ({ setCategoryFilter, setProductTypeFilter, setColorFilter }) =>
                     {colorCollapsed ? <GoChevronDown className="arrow"/> : <GoChevronUp className="arrow"/>}
                 </div>
                 <div className={colorCollapsed ? "color-selector-container collapsed" : "color-selector-container"}>
-                    <div className="color-selector-item">
+                    <div className={colorFilter === "" ? "color-selector-item selected" : "color-selector-item"}>
                         <label>
-                            <input type="radio" value="black" name="color-selector"/>
+                            <input type="radio" value="" name="color-selector" />
+                            <div className="all-circle"></div>
+                            All
+                        </label>
+                    </div>
+                    <div className={colorFilter === "black" ? "color-selector-item selected" : "color-selector-item"}>
+                        <label>
+                            <input type="radio" value="black" name="color-selector" />
                             <div className="black-circle"></div>
                             Black
                         </label>
                     </div>
-                    <div className="color-selector-item">
+                    <div className={colorFilter === "grey" ? "color-selector-item selected" : "color-selector-item"}>
                         <label>
                             <input type="radio" value="grey" name="color-selector"/>
                             <div className="grey-circle"></div>
                             Grey
                         </label>
                     </div>
-                    <div className="color-selector-item">
+                    <div className={colorFilter === "white" ? "color-selector-item selected" : "color-selector-item"}>
                         <label>
                             <input type="radio" value="white" name="color-selector"/>
                             <div className="white-circle"></div>
                             White
                         </label>
                     </div>
-                    <div className="color-selector-item">
+                    <div className={colorFilter === "brown" ? "color-selector-item selected" : "color-selector-item"}>
                         <label>
                             <input type="radio" value="brown" name="color-selector"/>
                             <div className="brown-circle"></div>
                             Brown
                         </label>
                     </div>
-                    <div className="color-selector-item">
+                    <div className={colorFilter === "red" ? "color-selector-item selected" : "color-selector-item"}>
                         <label>
                             <input type="radio" value="red" name="color-selector"/>
                             <div className="red-circle"></div>
                             Red
                         </label>
                     </div>
-                    <div className="color-selector-item">
+                    <div className={colorFilter === "pink" ? "color-selector-item selected" : "color-selector-item"}>
                         <label>
                             <input type="radio" value="pink" name="color-selector"/>
                             <div className="pink-circle"></div>
                             Pink
                         </label>
                     </div>
-                    <div className="color-selector-item">
+                    <div className={colorFilter === "orange" ? "color-selector-item selected" : "color-selector-item"}>
                         <label>
                             <input type="radio" value="orange" name="color-selector"/>
                             <div className="orange-circle"></div>
                             Orange
                         </label>
                     </div>
-                    <div className="color-selector-item">
+                    <div className={colorFilter === "yellow" ? "color-selector-item selected" : "color-selector-item"}>
                         <label>
                             <input type="radio" value="yellow" name="color-selector"/>
                             <div className="yellow-circle"></div>
                             Yellow
                         </label>
                     </div>
-                    <div className="color-selector-item">
+                    <div className={colorFilter === "green" ? "color-selector-item selected" : "color-selector-item"}>
                         <label>
                             <input type="radio" value="green" name="color-selector"/>
                             <div className="green-circle"></div>
                             Green
                         </label>
                     </div>
-                    <div className="color-selector-item">
+                    <div className={colorFilter === "blue" ? "color-selector-item selected" : "color-selector-item"}>
                         <label>
                             <input type="radio" value="blue" name="color-selector"/>
                             <div className="blue-circle"></div>
                             Blue
                         </label>
                     </div>
-                    <div className="color-selector-item">
+                    <div className={colorFilter === "purple" ? "color-selector-item selected" : "color-selector-item"}>
                         <label>
                             <input type="radio" value="purple" name="color-selector"/>
                             <div className="purple-circle"></div>
                             Purple
                         </label>
                     </div>
-                    <div className="color-selector-item">
+                    <div className={colorFilter === "multi-color" ? "color-selector-item selected" : "color-selector-item"}>
                         <label>
                             <input type="radio" value="multi-color" name="color-selector"/>
                             <div className="multicolor-circle"></div>

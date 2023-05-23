@@ -2,16 +2,34 @@
     border: none;
 }
 
+.inputs-label-container input[type="radio"]{
+    border: 1px solid black;
+    padding: 0.6em;
+    -webkit-appearance: none;
+    opacity: 0.2;
+    cursor: pointer;
+}
 
-.inputs-label-container  input[type="radio"]{
-    height: 15px;
-    width: 15px;
+.inputs-label-container label{
+    cursor: pointer;
+}
+
+
+.inputs-label-container label:hover, input[type="radio"]:hover{
+    opacity: 1;
+}
+
+.inputs-label-container input[type="radio"]:checked{
+    background: url(data:image/png;base64,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) no-repeat center center;
+    background-size: 16px 16px;
+    opacity: 1;
 }
 
 .sidebar-container{
     height: 100vh;
     overflow: scroll;
     margin-left: 10px;
+    position: sticky;
 }
 
 .inputs-container{
@@ -64,6 +82,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 2px;
     cursor: pointer;
 }
 
@@ -72,10 +91,15 @@
     width: 1px;
 }
 
-.color-selector-item label:hover{
-    background-color: rgba(0,0,0, 0.4)
+.color-selector-container .selected{
+    background-color: rgba(0,0,0,0.2);
 }
 
+.color-selector-item label:hover{
+    background-color: rgba(0,0,0,0.2);
+}
+
+.all-circle,
 .grey-circle, 
 .black-circle, 
 .white-circle, 
@@ -91,19 +115,25 @@
     height: 30px;
     width: 30px;
     border-radius: 100%;
-    border: 1px solid black;
 }
 
 .grey-circle{
     background-color: grey;
 }
 
+.all-circle{
+    border: 1px solid rgb(0,0,0,0.9);
+    background: url(https://cdn.britannica.com/70/191970-050-1EC34EBE/Color-wheel-light-color-spectrum.jpg) no-repeat center center;
+    background-size: 60px 60px;
+}
+
 .black-circle{
-    background-color: black;
+    background-color: rgba(0,0,0,0.9);
 }
 
 .white-circle{
     background-color: white;
+    border: 1px solid rgba(0,0,0,0.9);
 }
 
 .brown-circle{
@@ -111,33 +141,34 @@
 }
 
 .red-circle{
-        background-color: red;
+    background-color: red;
 }
 
 .pink-circle{
-        background-color: pink;
+    background-color: pink;
 }
 
 .orange-circle{
-        background-color: orange;
+    background-color: orange;
 }
 
 .yellow-circle{
-        background-color: yellow;
+    background-color: yellow;
 }
 
 .green-circle{
-        background-color: green;
+    background-color: green;
 }
 
 .blue-circle{
-        background-color: blue;
+    background-color: blue;
 }
 
 .purple-circle{
-        background-color: purple;
+    background-color: purple;
 }
 
 .multicolor-circle{
-        background-color: rainbow;
+    background: url(https://apollodesign.net/media/catalog/product/cache/dbf21ea40c5a4552c901061577d4786d/M/E/ME-2233.png) no-repeat center center;
+    background-size: 50px 50px;
 }

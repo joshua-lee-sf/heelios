@@ -1,8 +1,10 @@
 .products-container{
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   width: 75%;
+  height: 100vh;
+  overflow-x: scroll;
 }
 
 .sidebar-container{
@@ -14,7 +16,6 @@
   margin: 10px 5px;
   cursor: pointer;
   display: flex;
-  justify-content: center;
   flex-direction: column;
 }
 
