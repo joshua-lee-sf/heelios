@@ -12,6 +12,7 @@ import SearchIndex from "./components/header/search/searchindex";
 import SplashPage from "./components/splashpage";
 import Checkout from "./components/splashpage/checkout";
 import { BsCheckLg } from "react-icons/bs";
+import SideBar from "./components/sidebar";
 
 
 function App() {

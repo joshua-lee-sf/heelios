@@ -69,11 +69,15 @@ require 'open-uri'
     product.price = productHash[:price][1..-1].to_f
     product.save!
     productHash[:images].each_with_index do |image_url, i|
-      puts "Attaching image: #{product.sku}_#{i}.png"
-      product.photos.attach(
-        io: URI.open(image_url, read_timeout: 2000), 
-        filename: "#{product.sku}_#{i}.png"
-      )
+      begin
+        puts "Attaching image: #{product.sku}_#{i}.png"
+        product.photos.attach(
+          io: URI.open(image_url, read_timeout: 2000), 
+          filename: "#{product.sku}_#{i}.png"
+        )
+      rescue
+        puts "failed to attach image #{image_url}"
+      end
     end
   end
 
