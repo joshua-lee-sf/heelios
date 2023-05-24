@@ -1,12 +1,11 @@
 .navbar-categories{
   display: flex;
-
-  /* justify-content: center; */
 }
 
 .navbar-categories a{
   text-decoration: none;
   color: rgb(21, 21, 21);
+  height: 40px;
 }
 
 .navbar-categories li{

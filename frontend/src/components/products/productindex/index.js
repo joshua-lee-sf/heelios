@@ -4,7 +4,7 @@ import { getProducts, fetchProducts, fetchProductsByCategory } from '../../../st
 import { useHistory, useParams } from 'react-router-dom';
 import SideBar from '../../sidebar';
 import Loading from '../../loading';
-import './productindex.css'
+import './productindex.css';
 
 
 const ProductIndex = () => {

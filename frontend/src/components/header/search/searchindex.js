@@ -23,7 +23,7 @@ const SearchIndex = () => {
     const content = () => {
       return(
         <>
-        <h1 className="page-header">Search Results</h1>
+        <h1 className="page-header">Search Results for "{location.search.slice(7)}"</h1>
         {areThereProducts ? null : <p id="no-search-results">"Sorry, we couldn't find what you were looking for :("</p>}
           <div className="search-products-container">
           {products?.map((product, idx) => {
