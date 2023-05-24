@@ -7,7 +7,8 @@ import './splashpage.css'
 const SplashPage = () => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const products = useSelector(getProducts)
+  const sessionUser = useSelector(state => state.session.user);
+  const products = useSelector(getProducts);
   
 
 
@@ -57,15 +58,18 @@ const SplashPage = () => {
           </div>
         </div>
       </div>
-      <div className="member-join-container">
-        <img src="../../../assets/nikesplashpage.webp" alt=""/> {/* backgroung image ?*/}
-        <div className="member-join-text">
-          <h1>Become A Member</h1>
-          <p>Sign up for free. Join the community</p>
-          <button onClick={()=> history.push('/account/signup')}>Join Us</button>
-          <button id="member-join-text-signin-button" onClick={()=> history.push('/account/signin')}>Sign In</button>
-        </div>
-      </div>
+      {!sessionUser &&(
+            <div className="member-join-container">
+              <img src="../../../assets/nikesplashpage.webp" alt=""/> {/* backgroung image ?*/}
+              <div className="member-join-text">
+                <h1>Become A Member</h1>
+                <p>Sign up for free. Join the community</p>
+                <button onClick={()=> history.push('/account/signup')}>Join Us</button>
+                <button id="member-join-text-signin-button" onClick={()=> history.push('/account/signin')}>Sign In</button>
+              </div>
+            </div>
+      )}
+
     </div>
   )
 }

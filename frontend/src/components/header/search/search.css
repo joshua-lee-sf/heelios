@@ -54,8 +54,9 @@
 .page-header{
   display: flex;
   position: relative;
-  justify-content: center;
+  justify-content: flex-start;
   text-transform: capitalize;
+  margin-bottom: 10px;
 }
 
 .product-item img{

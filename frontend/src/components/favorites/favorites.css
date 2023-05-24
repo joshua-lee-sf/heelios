@@ -1,11 +1,12 @@
 .favorite-item-container img{
   width: 100%;
   height: auto;
+  object-fit: cover;
 }
 
 #favorites-head{
-  position: relative;
-  left: 46%;
+  text-align: center;
+  margin-bottom: 10px;
 }
 
 .favorite-item-container{
@@ -16,8 +17,8 @@
 }
 
 .favorite-item{
-  width: 30%;
-  height: 10%;
+  width: 28%;
+  /* height: 10%; */
   margin-bottom: 20px;
 }
 

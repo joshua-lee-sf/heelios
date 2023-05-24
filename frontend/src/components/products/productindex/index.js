@@ -60,7 +60,7 @@ const ProductIndex = () => {
   const content = () => {
     return(
       <div className='products-index-page-container'>
-      <h1 className="page-header">{category ? `${category}` : "All Products"}</h1>
+      <h1 className="page-header">{category ? `${category}` : `All Products (${filteredProducts.length})`}</h1>
       <div className="products-index-container">
         <SideBar setCategoryFilter={setCategoryFilter} setProductTypeFilter={setProductTypeFilter} setColorFilter={setColorFilter} colorFilter={colorFilter}/>
         <div className="products-container">
@@ -73,7 +73,7 @@ const ProductIndex = () => {
                   <img src={product?.imageUrl?.[0]} alt=""/>
                   <h5 className="product-name">{product.name}</h5>
                   {product.title ? <p>{product.title}</p> : null}
-                  <p>{product.pType}</p>
+                  {/* <p>{product.pType}</p> */}
                   <div className="price-container">
                     <p className={product.salePrice ? "onsaleproduct" : "notonsale"}>${product.price}</p>
                     { product.salePrice ? <p className="onsale">${product.salePrice}</p> : null}

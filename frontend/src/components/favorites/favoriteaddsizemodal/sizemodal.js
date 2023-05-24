@@ -66,7 +66,7 @@ const SizeModal = ({closeModal, product}) => {
               )
             })}
           </div>
-          <button className="add-to-bag-button" onClick={(e) => handleAddToBagClick(e)}>{dispatchSuccess ? "Added to Bag" : "Add to Bag"}</button>
+          <button className="add-to-bag-button-favorite" onClick={(e) => handleAddToBagClick(e)}>{dispatchSuccess ? "Added to Bag" : "Add to Bag"}</button>
           {errors?.map((error, idx) => {
             return <p className="error" key={idx}>{error}</p>
           })}

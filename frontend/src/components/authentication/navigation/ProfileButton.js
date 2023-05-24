@@ -36,7 +36,6 @@ const ProfileButton = ({user}) => {
       {showMenu && (
         <ul className='profile-dropdown'>
           <li>Hi, {user.email}</li>
-          <li>Account</li>
           <li onClick={(logout)} className="logout-button">Log Out</li>
         </ul>
       )}
