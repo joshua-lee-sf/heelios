@@ -5,7 +5,7 @@
   /* width: 25%; */
   flex-direction: column;
   margin-top: 50px;
-  min-width: 400px;
+
 }
 
 .signinform-container{
@@ -17,6 +17,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  width: 280px;
 }
 
 .signin-form{

@@ -4,7 +4,7 @@
   align-items: center;
   flex-direction: column;
   margin-top: 50px;
-  min-width: 400px;
+  /* min-width: 400px; */
 }
 
 .signup-form-items > *{
@@ -12,6 +12,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  width: 280px;
 }
 
 .signup-form *{
