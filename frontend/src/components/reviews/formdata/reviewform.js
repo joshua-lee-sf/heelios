@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import { createReview, updateReview } from '../../../store/reviews';
 import ProductRating from './productrating';
 import { useSelector } from 'react-redux';
@@ -47,10 +47,6 @@ const ReviewForm = ({product, reviewToEdit, closeModal }) => {
             data = await res.text()
           }
           if (data?.errors) setErrors(data.errors);
-          else if (data?.message) {
-            history.push('/account/signin')
-            alert('Please Log In!')
-          }
           else if (data) setErrors(data);
           else setErrors([res.statusText]);
         });
@@ -83,6 +79,8 @@ const ReviewForm = ({product, reviewToEdit, closeModal }) => {
     setRating(parseInt(number))
   }
 
+  console.log(errors);
+
   return(
     <div className="review-form-container">
       <div className="review-form-header-container">
@@ -103,9 +101,9 @@ const ReviewForm = ({product, reviewToEdit, closeModal }) => {
           </label>
           <button className="submit-review-button">{reviewToEditKeys ? "Save Review" : "Submit Review"}</button>
         </form>
-        {errors?.map((error, idx) => {
+        {Array.isArray(errors) ? (errors?.map((error, idx) => {
           return <p className="error" key={idx}>{error}</p>
-        })}
+        })) : <Link to="/account/signin" className="error">{errors.message}</Link>}
       </div>
     </div>
   )

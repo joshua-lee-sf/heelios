@@ -64,7 +64,7 @@ const ProductIndex = () => {
       <div className="products-index-container">
         <SideBar setCategoryFilter={setCategoryFilter} setProductTypeFilter={setProductTypeFilter} setColorFilter={setColorFilter} colorFilter={colorFilter}/>
         <div className="products-container">
-          {filteredProducts?.map(product => {
+          {filteredProducts.length > 0 ? (filteredProducts?.map(product => {
             if(category && product.category !== category){
               return null
             }
@@ -73,14 +73,14 @@ const ProductIndex = () => {
                   <img src={product?.imageUrl?.[0]} alt=""/>
                   <h5 className="product-name">{product.name}</h5>
                   {product.title ? <p>{product.title}</p> : null}
-                  {/* <p>{product.pType}</p> */}
                   <div className="price-container">
                     <p className={product.salePrice ? "onsaleproduct" : "notonsale"}>${product.price}</p>
                     { product.salePrice ? <p className="onsale">${product.salePrice}</p> : null}
                   </div>
                 </div>
               )
-            })}
+            }))
+            : <p id="no-filter-results">No Products Found Matching That Criteria</p>}
         </div>
       </div>
       </div>

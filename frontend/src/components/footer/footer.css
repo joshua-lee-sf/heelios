@@ -19,11 +19,17 @@
   margin-left: 20px;
 }
 
-.footer-right li{
+.footer-logo{
   margin: 10px;
-  /* color: white; */
+  color: rgba(255,255,255, 0.9);
   cursor: pointer;
-  background-color: white;
-  padding: 5px;
-  border-radius: 35px;
+  font-size: 2rem;
+}
+
+.review-form-content a{
+  /* text-decoration: none; */
+  /* padding: 1px; */
+  /* text-align: center; */
+  display: flex;
+  justify-content: center;
 }

@@ -83,10 +83,17 @@ const ProductShow = () => {
         else setErrors([res.statusText])
       });
   }
+
+  const handleBackClick = () => {
+    history.goBack();
+  }
   
   const content = () => {
     return (
       <div className="product-show-container">
+        <div onClick={handleBackClick}>
+          <i class="fa-solid fa-chevron-left back-button"></i>
+        </div>
         <div className="product-show-left">
           {product?.imageUrl.map((photo,idx) =>{
             return(
