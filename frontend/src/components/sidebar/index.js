@@ -1,4 +1,5 @@
 import { GoChevronUp, GoChevronDown } from 'react-icons/go';
+import { useHistory } from 'react-router-dom';
 import { useState } from 'react';
 import './sidebar.css'
 
@@ -7,7 +8,21 @@ const SideBar = ({ setCategoryFilter, setProductTypeFilter, setColorFilter, colo
     const [categoryCollapsed, setCategoryCollapsed] = useState(false);
     const [colorCollapsed, setColorCollapsed] = useState(false);
     const [productTypeCollapsed, setProductTypeCollapsed] = useState(false);
+    const history = useHistory();
+    const colorsArr = ["black", "grey", "white", "brown", "red", "pink", "orange", "yellow", "green", "blue", "purple", "multi-color"];
+    const productTypesArr = ["shoes", "clothing"];
+    const categoryArr = ['men', 'women', 'kids'];
 
+    const handleCategoryClick = (e) => {
+        if (e){
+            history.push(`/products/category/${e}`)
+        } else {
+            history.push(`/products`);
+        }
+        setCategoryFilter(e);
+    }
+
+    // onChange={(e) => setCategoryFilter(e.target.value)}
 
     return(
         <div className="sidebar-container">
@@ -16,31 +31,23 @@ const SideBar = ({ setCategoryFilter, setProductTypeFilter, setColorFilter, colo
                     <h1>Category </h1>
                     {categoryCollapsed ? <GoChevronDown className="arrow"/> : <GoChevronUp className="arrow"/>}
                 </div>
-                <div className={categoryCollapsed ? "inputs-container collapsed" :"inputs-container"} onChange={(e) => setCategoryFilter(e.target.value)}>
+                <div className={categoryCollapsed ? "inputs-container collapsed" :"inputs-container"} onChange={(e) => handleCategoryClick(e.target.value)}>
                     <div className="inputs-label-container">
                         <label className="sidebar-label"> 
                             <input type='radio' name='category-picker' value="" className="sidebar-radio-button"/>
                             <span>All</span>
                         </label>
                     </div>
-                    <div className="inputs-label-container">
-                        <label className="sidebar-label"> 
-                            <input type='radio' name='category-picker' value='men'  className="sidebar-radio-button"/>
-                            <span>Men</span> 
-                        </label>
-                    </div>
-                    <div className="inputs-label-container">
-                        <label className="sidebar-label"> 
-                            <input type='radio' name='category-picker' value='women'  className="sidebar-radio-button"/>
-                            <span>Women</span> 
-                        </label>
-                    </div>
-                    <div className="inputs-label-container">
-                        <label className="sidebar-label"> 
-                            <input type='radio' name='category-picker' value='kids'  className="sidebar-radio-button"/>
-                            <span>Kids</span>
-                        </label>
-                    </div>
+                    {categoryArr.map((category, i) => {
+                        return(
+                            <div className="inputs-label-container" key={`category-${i}`}>
+                                <label className="sidebar-label"> 
+                                    <input type='radio' name='category-picker' value={category} className="sidebar-radio-button"/>
+                                    <span>{category[0].toUpperCase() + category.slice(1)}</span>
+                                </label>
+                            </div>
+                        )
+                    })}
                 </div>
             </div>
             <div className="sidebar-item" onChange={(e) => setColorFilter(e.target.value)}>
@@ -56,90 +63,17 @@ const SideBar = ({ setCategoryFilter, setProductTypeFilter, setColorFilter, colo
                             All
                         </label>
                     </div>
-                    <div className={colorFilter === "black" ? "color-selector-item selected" : "color-selector-item"}>
-                        <label>
-                            <input type="radio" value="black" name="color-selector" />
-                            <div className="black-circle"></div>
-                            Black
-                        </label>
-                    </div>
-                    <div className={colorFilter === "grey" ? "color-selector-item selected" : "color-selector-item"}>
-                        <label>
-                            <input type="radio" value="grey" name="color-selector"/>
-                            <div className="grey-circle"></div>
-                            Grey
-                        </label>
-                    </div>
-                    <div className={colorFilter === "white" ? "color-selector-item selected" : "color-selector-item"}>
-                        <label>
-                            <input type="radio" value="white" name="color-selector"/>
-                            <div className="white-circle"></div>
-                            White
-                        </label>
-                    </div>
-                    <div className={colorFilter === "brown" ? "color-selector-item selected" : "color-selector-item"}>
-                        <label>
-                            <input type="radio" value="brown" name="color-selector"/>
-                            <div className="brown-circle"></div>
-                            Brown
-                        </label>
-                    </div>
-                    <div className={colorFilter === "red" ? "color-selector-item selected" : "color-selector-item"}>
-                        <label>
-                            <input type="radio" value="red" name="color-selector"/>
-                            <div className="red-circle"></div>
-                            Red
-                        </label>
-                    </div>
-                    <div className={colorFilter === "pink" ? "color-selector-item selected" : "color-selector-item"}>
-                        <label>
-                            <input type="radio" value="pink" name="color-selector"/>
-                            <div className="pink-circle"></div>
-                            Pink
-                        </label>
-                    </div>
-                    <div className={colorFilter === "orange" ? "color-selector-item selected" : "color-selector-item"}>
-                        <label>
-                            <input type="radio" value="orange" name="color-selector"/>
-                            <div className="orange-circle"></div>
-                            Orange
-                        </label>
-                    </div>
-                    <div className={colorFilter === "yellow" ? "color-selector-item selected" : "color-selector-item"}>
-                        <label>
-                            <input type="radio" value="yellow" name="color-selector"/>
-                            <div className="yellow-circle"></div>
-                            Yellow
-                        </label>
-                    </div>
-                    <div className={colorFilter === "green" ? "color-selector-item selected" : "color-selector-item"}>
-                        <label>
-                            <input type="radio" value="green" name="color-selector"/>
-                            <div className="green-circle"></div>
-                            Green
-                        </label>
-                    </div>
-                    <div className={colorFilter === "blue" ? "color-selector-item selected" : "color-selector-item"}>
-                        <label>
-                            <input type="radio" value="blue" name="color-selector"/>
-                            <div className="blue-circle"></div>
-                            Blue
-                        </label>
-                    </div>
-                    <div className={colorFilter === "purple" ? "color-selector-item selected" : "color-selector-item"}>
-                        <label>
-                            <input type="radio" value="purple" name="color-selector"/>
-                            <div className="purple-circle"></div>
-                            Purple
-                        </label>
-                    </div>
-                    <div className={colorFilter === "multi-color" ? "color-selector-item selected" : "color-selector-item"}>
-                        <label>
-                            <input type="radio" value="multi-color" name="color-selector"/>
-                            <div className="multicolor-circle"></div>
-                            Multi-Color
-                        </label>
-                    </div>
+                    {colorsArr.map((color, i) => {
+                        return(
+                            <div className={colorFilter === `${color}` ? "color-selector-item selected" : "color-selector-item"} key={`color-${i}`}>
+                                <label>
+                                    <input type="radio" value={`${color}`} name="color-selector" />
+                                <div className={`${color}-circle`}></div>
+                                {color[0].toUpperCase().concat(color.slice(1))}
+                                </label>
+                            </div>
+                        )
+                    })}
                 </div>
             </div>
             <div className="sidebar-item">
@@ -150,22 +84,20 @@ const SideBar = ({ setCategoryFilter, setProductTypeFilter, setColorFilter, colo
                 <div className={productTypeCollapsed ? "inputs-container collapsed" :"inputs-container"} onChange={(e) => setProductTypeFilter(e.target.value)}>
                     <div className="inputs-label-container">
                         <label className="sidebar-label">
-                            <input type='radio' name='product-type-picker' value={null}  className="sidebar-radio-button"/>
+                            <input type='radio' name='product-type-picker' value=""  className="sidebar-radio-button"/>
                             <span>All</span>
                         </label>
                     </div>
-                    <div className="inputs-label-container">
-                        <label className="sidebar-label"> 
-                            <input type='radio' name='product-type-picker' value='shoes' className="sidebar-radio-button"/>
-                            <span>Shoes</span> 
-                        </label>
-                    </div>
-                    <div className="inputs-label-container">
-                        <label className="sidebar-label"> 
-                            <input type='radio' name='product-type-picker' value='clothing' className="sidebar-radio-button"/>
-                            <span>Clothing</span> 
-                        </label>
-                    </div>
+                    {productTypesArr.map((productType, i) => {
+                        return(
+                            <div className="inputs-label-container" key={`product-type-${i}`}>
+                                <label className="sidebar-label">
+                                    <input type='radio' name='product-type-picker' value={productType}  className="sidebar-radio-button"/>
+                                    <span>{productType[0].toUpperCase() + productType.slice(1)}</span>
+                                </label>
+                            </div>
+                        )
+                    })}
                 </div>
             </div>
         </div>

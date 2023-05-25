@@ -52,6 +52,8 @@ const ProductIndex = () => {
     }
   }, [dispatch, category])
 
+  console.log(filteredProducts, "fp");
+  console.log(products, "p");
 
   const handleClick = (id) => {
     history.push(`/products/${id}`)
@@ -60,7 +62,7 @@ const ProductIndex = () => {
   const content = () => {
     return(
       <div className='products-index-page-container'>
-      <h1 className="page-header">{category ? `${category}` : `All Products (${filteredProducts.length})`}</h1>
+      <h1 className="page-header">{category ? `${category} (${filteredProducts.length})` : `All Products (${filteredProducts.length})`}</h1>
       <div className="products-index-container">
         <SideBar setCategoryFilter={setCategoryFilter} setProductTypeFilter={setProductTypeFilter} setColorFilter={setColorFilter} colorFilter={colorFilter}/>
         <div className="products-container">

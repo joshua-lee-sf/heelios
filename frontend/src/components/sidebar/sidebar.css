@@ -111,7 +111,7 @@
 .green-circle,
 .blue-circle,
 .purple-circle,
-.multicolor-circle{
+.multi-color-circle{
     height: 30px;
     width: 30px;
     border-radius: 100%;
@@ -168,7 +168,7 @@
     background-color: purple;
 }
 
-.multicolor-circle{
+.multi-color-circle{
     background: url(https://apollodesign.net/media/catalog/product/cache/dbf21ea40c5a4552c901061577d4786d/M/E/ME-2233.png) no-repeat center center;
     background-size: 50px 50px;
 }
