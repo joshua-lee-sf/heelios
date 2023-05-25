@@ -19,8 +19,16 @@
   flex-direction: column;
 }
 
+.product-container h5{
+  margin-top: 10px;
+}
+
 .product-container img{
   max-width: 100%;
+}
+
+.product-title{
+  margin-top: 5px;
 }
 
 .onsaleproduct{
@@ -33,10 +41,11 @@
 
 .price-container{
   display: flex;
+  margin-top: 10px;
 }
 
 .price-container > p{
-  margin-right: 5px;
+  margin-right: 10px;
 }
 
 .products-index-container{
