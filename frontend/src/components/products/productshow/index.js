@@ -91,7 +91,7 @@ const ProductShow = () => {
   const content = () => {
     return (
       <div className="product-show-container">
-        <div onClick={handleBackClick}>
+        <div onClick={handleBackClick} className='back-button-container'>
           <i class="fa-solid fa-chevron-left back-button"></i>
         </div>
         <div className="product-show-left">
