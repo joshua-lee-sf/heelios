@@ -72,12 +72,7 @@ const ProductIndex = () => {
                 <div key={product.id} className='product-container' onClick={() => handleClick(product.sku)}>
                   <img src={product?.imageUrl?.[0]} alt=""/>
                   <h5 className="product-name">{product.name}</h5>
-<<<<<<< HEAD
                   {product.title ? <p>{product.title}</p> : null}
-=======
-                  {product.title ? <p className="product-title">{product.title}</p> : null}
-                  {/* <p>{product.pType}</p> */}
->>>>>>> 476095b961f7b318ba01e15217233a04c3a9b8a9
                   <div className="price-container">
                     <p className={product.salePrice ? "onsaleproduct" : "notonsale"}>${product.price}</p>
                     { product.salePrice ? <p className="onsale">${product.salePrice}</p> : null}
