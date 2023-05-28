@@ -1,7 +1,6 @@
 # Production README
 
-Welcome to Heelios! A clone of the popular sneaker/apparel store Nike! It was a blast to make and it challenged me to learn new things! Please check it out [here](https://heelios.herokuapp.com/)! The website is currently
-
+Welcome to Heelios! A clone of the popular sneaker/apparel store Nike! It was a blast to make and it challenged me to learn new things! Please check it out [here](https://heelios.herokuapp.com/)!
 # Table of Contents
 1. [Technologies](#technologies)
 2. [Features](#features)
