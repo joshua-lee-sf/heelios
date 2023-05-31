@@ -16,6 +16,8 @@ class Review < ApplicationRecord
   validates :reviewer_id, :product_id, :title, :rating, presence: true
   validates :reviewer_id, uniqueness: {scope: :product_id, message: "You've already reviewed this item"}
   validates :rating, numericality: { in: 1..5 }
+  validates :title, length: {maximum: 50}
+  validates :review_details, length: {maximum: 500}
 
   belongs_to :reviewer,
     foreign_key: :reviewer_id,

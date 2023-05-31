@@ -13,6 +13,7 @@
 }
 .review-container > * {
   margin: 3px 0px;
+  overflow-wrap: anywhere;
 } 
 
 .reviews-rating-header{
