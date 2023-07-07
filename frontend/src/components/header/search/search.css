@@ -35,10 +35,6 @@
   opacity: 1;
 }
 
-.search-products-container{
-  display: flex;
-}
-
 .product-item{
   width: 15%;
   cursor:pointer;
@@ -49,6 +45,8 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  height: 96vh;
+  margin-left: 40px;
 }
 
 .page-header{
