@@ -1,17 +1,16 @@
 import { useDispatch,useSelector } from "react-redux";
 import { useEffect,useState } from "react" ;
 import { useHistory } from "react-router-dom";
-import { fetchProductsByLimitandOffset, getProducts } from "../../store/products";
+import { fetchProductsByCategory, fetchProductsByLimitandOffset, getProducts, fetchProducts } from "../../store/products";
 import './splashpage.css'
 
 const SplashPage = () => {
   const history = useHistory();
   const dispatch = useDispatch();
+  const [category, setCategory] = useState('');
   const sessionUser = useSelector(state => state.session.user);
   const products = useSelector(getProducts);
   
-
-
   let num1 = Math.floor(Math.random()*10)
   let num2 = Math.floor(Math.random()*10)
 
@@ -29,15 +28,37 @@ const SplashPage = () => {
     dispatch(fetchProductsByLimitandOffset(limit, offset));
   }, [dispatch, limit, offset])
 
+  useEffect(() => {
+    if(category){
+      dispatch(fetchProductsByCategory(category))
+    }
+  }, [dispatch, category])
+
+  const shopWomensClick = () => {
+    history.push('/products/category/women')
+  }
+
+  const shopMensClick = () => {
+    history.push('/products/category/men')
+  }
+
+  const shopKidsClick = () => {
+    history.push('/products/category/kids')
+  }
+
+  // onClick={()=> history.push('/products')
+
 
   return(
     <div className="splash-container">
-      <div className="first-item-container" onClick={()=> history.push('/products/category/women')}>
-        <img src="../../../assets/nike.webp" alt=""/>
+      <div className="first-item-container">
+        <img src="../../../assets/nike3.webp" alt="mother's day" id="splash-picture"/>
         <div className="image-text-box">
-          <h1>GIFTS FOR HER</h1>
-          <p>This Mother's Day, Members get free expedited shipping on orders $150+. ends 5.7 -- exlcusions Apply</p>
-          <button classname="first-item-button" onClick={()=> history.push('/products')}>Shop</button>
+          <h1>NEW ARRIVALS</h1>
+          <p>The most coveted sumemr styles from Jordan & Nike</p>
+          <div className="shop-buttons-container">
+            <button className="first-item-button" onClick={()=> history.push('/products')}>Shop</button>
+          </div>
         </div>
       </div>
       <div className="featured-footwear-container">

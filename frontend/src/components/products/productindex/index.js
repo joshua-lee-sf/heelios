@@ -52,9 +52,6 @@ const ProductIndex = () => {
     }
   }, [dispatch, category])
 
-  console.log(filteredProducts, "fp");
-  console.log(products, "p");
-
   const handleClick = (id) => {
     history.push(`/products/${id}`)
   }

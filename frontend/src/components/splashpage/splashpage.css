@@ -8,6 +8,8 @@
 
 .first-item-container img{
   width: 90vw;
+  /* height: 100vh; */
+  object-fit: cover;
 }
 
 .first-item-container{

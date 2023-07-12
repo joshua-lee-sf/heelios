@@ -47,6 +47,7 @@
   flex-wrap: wrap;
   height: 96vh;
   margin-left: 40px;
+  overflow: scroll;
 }
 
 .page-header{

@@ -11,8 +11,6 @@ const NavBar = () => {
   const sessionUser = useSelector(state => state.session.user);
   const location = useLocation();
 
-  console.log(location.pathname);
-
   return(
     <>
       <ul className="navbar">
