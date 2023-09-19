@@ -13,7 +13,7 @@ const NavBar = () => {
   const location = useLocation();
 
   const menuClick = () => {
-    
+
   }
 
   return(
@@ -29,7 +29,7 @@ const NavBar = () => {
           <label className="search-function-container">
             <SearchFunction />
           </label>
-          <div className="hamburger-menu">
+          <div className="hamburger-menu mobile">
             <FaBars onClick={() => menuClick()}/>
           </div>
         </div>

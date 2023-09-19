@@ -35,6 +35,10 @@
   margin: 0px 15px;
 } 
 
+.mobile{
+  display: none;
+}
+
 @media (max-width: 768px){
   .navbar-categories{
     display: none;
@@ -51,6 +55,9 @@
     flex-direction: row;
   }
 
+  .mobile{
+    display: inline-block;
+  }
 }
 
 
