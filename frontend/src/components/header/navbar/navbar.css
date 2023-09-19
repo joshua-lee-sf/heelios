@@ -35,4 +35,22 @@
   margin: 0px 15px;
 } 
 
+@media (max-width: 768px){
+  .navbar-categories{
+    display: none;
+  }
+
+  .navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .cart-favorite-icons{
+    display: flex;
+    flex-direction: row;
+  }
+
+}
+
 
